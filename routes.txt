@@ -1,0 +1,27 @@
+Routes (based in CRUD)
+
+- /login
+- /dashboard
+- /page_not_found (ERROR)
+
+--> BOOKINGS
+- /bookings
+- /booking/:id
+- /booking/edit/:id
+
+--> ROOMS
+- /rooms
+- /room/:id
+- /room/edit/:id
+
+--> USERS
+- /users
+- /user/:id
+- /user/edit/:id
+
+--> CONTACT
+- /contacts
+- /contact/:id
+- /contact/edit/:id
+
+
