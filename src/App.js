@@ -1,31 +1,34 @@
 import logo from './logo.svg';
-import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Booking, Bookings, Contact, Dashboard, Login, NotFound, Room, Rooms, User, Users } from './views';
+import './styles/App.css';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BookingView, BookingsView, ContactView, Dashboard, LoginView, NotFound, RoomView, RoomsView, UserView, UsersView } from './views';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path='/login' element={<Login/>}>Login</Route>
-          <Route path='/' element={<Dashboard/>}>Dashboard</Route>
+          <Route exact path='/login' element={<LoginView />} />
+          <Route exact path='/' element={<Dashboard />} />
 
-          <Route path='/bookings' element={<Bookings/>}>Bookings</Route>
-          <Route path='/booking/:id' element={<Booking/>}>Booking id:</Route>
-          <Route path='/booking/edit/:id' element={<Booking />}>Booking edit id:</Route>
+          <Route exact path='/bookings' element={<BookingsView />} />
+          <Route exact path='/booking/:id' element={<BookingView />} />
+          <Route exact path='/booking' element={<Navigate to="/bookings" replace/>} />
+          <Route exact path='/booking/edit/:id' element={<BookingView />} />
 
-          <Route path='/rooms' element={<Rooms/>}>Rooms </Route>
-          <Route path='/room/:id' element={<Room/>}>Room id:</Route>
-          <Route path='/room/edit/:id' element={<Room/>}>Room edit id:</Route>
+          <Route exact path='/rooms' element={<RoomsView />} />
+          <Route exact path='/room/:id' element={<RoomView />} />
+          <Route exact path='/room' element={<Navigate to="/rooms" replace />} />
+          <Route exact path='/room/edit/:id' element={<RoomView />} />
 
-          <Route path='/users' element={<Users/>}>Users </Route>
-          <Route path='/user/:id' element={<User/>}>User id:</Route>
-          <Route path='/user/edit/:id' element={<User/>}>User edit id:</Route>
+          <Route exact path='/users' element={<UsersView />} />
+          <Route exact path='/user/:id' element={<UserView />} />
+          <Route exact path='/user' element={<Navigate to="/users" replace />} />
+          <Route exact path='/user/edit/:id' element={<UserView />} />
 
-          <Route path='/contact' element={<Contact/>}>Contact</Route>
+          <Route exact path='/contact' element={<ContactView />} />
 
-          <Route path='*' element={<NotFound/>}>404 Not found</Route>
+          <Route path='*' element={<NotFound />} />
         </Routes>
 
       </BrowserRouter>

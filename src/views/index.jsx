@@ -1,22 +1,22 @@
-import Login from './Login.jsx'
+import LoginView from "./LoginView";
 import Dashboard from "./Dashboard";
 import NotFound from "./NotFound";
-import Booking from "./Booking";
-import Bookings from "./Bookings";
-import User from "./User";
-import Users from "./Users";
-import Room from "./Room";
-import Rooms from "./Rooms";
-import Contact from "./Contact";
+import BookingView from "./BookingView";
+import BookingsView from "./BookingsView";
+import UserView from "./UserView";
+import UsersView from "./UsersView";
+import RoomView from "./RoomView";
+import RoomsView from "./RoomsView";
+import ContactView from "./ContactView";
 
 
-export {Login};
+export {LoginView};
 export {Dashboard};
 export {NotFound};
-export {Booking};
-export {Bookings};
-export {User};
-export {Users};
-export {Room};
-export {Rooms};
-export {Contact};
+export {BookingView};
+export {BookingsView};
+export {UserView};
+export {UsersView};
+export {RoomView};
+export {RoomsView};
+export {ContactView};
