@@ -1,38 +1,43 @@
-.App {
-  text-align: center;
-}
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+:root {
+  /* COLORS VARIABLES */
+  /* whites */
+  --color-white: #ffffff;
+  --color-white33: #ffffff33;
+  --color-whiteFC: #fcfcfc;
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+  /* greys */
+  --color-greyF8: #f8f8f8;
+  --color-grey05: #00000005;
+  --color-greyEB: #ebebeb;
+  --color-grey4E: #4e4e4e;
+  --color-greyC5: #c5c5c5;
+  --color-grey26: #262626;
+  --color-grey014: #00000014;
+  --color-grey39: #393939;
+  --color-grey6E: #6e6e6e;
+  --color-greyDC: #dcdcdc;
+  --color-greyA1: #a1a1a1;
+  --color-grey12: #00000012;
+  --color-greyD4: #d4d4d4;
+  --color-grey78: #787878;
+  --color-greyB2: #b2b2b2;
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+  /* colors */
+  --color-greenGrey: #799283;
+  --color-greenLight: #5ad07a;
+  --color-greenDark: #135846;
+  --color-red: #e23428;
+  --color-orangeDark: #ff9c3a;
+  --color-orangeLight: #fb9f44;
+  --color-orangePale: #ffedec;
+  --color-silver: #ebf1ef;
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+  /* dark */
+  --color-black: #000000;
+  --color-black21: #212121;
+  --color-brown: #5d5449;
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  /* FONTS VARIABLES */
+  --font-main: 'Poppins', sans-serif;
 }
