@@ -2,7 +2,7 @@ import React from "react";
 import MenuDashboard from "../components/MenuDashboard";
 import {
   BackgroundDashboard,
-  HeaderInfoContainer,
+  MainContainer,
 } from "../styles/views/DashboardStyled";
 import Theme from "../styles/Theme";
 import HeaderDashboard from "../components/HeaderDashboard";
@@ -13,11 +13,11 @@ const Dashboard = () => {
     <div>
       <Theme>
         <BackgroundDashboard>
-          <MenuDashboard></MenuDashboard>
-          <HeaderInfoContainer>
-            <HeaderDashboard />
+          <HeaderDashboard />
+          <MainContainer>
+            <MenuDashboard />
             <RoomList />
-          </HeaderInfoContainer>
+          </MainContainer>
         </BackgroundDashboard>
       </Theme>
     </div>

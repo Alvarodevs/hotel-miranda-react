@@ -1,0 +1,477 @@
+[
+    {
+        "id": 0,
+        "images": {
+            "image1": "http://lucas.biz",
+            "image2": "http://jadon.info",
+            "image3": "http://toney.info",
+            "image4": "http://doyle.org",
+            "image5": "https://cali.com"
+        },
+        "bed_type": "double_superior",
+        "room_number": 256,
+        "description": "Amet fugiat ad ex dolor occaecat ex elit.",
+        "price": "314,71 €",
+        "offer": true,
+        "offer_price": 38,
+        "cancellation": "Consectetur exercitation esse esse consequat reprehenderit id aliqua.",
+        "facilities": {
+            "tv": true,
+            "bath": true,
+            "sea_view": true,
+            "late_checkout": false,
+            "city_tour": true
+        },
+        "status_available": true
+    },
+    {
+        "id": 1,
+        "images": {
+            "image1": "https://hillary.info",
+            "image2": "http://leif.name",
+            "image3": "http://cara.com",
+            "image4": "https://ofelia.com",
+            "image5": "https://jaleel.biz"
+        },
+        "bed_type": "double_superior",
+        "room_number": 118,
+        "description": "Tempor minim sunt id proident nostrud.",
+        "price": "565,03 €",
+        "offer": false,
+        "offer_price": 59,
+        "cancellation": "Eiusmod consequat id magna dolore laboris eu culpa et. Adipisicing excepteur ipsum velit magna ullamco sit pariatur quis aliqua tempor ullamco ea. Do ullamco eu labore commodo excepteur eiusmod anim anim cupidatat amet et excepteur.",
+        "facilities": {
+            "tv": true,
+            "bath": true,
+            "sea_view": true,
+            "late_checkout": true,
+            "city_tour": true
+        },
+        "status_available": true
+    },
+    {
+        "id": 2,
+        "images": {
+            "image1": "https://ena.net",
+            "image2": "http://elian.com",
+            "image3": "http://kevon.com",
+            "image4": "http://trinity.name",
+            "image5": "http://alek.net"
+        },
+        "bed_type": "double",
+        "room_number": 404,
+        "description": "Enim ullamco laborum amet incididunt dolore. Culpa voluptate voluptate et labore quis eiusmod dolor minim do pariatur velit enim est incididunt.",
+        "price": "422,85 €",
+        "offer": true,
+        "offer_price": 26,
+        "cancellation": "Aliqua cupidatat Lorem fugiat mollit mollit labore. Incididunt consectetur sunt consequat magna quis enim elit nulla.",
+        "facilities": {
+            "tv": true,
+            "bath": false,
+            "sea_view": false,
+            "late_checkout": false,
+            "city_tour": true
+        },
+        "status_available": false
+    },
+    {
+        "id": 3,
+        "images": {
+            "image1": "https://wilford.biz",
+            "image2": "http://bud.info",
+            "image3": "https://otilia.biz",
+            "image4": "http://raymond.name",
+            "image5": "https://waylon.org"
+        },
+        "bed_type": "double_superior",
+        "room_number": 230,
+        "description": "Adipisicing est minim amet ut sit officia dolore minim esse ad elit. Id ullamco magna nostrud sit velit.",
+        "price": "276,69 €",
+        "offer": false,
+        "offer_price": 83,
+        "cancellation": "Proident dolore cillum aliquip nisi do ea. Reprehenderit enim eu cupidatat qui laborum velit id est. Fugiat do dolor enim irure ut duis labore non Lorem.",
+        "facilities": {
+            "tv": true,
+            "bath": true,
+            "sea_view": true,
+            "late_checkout": true,
+            "city_tour": true
+        },
+        "status_available": false
+    },
+    {
+        "id": 4,
+        "images": {
+            "image1": "https://rahsaan.info",
+            "image2": "https://adrian.biz",
+            "image3": "http://alfonso.net",
+            "image4": "http://ron.info",
+            "image5": "https://francesca.com"
+        },
+        "bed_type": "single",
+        "room_number": 111,
+        "description": "Laborum culpa non quis ut dolor minim anim proident velit reprehenderit sit anim sunt. Eu culpa quis pariatur irure mollit eiusmod esse qui magna Lorem.",
+        "price": "343,09 €",
+        "offer": false,
+        "offer_price": 88,
+        "cancellation": "Nisi amet ea ullamco laborum enim sunt tempor sunt adipisicing aliqua quis qui.",
+        "facilities": {
+            "tv": true,
+            "bath": false,
+            "sea_view": false,
+            "late_checkout": true,
+            "city_tour": false
+        },
+        "status_available": true
+    },
+    {
+        "id": 5,
+        "images": {
+            "image1": "http://presley.name",
+            "image2": "http://kurt.name",
+            "image3": "https://carmella.name",
+            "image4": "https://alphonso.com",
+            "image5": "http://syble.name"
+        },
+        "bed_type": "double",
+        "room_number": 327,
+        "description": "Officia in laboris est voluptate cupidatat aliquip consequat officia officia aute. Consequat laboris in qui anim ut magna non quis nulla eu est.",
+        "price": "581,15 €",
+        "offer": false,
+        "offer_price": 49,
+        "cancellation": "Exercitation aliquip est ut sunt non Lorem elit duis mollit voluptate ullamco ad pariatur.",
+        "facilities": {
+            "tv": true,
+            "bath": false,
+            "sea_view": true,
+            "late_checkout": false,
+            "city_tour": true
+        },
+        "status_available": true
+    },
+    {
+        "id": 6,
+        "images": {
+            "image1": "https://walton.com",
+            "image2": "http://keyon.org",
+            "image3": "https://damon.org",
+            "image4": "http://dewayne.info",
+            "image5": "https://yvonne.org"
+        },
+        "bed_type": "double_superior",
+        "room_number": 323,
+        "description": "Reprehenderit consequat eu enim mollit commodo proident. Culpa consequat reprehenderit magna ea fugiat amet fugiat. Minim aliquip deserunt quis proident non velit id labore ullamco non tempor.",
+        "price": "764,49 €",
+        "offer": false,
+        "offer_price": 31,
+        "cancellation": "Elit duis aliquip anim est proident incididunt proident exercitation excepteur dolore.",
+        "facilities": {
+            "tv": true,
+            "bath": false,
+            "sea_view": false,
+            "late_checkout": false,
+            "city_tour": true
+        },
+        "status_available": false
+    },
+    {
+        "id": 7,
+        "images": {
+            "image1": "https://carleton.org",
+            "image2": "https://chelsie.biz",
+            "image3": "https://joseph.net",
+            "image4": "https://malinda.com",
+            "image5": "https://weldon.net"
+        },
+        "bed_type": "double",
+        "room_number": 387,
+        "description": "Anim incididunt Lorem voluptate culpa in. Laborum do minim sint duis dolor proident tempor ex ut commodo pariatur dolor aute anim. Nisi sint nulla adipisicing culpa proident adipisicing fugiat commodo excepteur adipisicing. Tempor quis cupidatat culpa ullamco cillum sunt ullamco anim dolor anim consequat.",
+        "price": "605,08 €",
+        "offer": false,
+        "offer_price": 55,
+        "cancellation": "Dolor eu commodo fugiat sit veniam quis amet in aliqua sint est nulla proident. Nisi est aliquip consectetur reprehenderit ipsum excepteur.",
+        "facilities": {
+            "tv": true,
+            "bath": false,
+            "sea_view": false,
+            "late_checkout": false,
+            "city_tour": false
+        },
+        "status_available": false
+    },
+    {
+        "id": 8,
+        "images": {
+            "image1": "https://ashlee.biz",
+            "image2": "https://maybelle.info",
+            "image3": "https://tatum.com",
+            "image4": "https://jasper.biz",
+            "image5": "http://loyce.net"
+        },
+        "bed_type": "suite",
+        "room_number": 4,
+        "description": "Do ullamco id dolor fugiat.",
+        "price": "435,46 €",
+        "offer": false,
+        "offer_price": 3,
+        "cancellation": "Esse ipsum aliqua laboris exercitation cupidatat quis do aute non magna officia quis duis magna.",
+        "facilities": {
+            "tv": true,
+            "bath": false,
+            "sea_view": false,
+            "late_checkout": true,
+            "city_tour": true
+        },
+        "status_available": true
+    },
+    {
+        "id": 9,
+        "images": {
+            "image1": "http://armani.net",
+            "image2": "https://blanche.org",
+            "image3": "http://brandon.com",
+            "image4": "http://dedrick.net",
+            "image5": "https://rosalyn.net"
+        },
+        "bed_type": "single",
+        "room_number": 469,
+        "description": "Sint adipisicing incididunt est sint laboris sit quis culpa non id fugiat eiusmod amet est. Commodo quis dolore amet amet anim in nostrud tempor dolore eiusmod irure incididunt laboris Lorem. Esse laboris velit eiusmod eu magna quis fugiat cillum cupidatat.",
+        "price": "878,00 €",
+        "offer": true,
+        "offer_price": 3,
+        "cancellation": "Qui laborum sunt eu do consequat consectetur dolor ut ex Lorem occaecat non. Consectetur culpa dolor quis consequat qui exercitation incididunt eiusmod ut pariatur enim fugiat. Magna ex sint qui veniam cillum consectetur cupidatat commodo duis sunt aute cupidatat dolore deserunt.",
+        "facilities": {
+            "tv": true,
+            "bath": false,
+            "sea_view": false,
+            "late_checkout": false,
+            "city_tour": false
+        },
+        "status_available": true
+    },
+    {
+        "id": 10,
+        "images": {
+            "image1": "https://eleazar.com",
+            "image2": "https://linnie.info",
+            "image3": "http://levi.biz",
+            "image4": "http://rubie.com",
+            "image5": "http://fannie.com"
+        },
+        "bed_type": "single",
+        "room_number": 444,
+        "description": "Dolor adipisicing qui irure cupidatat labore et. Sunt deserunt amet nostrud esse occaecat reprehenderit commodo est ullamco. Enim amet dolor sint officia quis consequat quis ipsum culpa ipsum veniam duis irure reprehenderit.",
+        "price": "65,21 €",
+        "offer": false,
+        "offer_price": 86,
+        "cancellation": "Tempor consectetur nulla ad commodo. In irure tempor ea occaecat est cupidatat laborum. Excepteur proident duis excepteur nostrud cupidatat ut tempor nostrud nostrud labore sit ut pariatur.",
+        "facilities": {
+            "tv": true,
+            "bath": true,
+            "sea_view": false,
+            "late_checkout": false,
+            "city_tour": true
+        },
+        "status_available": true
+    },
+    {
+        "id": 11,
+        "images": {
+            "image1": "https://leonardo.com",
+            "image2": "http://oma.com",
+            "image3": "http://lucile.net",
+            "image4": "https://joyce.biz",
+            "image5": "http://violet.info"
+        },
+        "bed_type": "double",
+        "room_number": 67,
+        "description": "In proident proident culpa incididunt est qui nisi. Anim labore cillum sunt ex anim dolor ipsum tempor cupidatat enim laborum dolor.",
+        "price": "123,86 €",
+        "offer": false,
+        "offer_price": 89,
+        "cancellation": "Lorem sunt eu amet commodo duis commodo consectetur eiusmod consectetur esse cillum proident voluptate enim. Velit nulla magna ea incididunt dolore. Ad duis laboris fugiat cupidatat velit adipisicing cupidatat id officia.",
+        "facilities": {
+            "tv": true,
+            "bath": false,
+            "sea_view": false,
+            "late_checkout": true,
+            "city_tour": true
+        },
+        "status_available": true
+    },
+    {
+        "id": 12,
+        "images": {
+            "image1": "http://loyal.net",
+            "image2": "http://kay.net",
+            "image3": "http://breanne.name",
+            "image4": "https://bryon.info",
+            "image5": "https://iva.biz"
+        },
+        "bed_type": "double",
+        "room_number": 284,
+        "description": "Ad enim culpa incididunt culpa occaecat elit enim cupidatat incididunt commodo anim fugiat.",
+        "price": "272,99 €",
+        "offer": false,
+        "offer_price": 11,
+        "cancellation": "Ullamco qui nulla amet duis minim tempor nulla id commodo sint reprehenderit.",
+        "facilities": {
+            "tv": true,
+            "bath": true,
+            "sea_view": false,
+            "late_checkout": false,
+            "city_tour": true
+        },
+        "status_available": true
+    },
+    {
+        "id": 13,
+        "images": {
+            "image1": "https://betty.info",
+            "image2": "https://leonora.biz",
+            "image3": "http://evangeline.name",
+            "image4": "https://xavier.biz",
+            "image5": "http://zita.com"
+        },
+        "bed_type": "double",
+        "room_number": 374,
+        "description": "Do tempor anim eu fugiat tempor exercitation duis culpa est eu consequat. Deserunt sint irure ex in mollit fugiat quis non proident occaecat. Laborum enim aute dolore incididunt cillum sint sint occaecat labore tempor.",
+        "price": "659,33 €",
+        "offer": false,
+        "offer_price": 68,
+        "cancellation": "Culpa cillum pariatur elit non. Voluptate id cupidatat cillum ut duis aute proident eiusmod ipsum laborum amet exercitation laborum. Voluptate dolor sit est proident sit do exercitation esse esse cupidatat elit do officia.",
+        "facilities": {
+            "tv": true,
+            "bath": false,
+            "sea_view": false,
+            "late_checkout": true,
+            "city_tour": true
+        },
+        "status_available": false
+    },
+    {
+        "id": 14,
+        "images": {
+            "image1": "http://horace.net",
+            "image2": "http://walker.info",
+            "image3": "https://deontae.org",
+            "image4": "https://antwon.net",
+            "image5": "http://ada.net"
+        },
+        "bed_type": "double_superior",
+        "room_number": 91,
+        "description": "Enim cillum incididunt occaecat tempor.",
+        "price": "657,29 €",
+        "offer": true,
+        "offer_price": 86,
+        "cancellation": "Cupidatat id nisi tempor deserunt proident id id ullamco irure.",
+        "facilities": {
+            "tv": true,
+            "bath": false,
+            "sea_view": true,
+            "late_checkout": false,
+            "city_tour": false
+        },
+        "status_available": true
+    },
+    {
+        "id": 15,
+        "images": {
+            "image1": "https://pansy.info",
+            "image2": "https://dusty.biz",
+            "image3": "https://gage.net",
+            "image4": "http://annetta.biz",
+            "image5": "http://hertha.com"
+        },
+        "bed_type": "suite",
+        "room_number": 226,
+        "description": "Velit labore excepteur Lorem officia incididunt.",
+        "price": "917,96 €",
+        "offer": true,
+        "offer_price": 97,
+        "cancellation": "Esse aliquip eu anim consequat veniam adipisicing. Aliquip ea laborum deserunt fugiat esse nostrud sunt et sit nulla adipisicing.",
+        "facilities": {
+            "tv": true,
+            "bath": true,
+            "sea_view": false,
+            "late_checkout": false,
+            "city_tour": false
+        },
+        "status_available": false
+    },
+    {
+        "id": 16,
+        "images": {
+            "image1": "http://maria.com",
+            "image2": "http://viva.name",
+            "image3": "http://narciso.com",
+            "image4": "https://beaulah.net",
+            "image5": "http://kendra.org"
+        },
+        "bed_type": "single",
+        "room_number": 64,
+        "description": "Est ullamco laboris dolor laboris sunt dolor consectetur deserunt laboris reprehenderit excepteur laborum. Consequat elit excepteur aliquip voluptate cupidatat et nisi fugiat Lorem aute aute id tempor. Ex non magna elit Lorem minim tempor cillum. Pariatur aliqua ullamco ea elit mollit fugiat irure laborum.",
+        "price": "976,88 €",
+        "offer": false,
+        "offer_price": 30,
+        "cancellation": "In Lorem ad aliquip consequat reprehenderit dolor Lorem consectetur id elit ut qui anim dolore. Ad veniam voluptate eu laboris laboris reprehenderit cupidatat in elit. Amet occaecat ad ea ut pariatur est non reprehenderit consectetur amet aute fugiat labore.",
+        "facilities": {
+            "tv": true,
+            "bath": false,
+            "sea_view": true,
+            "late_checkout": true,
+            "city_tour": false
+        },
+        "status_available": false
+    },
+    {
+        "id": 17,
+        "images": {
+            "image1": "http://enid.com",
+            "image2": "https://jayden.com",
+            "image3": "https://nettie.name",
+            "image4": "https://lynn.com",
+            "image5": "http://hazel.net"
+        },
+        "bed_type": "double",
+        "room_number": 201,
+        "description": "Occaecat ex non cupidatat occaecat laboris voluptate dolore nisi cupidatat. Non est voluptate qui fugiat ex qui deserunt magna ea laboris.",
+        "price": "492,42 €",
+        "offer": false,
+        "offer_price": 54,
+        "cancellation": "Labore anim aliquip esse sunt eu. Veniam amet ut consequat mollit in Lorem ut in.",
+        "facilities": {
+            "tv": true,
+            "bath": true,
+            "sea_view": false,
+            "late_checkout": true,
+            "city_tour": false
+        },
+        "status_available": true
+    },
+    {
+        "id": 18,
+        "images": {
+            "image1": "http://ralph.org",
+            "image2": "http://adam.net",
+            "image3": "http://aubree.info",
+            "image4": "https://annie.org",
+            "image5": "http://grayson.biz"
+        },
+        "bed_type": "double",
+        "room_number": 108,
+        "description": "Ex ex duis proident laborum culpa excepteur exercitation veniam ea laboris consequat culpa tempor enim. Exercitation enim amet eiusmod aliqua Lorem proident reprehenderit elit mollit consequat.",
+        "price": "581,04 €",
+        "offer": false,
+        "offer_price": 96,
+        "cancellation": "Dolore reprehenderit nulla cupidatat eiusmod sunt. Lorem in dolor sint eu quis incididunt deserunt qui mollit nostrud nostrud est pariatur.",
+        "facilities": {
+            "tv": true,
+            "bath": false,
+            "sea_view": false,
+            "late_checkout": false,
+            "city_tour": true
+        },
+        "status_available": true
+    }
+]
