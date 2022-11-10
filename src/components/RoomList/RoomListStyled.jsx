@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
-export const MainContainer = styled.div`
-  position: absolute;
-  height: 100%;
-  width: 82%;
-  right: 0;
-  top: 100px;
-  padding: 50px;
-`;
+// export const MainContainer = styled.div`
+//   position: absolute;
+//   height: 100%;
+//   width: 82%;
+//   right: 0;
+//   top: 100px;
+//   padding: 50px;
+// `;
 
 export const RoomListButtons = styled.div`
   display: flex;

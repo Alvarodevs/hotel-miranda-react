@@ -13,11 +13,7 @@ const Dashboard = () => {
     <div>
       <Theme>
         <BackgroundDashboard>
-          <HeaderDashboard />
-          <MainContainer>
-            <MenuDashboard />
-            <RoomList />
-          </MainContainer>
+          
         </BackgroundDashboard>
       </Theme>
     </div>

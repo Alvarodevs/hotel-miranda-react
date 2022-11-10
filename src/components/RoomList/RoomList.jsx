@@ -1,7 +1,6 @@
 import React from "react";
 import {
   RoomListContainer,
-  MainContainer,
   HeaderTitle,
   RoomListButtons,
   Selectors,
@@ -21,7 +20,8 @@ import {
 
 const RoomList = ({ rooms }) => {
   return (
-    <MainContainer>
+    
+	<div>
       <RoomListButtons>
         <Selectors>
           <Selector>All Rooms</Selector>
@@ -36,7 +36,6 @@ const RoomList = ({ rooms }) => {
       <RoomListContainer>
         <thead>
           <tr>
-            {/* <input type="checkbox" /> */}
             <HeaderTitle>Room Name</HeaderTitle>
             <HeaderTitle>Bed Type</HeaderTitle>
             <HeaderTitle>Floor</HeaderTitle>
@@ -48,7 +47,7 @@ const RoomList = ({ rooms }) => {
         </thead>
         <tbody>
           {rooms.map((room) => (
-            <RoomListCard id={room.id}>
+            <RoomListCard key={room.id}>
               <Td>
                 <RoomNameImg>
                   <Image src="" alt="Image" />
@@ -73,7 +72,7 @@ const RoomList = ({ rooms }) => {
           ))}
         </tbody>
       </RoomListContainer>
-    </MainContainer>
+	</div>
   );
 };
 

@@ -15,11 +15,7 @@ const RoomsView = () => {
       <div>
         <Theme>
           <BackgroundDashboard>
-            <HeaderDashboard />
-            <MainContainer>
-              <MenuDashboard />
               <RoomList rooms={rooms} />
-            </MainContainer>
           </BackgroundDashboard>
         </Theme>
       </div>
