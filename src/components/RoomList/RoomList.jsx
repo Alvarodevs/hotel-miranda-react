@@ -39,6 +39,7 @@ const RoomList = ({ rooms }) => {
             {/* <input type="checkbox" /> */}
             <HeaderTitle>Room Name</HeaderTitle>
             <HeaderTitle>Bed Type</HeaderTitle>
+            <HeaderTitle>Floor</HeaderTitle>
             <HeaderTitle>Amenities</HeaderTitle>
             <HeaderTitle>Rate</HeaderTitle>
             <HeaderTitle>Offer Price</HeaderTitle>

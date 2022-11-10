@@ -64,7 +64,7 @@ export const HeaderTitle = styled.th`
 `;
 
 export const RoomListCard = styled.tr`
-  display: flex;
+  //display: flex;
   height: 121px;
   padding: 20px 40px 20px 0px;
 `;
