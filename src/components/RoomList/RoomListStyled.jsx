@@ -1,13 +1,8 @@
 import styled from "styled-components";
 
-// export const MainContainer = styled.div`
-//   position: absolute;
-//   height: 100%;
-//   width: 82%;
-//   right: 0;
-//   top: 100px;
-//   padding: 50px;
-// `;
+export const MainContainer = styled.div`
+	padding: 0 30px;
+`;
 
 export const RoomListButtons = styled.div`
   display: flex;
@@ -15,11 +10,8 @@ export const RoomListButtons = styled.div`
   margin-bottom: 30px;
 `;
 
-
-
 export const Selectors = styled.div`
   display: flex;
-  gap: 65px;
 `;
 
 export const Selector = styled.button`
@@ -30,6 +22,14 @@ export const Selector = styled.button`
   height: 37px;
   display: flex;
   align-items: flex-start;
+  padding: 0 25px;
+  border-bottom: 1px solid var(--color-greyD4);
+
+  :hover {
+	font-weight: 700;
+    color: var(--color-greenDark);
+    border-bottom: 2px solid var(--color-greenDark);
+  }
 `;
 
 export const NewRoomBtn = styled.button`
@@ -53,6 +53,14 @@ export const RoomListContainer = styled.table`
   width: 100%;
   background-color: var(--color-white);
   border-radius: 20px;
+  padding: 20px 30px;
+  //border-collapse: collapse;
+`;
+
+export const THeaderContainer = styled.thead`
+  .title {
+    text-align: center;
+  }
 `;
 
 export const HeaderTitle = styled.th`
@@ -62,9 +70,12 @@ export const HeaderTitle = styled.th`
   border-bottom: 2px solid var(--color-greyF5);
   text-align: start;
 `;
+export const TBody = styled.tbody`
+	padding: 0 20px;
+	border-collapse: separate;
+`;
 
 export const RoomListCard = styled.tr`
-  //display: flex;
   height: 121px;
   padding: 20px 40px 20px 0px;
 `;
@@ -91,6 +102,8 @@ export const Names = styled.div`
   gap: 15px;
   align-self: center;
   font-family: var(--font-main);
+  padding-right: 30px;
+  width: 60px;
 `;
 
 export const RoomId = styled.div`
@@ -113,6 +126,7 @@ export const TdText = styled.td`
   font-family: var(--font-main);
   font-size: 16px;
   font-weight: 700;
+  text-align: center;
 
   span{
 	color: var(--color-greenGrey);

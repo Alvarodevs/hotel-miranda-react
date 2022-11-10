@@ -5,6 +5,7 @@ export const Container = styled.div`
   height: 80%;
   width: 82%;
   right: 0;
-  top: 100px;
-  padding: 50px;
+  top: 5rem;
+  padding: 30px;
+  background-color: var(--color-greyF8);
 `;

@@ -1,5 +1,6 @@
 import React from "react";
 import {
+	THeaderContainer,
   RoomListContainer,
   HeaderTitle,
   RoomListButtons,
@@ -7,6 +8,7 @@ import {
   Selector,
   NewRoomBtn,
   NewestBtn,
+  TBody,
   RoomListCard,
   RoomNameImg,
   Image,
@@ -20,8 +22,7 @@ import {
 
 const RoomList = ({ rooms }) => {
   return (
-    
-	<div>
+    <div>
       <RoomListButtons>
         <Selectors>
           <Selector>All Rooms</Selector>
@@ -34,18 +35,18 @@ const RoomList = ({ rooms }) => {
         </div>
       </RoomListButtons>
       <RoomListContainer>
-        <thead>
+        <THeaderContainer>
           <tr>
             <HeaderTitle>Room Name</HeaderTitle>
-            <HeaderTitle>Bed Type</HeaderTitle>
+            <HeaderTitle className="title">Bed Type</HeaderTitle>
             <HeaderTitle>Floor</HeaderTitle>
-            <HeaderTitle>Amenities</HeaderTitle>
-            <HeaderTitle>Rate</HeaderTitle>
+            <HeaderTitle className="title">Amenities</HeaderTitle>
+            <HeaderTitle className="title">Rate</HeaderTitle>
             <HeaderTitle>Offer Price</HeaderTitle>
             <HeaderTitle>Status</HeaderTitle>
           </tr>
-        </thead>
-        <tbody>
+        </THeaderContainer>
+        <TBody>
           {rooms.map((room) => (
             <RoomListCard key={room.id}>
               <Td>
@@ -70,9 +71,9 @@ const RoomList = ({ rooms }) => {
               </TdText>
             </RoomListCard>
           ))}
-        </tbody>
+        </TBody>
       </RoomListContainer>
-	</div>
+    </div>
   );
 };
 
