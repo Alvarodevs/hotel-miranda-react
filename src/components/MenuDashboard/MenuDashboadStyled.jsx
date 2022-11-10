@@ -33,7 +33,12 @@ export const MenuItem = styled.button`
   justify-content: flex-start;
   display: flex;
   align-content: center;
-
+  a {
+    text-decoration: none;
+    color: inherit;
+    padding: inherit;
+    display: flex;
+  }
   :hover {
     color: var(--color-red);
     font-weight: 700;
