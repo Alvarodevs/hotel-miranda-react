@@ -7,6 +7,7 @@ export const LoginContainer = styled.div`
     width: 60%;
     margin: 10rem auto;
     box-shadow: 0px 16px 30px #00000014;
+	
 `;
 
 export const Header = styled.div`

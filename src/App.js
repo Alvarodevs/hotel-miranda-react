@@ -1,6 +1,6 @@
 import './styles/App.css';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { BookingView, BookingsView, ContactView, Dashboard, LoginView, NotFound, RoomView, RoomsView, UserView, UsersView } from './views';
+import { BookingView, BookingsView, ContactView, Dashboard, LoginView, NotFound, RoomView, RoomsView, UserView, UsersView, GuestView, GuestsView, ConciergeView } from './views';
 import PrivateRoutes from './utils/PrivateRoutes';
 import MenuDashboard from './components/MenuDashboard';
 import HeaderDashboard from './components/HeaderDashboard';
@@ -8,7 +8,7 @@ import MainContainer from './components/MainContainer';
 
 
 function App() {
-
+	
 	return (
 		<div>
 			<BrowserRouter>
@@ -19,7 +19,8 @@ function App() {
 						<Route exact path='/login' element={<LoginView />} />
 						{/* PROTECTED ROUTES */}
 						<Route element={<PrivateRoutes />} >
-							<Route exact path='/' element={<Dashboard />} />
+							<Route exact path='/' element={ <Navigate to="/dashboard" replace/>} />
+							<Route exact path='/dashboard' element={<Dashboard />} />
 
 							<Route exact path='/bookings' element={<BookingsView />} />
 							<Route exact path='/booking/:id' element={<BookingView />} />
@@ -38,6 +39,14 @@ function App() {
 							<Route exact path='/user' element={<Navigate to="/users" replace />} />
 							<Route exact path='/users/:id' element={<Navigate to="/users" replace />} />
 							<Route exact path='/user/edit/:id' element={<UserView />} />
+
+							<Route exact path='/guests' element={<GuestsView />} />
+							<Route exact path='/guest/:id' element={<GuestView />} />
+							<Route exact path='/guest' element={<Navigate to="/guests" replace />} />
+							<Route exact path='/guests/:id' element={<Navigate to="/guests" replace />} />
+							<Route exact path='/guest/edit/:id' element={<GuestView />} />
+
+							<Route exact path='/concierge' element={<ConciergeView />} />
 
 							<Route exact path='/contact' element={<ContactView />} />
 						</Route>

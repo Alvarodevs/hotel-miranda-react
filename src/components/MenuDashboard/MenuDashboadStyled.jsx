@@ -8,7 +8,7 @@ export const MainContainer = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  display: flex;
+  display: ${(props) => (props.path === "/login" ? "none" : "flex")};
   flex-direction: column;
 `;
 

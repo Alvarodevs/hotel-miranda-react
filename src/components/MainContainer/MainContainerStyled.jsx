@@ -2,10 +2,9 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   position: absolute;
-  height: 80%;
-  width: 82%;
+  width: ${(props) => (props.path === "/login" ? "100%" : "82%")};
   right: 0;
-  top: 5rem;
-  padding: 30px;
+  top: ${(props) => (props.path === "/login" ? "0" : "5rem")};
+  padding: ${(props) => (props.path === "/login" ? "0" : "30px")};
   background-color: var(--color-greyF8);
 `;

@@ -5,7 +5,7 @@ import { LoginContainer, Header, Form, Input, Submit } from "./LoginStyled";
 const Login = () => {
   const [user, setUser] = useState({ email: "", password: "" });
   const navigate = useNavigate();
-
+  
   const handleChange = (e) => {
     e.preventDefault();
     setUser((user) => ({

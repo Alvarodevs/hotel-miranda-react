@@ -6,4 +6,5 @@ export const HeaderContainer = styled.div`
   padding: 40px 40px 40px 20%;
   background-color: var(--color-white);
   box-shadow: 0px 3px 10px var(--color-grey05);
+  display: ${(props) => (props.path === "/login" ? "none" : "block")};
 `;

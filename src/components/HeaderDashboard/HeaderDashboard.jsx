@@ -1,10 +1,12 @@
 import React from 'react';
+import { useLocation } from 'react-router';
 import {HeaderContainer} from './HeaderDashbStyled'
 
 const HeaderDashboard = () => {
- 
+	const {pathname} = useLocation();
+
 	return (
-	   <HeaderContainer>HeaderContainer</HeaderContainer>
+	   <HeaderContainer path={pathname}> HeaderContainer</HeaderContainer>
 	)
 }
  
