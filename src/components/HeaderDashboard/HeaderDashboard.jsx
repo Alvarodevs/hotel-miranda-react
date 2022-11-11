@@ -5,14 +5,25 @@ import {
     TitleContainer,
     Logo,
     Site,
+    SearchbarContainer,
+    Searchbar,
+    MagnifyGlass,
+    IconsContainer,
+    LanguageSelect,
 } from "./HeaderDashbStyled";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faMagnifyingGlass, faComment } from "@fortawesome/free-solid-svg-icons";
+import {AiOutlineHeart} from '@react-icons/all-files/ai/AiOutlineHeart'
+import { BsEnvelope } from "@react-icons/all-files/bs/BsEnvelope";
+import { BiBell } from "@react-icons/all-files/bi/BiBell";
+import { BiCommentDetail } from "@react-icons/all-files/bi/BiCommentDetail"; 
 
 const HeaderDashboard = () => {
     const [title, setTitle] = useState("");
-	const {id} = useParams();
+    const { id } = useParams();
     const { pathname } = useLocation();
     const location = useLocation();
-    
+
     console.log("ID", id);
 
     useEffect(() => {
@@ -20,7 +31,7 @@ const HeaderDashboard = () => {
             setTitle("Dashboard");
         } else if (pathname === "/rooms") {
             setTitle("Rooms list");
-        } else if (pathname.includes("room")) {
+        } else if (id && pathname.includes("room")) {
             setTitle(`Room ${id}`);
         } else if (pathname === "/bookings") {
             setTitle("Bookings list");
@@ -42,9 +53,26 @@ const HeaderDashboard = () => {
     return (
         <HeaderContainer path={pathname}>
             <TitleContainer>
-                <Logo>logo</Logo>
+                <Logo>
+                    <FontAwesomeIcon icon={faBars} />
+                </Logo>
                 <Site>{title}</Site>
             </TitleContainer>
+            <SearchbarContainer>
+                <Searchbar />
+                <FontAwesomeIcon icon={faMagnifyingGlass} />
+            </SearchbarContainer>
+            <IconsContainer>
+                <AiOutlineHeart />
+                <BsEnvelope />
+                <BiBell />
+                <BiCommentDetail />
+
+                <LanguageSelect>
+                    <option value="EN">EN</option>
+                    <option value="ES">ES</option>
+                </LanguageSelect>
+            </IconsContainer>
         </HeaderContainer>
     );
 };

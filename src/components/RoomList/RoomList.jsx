@@ -6,6 +6,7 @@ import {
   RoomListButtons,
   Selectors,
   Selector,
+  NewBtnsContainer,
   NewRoomBtn,
   NewestBtn,
   TBody,
@@ -19,6 +20,7 @@ import {
   TdText,
   Text,
 } from "./RoomListStyled";
+import { FiChevronDown } from "@react-icons/all-files/fi/FiChevronDown";
 
 const RoomList = ({ rooms }) => {
   return (
@@ -29,10 +31,10 @@ const RoomList = ({ rooms }) => {
           <Selector>Active Employee</Selector>
           <Selector>Inactive Employee</Selector>
         </Selectors>
-        <div>
+        <NewBtnsContainer>
           <NewRoomBtn>+ New Room</NewRoomBtn>
-          <NewestBtn>Newest</NewestBtn>
-        </div>
+          <NewestBtn>Newest <FiChevronDown/></NewestBtn>
+        </NewBtnsContainer>
       </RoomListButtons>
       <RoomListContainer>
         <THeaderContainer>
@@ -51,9 +53,9 @@ const RoomList = ({ rooms }) => {
             <RoomListCard key={room.id}>
               <Td>
                 <RoomNameImg>
-                  <Image src="" alt="Image" />
+                  <Image src="/public/assets/images/room.jpg" alt="Image" />
                   <Names>
-                    <RoomId>{room.id}</RoomId>
+                    <RoomId>#{room.id}</RoomId>
                     <RoomNumber>{room.room_number}</RoomNumber>
                   </Names>
                 </RoomNameImg>

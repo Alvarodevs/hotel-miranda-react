@@ -5,9 +5,8 @@ export const LoginContainer = styled.div`
     border-radius: 12px;
 	background-color: var(--color-silver);
     width: 60%;
-    margin: 10rem auto;
+    margin: 10rem auto 28rem auto;
     box-shadow: 0px 16px 30px #00000014;
-	
 `;
 
 export const Header = styled.div`

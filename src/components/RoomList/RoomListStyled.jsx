@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Button } from "../../styles/Button";
 
 export const MainContainer = styled.div`
 	padding: 0 30px;
@@ -11,7 +12,8 @@ export const RoomListButtons = styled.div`
 `;
 
 export const Selectors = styled.div`
-  display: flex;
+    display: flex;
+    align-items: center;
 `;
 
 export const Selector = styled.button`
@@ -31,22 +33,28 @@ export const Selector = styled.button`
     border-bottom: 2px solid var(--color-greenDark);
   }
 `;
-
-export const NewRoomBtn = styled.button`
-  border-radius: 12px;
-  border: none;
-  color: var(--color-white);
-  background-color: var(--color-greenDark);
-  margin-right: 20px;
-  padding: 15px 50px;
+export const NewBtnsContainer = styled.div`
+	display:flex;
+`;
+export const NewRoomBtn = styled(Button)`
+    color: var(--color-white);
+    background-color: var(--color-greenDark);
+    margin-right: 20px;
+    padding: 14px 45px;
 `;
 
-export const NewestBtn = styled.button`
-  border-radius: 12px;
+export const NewestBtn = styled(Button)`
   color: var(--color-greenDark);
   background-color: var(--color-white);
-  padding: 14px 20px;
   border: 1px solid var(--color-greenDark);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  svg{
+	font-size: 20px;
+	height: inherit;
+	margin-left: 1rem;
+  }
 `;
 
 export const RoomListContainer = styled.table`
@@ -54,7 +62,6 @@ export const RoomListContainer = styled.table`
   background-color: var(--color-white);
   border-radius: 20px;
   padding: 20px 30px;
-  //border-collapse: collapse;
 `;
 
 export const THeaderContainer = styled.thead`
@@ -92,6 +99,7 @@ export const Image = styled.img`
 	height: 77px;
 	border-radius: 8px;
 	background-color: grey;
+	object-fit: cover;
 `;
 
 export const Names = styled.div`
