@@ -11,6 +11,9 @@ export const MainContainer = styled.div`
     left: 0;
     display: ${(props) => (props.path === "/login" ? "none" : "flex")};
     flex-direction: column;
+	.rights{
+		margin-bottom: 5rem;
+	}
 `;
 
 export const LogoContainer = styled.div`
@@ -119,3 +122,24 @@ export const ContactButton = styled(Button)`
     color: var(--color-greenDark);
     font-weight: 700;
 `;
+
+export const FooterText = styled.p`
+    text-align: center;
+    font-family: var(--font-main);
+    color: var(--color-greenGrey);
+    font-size: 14px;
+    span {
+        color: var(--color-red);
+    }
+	a{
+		text-decoration: none;
+		color: var(--color-black21);
+		font-weight: 700;
+	}
+`;
+
+export const FooterTitle = styled(FooterText)`
+    color: var(--color-black21);
+    font-size: 16px;
+    font-weight: 700;
+`; 
