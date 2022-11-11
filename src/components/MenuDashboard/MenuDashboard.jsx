@@ -30,7 +30,7 @@ const MenuDashboard = () => {
         <div>
             <MainContainer path={pathname}>
                 <LogoContainer>
-                    <Logo src={logo}/>
+                    <Logo src={logo} />
                 </LogoContainer>
                 <MenuItem>
                     <Active className="active" />
@@ -63,19 +63,30 @@ const MenuDashboard = () => {
                     </Link>
                 </MenuItem>
                 <UserCard>
-                    <Avatar src={avatar}/>
+                    <Avatar src={avatar} />
                     <Name>Alvaro G.</Name>
-                    <Email>alvaro.develops@gmail.com</Email>
-                    <ContactButton>Contact Us</ContactButton>
+                    <Email href="mailto:alvaro.develops@gmail.com">
+                        alvaro.develops@gmail.com
+                    </Email>
+                    <ContactButton>Edit</ContactButton>
                 </UserCard>
                 <FooterTitle>Hotel Miranda Admin Dashboard</FooterTitle>
-                <FooterText className="rights">@2022 All Rights Reserved</FooterText>
+                <FooterText className="rights">
+                    @2022 All Rights Reserved
+                </FooterText>
                 <FooterText>
                     Made with{" "}
                     <span>
                         <AiFillHeart />
                     </span>{" "}
-                    by <a href="www.linkedin.com/Alvarodevs4you" target="_blank">Alvaro G.</a>
+                    by{" "}
+                    <a
+                        href="https://www.linkedin.com/in/alvarodevs4you/"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        Alvaro G.
+                    </a>
                 </FooterText>
             </MainContainer>
         </div>

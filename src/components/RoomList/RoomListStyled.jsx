@@ -1,41 +1,19 @@
 import styled from "styled-components";
 import { Button } from "../../styles/Button";
+import { ListButtonsContainer, NewBtnsContainer, Selector, Selectors } from '../../styles/ListButtons';
 
-export const MainContainer = styled.div`
-    padding: 0 30px;
+export const RoomListButtons = styled(ListButtonsContainer)`
 `;
 
-export const RoomListButtons = styled.div`
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 30px;
+export const RoomSelectors = styled(Selectors)`
 `;
 
-export const Selectors = styled.div`
-    display: flex;
-    align-items: center;
+export const RoomSelector = styled(Selector)`
 `;
 
-export const Selector = styled.button`
-    border: none;
-    color: var(--color-grey6E);
-    font-family: var(--font-main);
-    background-color: transparent;
-    height: 37px;
-    display: flex;
-    align-items: flex-start;
-    padding: 0 25px;
-    border-bottom: 1px solid var(--color-greyD4);
+export const RoomRightBtns = styled(NewBtnsContainer)`
+`;
 
-    :hover {
-        font-weight: 700;
-        color: var(--color-greenDark);
-        border-bottom: 2px solid var(--color-greenDark);
-    }
-`;
-export const NewBtnsContainer = styled.div`
-    display: flex;
-`;
 export const NewRoomBtn = styled(Button)`
     color: var(--color-white);
     background-color: var(--color-greenDark);

@@ -110,10 +110,12 @@ export const Name = styled.p`
     padding: 55px 0 10px 0;
 `;
 
-export const Email = styled.p`
+export const Email = styled.a`
     font-family: var(--font-main);
     font-size: 12px;
     color: var(--color-greyB2);
+	text-decoration: none;
+	color: inherit;
 `;
 
 export const ContactButton = styled(Button)`

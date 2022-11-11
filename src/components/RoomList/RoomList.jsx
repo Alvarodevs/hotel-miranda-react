@@ -1,12 +1,13 @@
 import React from "react";
+import rooms from "../../db/rooms.json";
 import {
     THeaderContainer,
     RoomListContainer,
     HeaderTitle,
     RoomListButtons,
-    Selectors,
-    Selector,
-    NewBtnsContainer,
+RoomSelectors,
+RoomSelector,
+RoomRightBtns,
     NewRoomBtn,
     NewestBtn,
     TBody,
@@ -24,21 +25,21 @@ import {
 import { FiChevronDown } from "@react-icons/all-files/fi/FiChevronDown";
 import roomImg from '../../assets/images/room.jpg';
 
-const RoomList = ({ rooms }) => {
+const RoomList = () => {
   return (
       <div>
           <RoomListButtons>
-              <Selectors>
-                  <Selector>All Rooms</Selector>
-                  <Selector>Active Employee</Selector>
-                  <Selector>Inactive Employee</Selector>
-              </Selectors>
-              <NewBtnsContainer>
+              <RoomSelectors>
+                  <RoomSelector>All Rooms</RoomSelector>
+                  <RoomSelector>Active Employee</RoomSelector>
+                  <RoomSelector>Inactive Employee</RoomSelector>
+              </RoomSelectors>
+              <RoomRightBtns>
                   <NewRoomBtn>+ New Room</NewRoomBtn>
                   <NewestBtn>
                       Newest <FiChevronDown />
                   </NewestBtn>
-              </NewBtnsContainer>
+              </RoomRightBtns>
           </RoomListButtons>
           <RoomListContainer>
               <THeaderContainer>
