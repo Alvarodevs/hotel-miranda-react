@@ -20,6 +20,8 @@ import { RiUser3Line } from "@react-icons/all-files/ri/RiUser3Line";
 import { BsEnvelope } from "@react-icons/all-files/bs/BsEnvelope";
 import { AiFillHeart } from '@react-icons/all-files/ai/AiFillHeart';
 import { Link, useLocation } from "react-router-dom";
+import avatar from '../../assets/images/Alvaro.jpg';
+import logo from "../../assets/images/logo.jpg";
 
 const MenuDashboard = () => {
     const { pathname } = useLocation();
@@ -28,7 +30,7 @@ const MenuDashboard = () => {
         <div>
             <MainContainer path={pathname}>
                 <LogoContainer>
-                    <Logo />
+                    <Logo src={logo}/>
                 </LogoContainer>
                 <MenuItem>
                     <Active className="active" />
@@ -61,7 +63,7 @@ const MenuDashboard = () => {
                     </Link>
                 </MenuItem>
                 <UserCard>
-                    <Avatar />
+                    <Avatar src={avatar}/>
                     <Name>Alvaro G.</Name>
                     <Email>alvaro.develops@gmail.com</Email>
                     <ContactButton>Contact Us</ContactButton>

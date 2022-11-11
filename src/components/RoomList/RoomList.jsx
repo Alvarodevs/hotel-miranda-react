@@ -22,6 +22,7 @@ import {
     Status,
 } from "./RoomListStyled";
 import { FiChevronDown } from "@react-icons/all-files/fi/FiChevronDown";
+import roomImg from '../../assets/images/room.jpg';
 
 const RoomList = ({ rooms }) => {
   return (
@@ -59,10 +60,7 @@ const RoomList = ({ rooms }) => {
                       <RoomListCard key={room.id}>
                           <Td>
                               <RoomNameImg>
-                                  <Image
-                                      src="/public/assets/images/room.jpg"
-                                      alt="Image"
-                                  />
+                                  <Image src={roomImg} alt="Image" />
                                   <Names>
                                       <RoomId>#{room.id}</RoomId>
                                       <RoomNumber>
@@ -84,7 +82,8 @@ const RoomList = ({ rooms }) => {
                               )}
                           </TdText>
                           <TdText>
-                              € {room.price.slice(0, -1)}<span>/night</span>
+                              € {room.price.slice(0, -1)}
+                              <span>/night</span>
                           </TdText>
                           {/* <TdText>
 							{

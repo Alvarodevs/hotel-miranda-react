@@ -18,13 +18,13 @@ export const MainContainer = styled.div`
 
 export const LogoContainer = styled.div`
     width: 200px;
-    height: 57px;
-    margin: 10px auto;
+    height: 70px;
+    margin: 20px auto;
 `;
-export const Logo = styled.div`
-    min-width: 100%;
-    min-height: 100%;
-    background-image: url("https://unsplash.com/es/fotos/oxeCZrodz78");
+export const Logo = styled.img`
+    width: 100%;
+    height: 100%;
+    
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -79,7 +79,7 @@ export const Active = styled.div`
 
 export const UserCard = styled.div`
     width: 80%;
-    margin: 40px auto;
+    margin: 4rem auto 60px auto;
     box-shadow: 0px 20px 30px var(--color-grey14);
     border-radius: 18px;
     display: flex;
@@ -95,7 +95,7 @@ export const Avatar = styled.img`
     background-color: grey;
     margin: 10px auto;
     border-radius: 8px;
-    background-position: center;
+    object-fit: cover;
     position: absolute;
     top: -35px;
     left: 0;
