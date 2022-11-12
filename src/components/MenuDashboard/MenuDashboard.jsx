@@ -9,7 +9,7 @@ import {
     Avatar,
     Name,
     Email,
-    ContactButton,
+    EditButton,
     FooterText,
 	FooterTitle,
 } from "./MenuDashboadStyled";
@@ -68,7 +68,7 @@ const MenuDashboard = () => {
                     <Email href="mailto:alvaro.develops@gmail.com">
                         alvaro.develops@gmail.com
                     </Email>
-                    <ContactButton>Edit</ContactButton>
+                    <EditButton>Edit</EditButton>
                 </UserCard>
                 <FooterTitle>Hotel Miranda Admin Dashboard</FooterTitle>
                 <FooterText className="rights">

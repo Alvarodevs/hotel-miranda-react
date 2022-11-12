@@ -1,6 +1,7 @@
 import React from 'react';
-import {BookingListButtons, BookingSelectors, BookingSelector, BookingRightBtns} from './BookingListStyled';
+import {BookingListButtons, BookingSelectors, BookingSelector, BookingRightBtns, MonthButton} from './BookingListStyled';
 import {FiChevronDown} from '@react-icons/all-files/fi/FiChevronDown'
+import { NewestBtn } from '../../styles/Button';
 
 const Booking = () => {
     
@@ -8,15 +9,19 @@ const Booking = () => {
         <div>
             <BookingListButtons>
                 <BookingSelectors>
-                    <BookingSelector>All Rooms</BookingSelector>
-                    <BookingSelector>Active Employee</BookingSelector>
-                    <BookingSelector>Inactive Employee</BookingSelector>
+                    <BookingSelector>All Guests</BookingSelector>
+                    <BookingSelector>Pending</BookingSelector>
+                    <BookingSelector>Booked</BookingSelector>
+                    <BookingSelector>Canceled</BookingSelector>
+                    <BookingSelector>Refund</BookingSelector>
                 </BookingSelectors>
                 <BookingRightBtns>
-                    {/* <NewRoomBtn>+ New Room</NewRoomBtn>
+                    <MonthButton>
+                        1 November 2020 - 30 November 2020 <FiChevronDown />
+                    </MonthButton>
                     <NewestBtn>
                         Newest <FiChevronDown />
-                    </NewestBtn> */}
+                    </NewestBtn>
                 </BookingRightBtns>
             </BookingListButtons>
         </div>

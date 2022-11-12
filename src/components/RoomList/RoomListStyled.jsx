@@ -1,6 +1,15 @@
 import styled from "styled-components";
-import { Button } from "../../styles/Button";
+import { Button, NewestBtn } from "../../styles/Button";
 import { ListButtonsContainer, NewBtnsContainer, Selector, Selectors } from '../../styles/ListButtons';
+import { ListContainer,
+THeaderContainer,
+HeaderTitle,
+TBody,
+ListCard,
+Td,
+TdTextWeight,
+Span,
+Status} from '../../styles/Table';
 
 export const RoomListButtons = styled(ListButtonsContainer)`
 `;
@@ -17,11 +26,10 @@ export const RoomRightBtns = styled(NewBtnsContainer)`
 export const NewRoomBtn = styled(Button)`
     color: var(--color-white);
     background-color: var(--color-greenDark);
-    margin-right: 20px;
     padding: 14px 45px;
 `;
 
-export const NewestBtn = styled(Button)`
+export const RoomNewestBtn = styled(NewestBtn)`
     color: var(--color-greenDark);
     background-color: var(--color-white);
     border: 1px solid var(--color-greenDark);
@@ -35,32 +43,32 @@ export const NewestBtn = styled(Button)`
     }
 `;
 
-export const RoomListContainer = styled.table`
+export const RoomListContainer = styled(ListContainer)`
     width: 100%;
     background-color: var(--color-white);
     border-radius: 20px;
     padding: 20px 30px;
 `;
 
-export const THeaderContainer = styled.thead`
+export const RoomTHeaderContainer = styled(THeaderContainer)`
     .amenitie {
         padding-left: 30px;
         width: 300px;
     }
 `;
 
-export const HeaderTitle = styled.th`
+export const RoomHeaderTitle = styled(HeaderTitle)`
     font-family: var(--font-main);
     font-size: 18px;
     color: var(--color-grey39);
     border-bottom: 2px solid var(--color-greyF5);
     text-align: start;
 `;
-export const TBody = styled.tbody`
+export const RoomTBody = styled(TBody)`
     padding: 0 20px;
 `;
 
-export const RoomListCard = styled.tr`
+export const RoomListCard = styled(ListCard)`
     padding: 20px 40px 0px 0px;
     height: 85px;
 `;
@@ -103,35 +111,25 @@ export const RoomNumber = styled.div`
 `;
 
 //TD DATA
-export const Td = styled.td`
+export const RoomTd = styled(Td)`
     font-family: var(--font-main);
     font-size: 16px;
-`;
-
-export const TdText = styled.td`
-    font-family: var(--font-main);
-    font-size: 16px;
-    font-weight: 700;
-    //text-align: center;
-
     span {
         color: var(--color-greenGrey);
         font-size: 14px;
     }
 `;
 
-export const Text = styled.span`
+export const RoomTdText = styled(TdTextWeight)`
+    font-weight: 700;
+`;
+
+export const RoomSpan = styled(Span)`
     font-family: var(--font-main);
     font-size: 16px;
 `;
 
-export const Status = styled.div`
-	width: 125px;
-	height: 45px;
-	border-radius: 12px;
+export const RoomStatus = styled(Status)`
 	background-color: ${(props) => props.status ? "var(--color-greenLight)" : "var(--color-red)"};
-	text-align: center;
-	padding:0.6rem;
-	color: var(--color-white);
 `;
 

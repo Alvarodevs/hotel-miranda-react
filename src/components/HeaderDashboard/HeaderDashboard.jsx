@@ -24,7 +24,7 @@ const HeaderDashboard = () => {
     const { pathname } = useLocation();
     const location = useLocation();
 
-    console.log("ID", id);
+    //console.log("ID", id);
 
     useEffect(() => {
         if (pathname === "/dashboard") {

@@ -118,8 +118,8 @@ export const Email = styled.a`
 	color: inherit;
 `;
 
-export const ContactButton = styled(Button)`
-    margin: 16px 40px 24px 40px;
+export const EditButton = styled(Button)`
+    margin: 16px auto 24px auto;
     background-color: var(--color-silver);
     color: var(--color-greenDark);
     font-weight: 700;
