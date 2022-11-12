@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Button } from "../../styles/Button";
+import { Avatar } from "../../styles/Avatar";
 
 export const MainContainer = styled.div`
     width: 18%;
@@ -89,13 +90,7 @@ export const UserCard = styled.div`
     position: relative;
 `;
 
-export const Avatar = styled.img`
-    width: 70px;
-    height: 70px;
-    background-color: grey;
-    margin: 10px auto;
-    border-radius: 8px;
-    object-fit: cover;
+export const MenuAvatar = styled(Avatar)`
     position: absolute;
     top: -35px;
     left: 0;

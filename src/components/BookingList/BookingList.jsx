@@ -1,7 +1,23 @@
 import React from 'react';
-import {BookingListButtons, BookingSelectors, BookingSelector, BookingRightBtns, MonthButton} from './BookingListStyled';
+import {
+    BookingListButtons,
+    BookingSelectors,
+    BookingSelector,
+    BookingRightBtns,
+    MonthButton,
+    BookingListContainer,
+    BookingTHeaderContainer,
+} from "./BookingListStyled";
 import {FiChevronDown} from '@react-icons/all-files/fi/FiChevronDown'
 import { NewestBtn } from '../../styles/Button';
+import {
+BookingHeaderTitle,
+BookingTBody,
+BookingListCard,
+BookingTd,
+BookingTdTextWeight,
+BookingSpan,
+BookingStatus} from './BookingListStyled';
 
 const Booking = () => {
     
@@ -24,6 +40,18 @@ const Booking = () => {
                     </NewestBtn>
                 </BookingRightBtns>
             </BookingListButtons>
+            <BookingListContainer>
+                <BookingTHeaderContainer>
+                    <BookingHeaderTitle>Guest</BookingHeaderTitle>
+                    <BookingHeaderTitle>Order Date</BookingHeaderTitle>
+                    <BookingHeaderTitle>Check In</BookingHeaderTitle>
+                    <BookingHeaderTitle>Check Out</BookingHeaderTitle>
+                    <BookingHeaderTitle>Special Request</BookingHeaderTitle>
+                    <BookingHeaderTitle>Room Type</BookingHeaderTitle>
+                    <BookingHeaderTitle>Status</BookingHeaderTitle>
+                </BookingTHeaderContainer>
+				
+            </BookingListContainer>
         </div>
     );
 }

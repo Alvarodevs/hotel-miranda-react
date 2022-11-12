@@ -6,7 +6,7 @@ import {
     MenuItem,
     Active,
     UserCard,
-    Avatar,
+    MenuAvatar,
     Name,
     Email,
     EditButton,
@@ -63,7 +63,7 @@ const MenuDashboard = () => {
                     </Link>
                 </MenuItem>
                 <UserCard>
-                    <Avatar src={avatar} />
+                    <MenuAvatar src={avatar} />
                     <Name>Alvaro G.</Name>
                     <Email href="mailto:alvaro.develops@gmail.com">
                         alvaro.develops@gmail.com
