@@ -1,5 +1,5 @@
 import React from "react";
-import { MonthButton, RequestButton } from "./BookingListStyled";
+import { MonthButton, BookingStatus, BookingTd } from "./BookingListStyled";
 import {
     ListButtonsContainer,
     Selectors,
@@ -32,11 +32,20 @@ import { Button } from "../../styles/Button";
 import PopUpResquests from "../PopUpRequests/PopUpResquests";
 
 const Booking = () => {
-    const dateTransform = (date) => {
-        const dateReceived = new Date(date);
-        const newDate = new Date();
-        return newDate.setTime(dateReceived.getTime());
-    };
+
+   const handleStatus = (status) => {
+       switch (status) {
+           case "Refund":
+               return "Refund";
+           case "Booked":
+               return "Booked";
+           case "Pending":
+               return "Pending";
+           default:
+               return "Cancelled";
+       }
+   };
+
 
     return (
         <div>
@@ -103,9 +112,19 @@ const Booking = () => {
                                 </Span>
                             </TdTextWeight>
                             <Td>
-                                <PopUpResquests status={booking.status} data={booking.request}>
-									
-								</PopUpResquests>
+                                <PopUpResquests
+                                    status={booking.status}
+                                    data={booking.request}
+                                ></PopUpResquests>
+                            </Td>
+                            <TdTextWeight>{booking.room_type}</TdTextWeight>
+                            <Td>
+                                <BookingStatus status={booking.status}>
+                                    {handleStatus(booking.status)}
+                                </BookingStatus>
+                            </Td>
+                            <Td>
+                                <BiDotsVerticalRounded />
                             </Td>
                         </ListCard>
                     ))}

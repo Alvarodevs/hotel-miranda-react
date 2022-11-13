@@ -13,7 +13,7 @@ export const RequestButton = styled(Button)`
 
 export const ModalContainer = styled.div`
     padding: 8rem;
-    background-color: rgb(235,241,239, 0.8);
+    background-color: rgb(235,241,239, 0.95);
     margin: auto;
     color: var(--color-black);
     font-size: 25px;

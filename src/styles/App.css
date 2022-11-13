@@ -22,13 +22,16 @@
   --color-greyD4: #d4d4d4;
   --color-grey78: #787878;
   --color-greyB2: #b2b2b2;
+  --color-grey57: #575757;
 
   /* colors */
   --color-greenGrey: #799283;
   --color-greenLight: #5ad07a;
   --color-greenDark: #135846;
   --color-greeenPale: #EEF9F2;
+  --color-greeenBooked: #EEF9F2;
   --color-red: #e23428;
+  --color-pinkPale: #FFEDEC;
   --color-orangeDark: #ff9c3a;
   --color-orangeLight: #fb9f44;
   --color-orangePale: #ffedec;
