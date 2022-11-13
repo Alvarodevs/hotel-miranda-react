@@ -30,34 +30,28 @@ export const BookingTd = styled(Td)`
 	margin: 0 20px;
 `; 
 //MULTIPLE OPTIONS STATUS
-const handleBgColor = (status) => {
-    switch (status) {
-        case "Refund":
-            return "var(--color-pinkPale)";
-        case "Booked":
-            return "var(--color-greeenBooked)";
-        case "Pending":
-            return "var(--color-greyB2)";
-        default:
-            return "var(--color-grey57)";
-    }
-};
-
-const handleColor = (status) => {
-    switch (status) {
-        case "Refund":
-            return "var(--color-red)";
-        case "Booked":
-            return "var(--color-greenLight)";
-        case "Pending":
-            return "var(--color-grey6D)";
-        default:
-            return "var(--color-greyB2)";
-    }
-};
-
 export const BookingStatus = styled(Status)`
-    background-color: ${({ status }) => handleBgColor(status)};
-    color: ${({ status }) => handleColor(status)};
-	font-weight: 600;
+    ${({ status }) => {
+		if (status === "Refund"){
+			return`
+				background-color: var(--color-pinkPale); 
+				color: var(--color-red);
+			`
+		} else if (status === "Booked"){
+			return`
+				background-color: var(--color-greeenBooked); 
+				color: var(--color-greenLight);
+			`
+		} else if (status === "Pending"){
+			return`
+				background-color: var(--color-greyB2); 
+				color: var(--color-grey6D);
+			`
+		} else {
+			return `
+			background-color: var(--color-grey57); 
+			color: var(--color-greyB2);
+		`}
+	}};
+    font-weight: 600;
 `;

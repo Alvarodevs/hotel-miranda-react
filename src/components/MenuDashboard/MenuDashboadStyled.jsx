@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Button } from "../../styles/Button";
 import { Avatar } from "../../styles/Avatar";
+import {handleShow} from "../../utils/handleShow";
 
 export const MainContainer = styled.div`
     width: 18%;
@@ -10,7 +11,7 @@ export const MainContainer = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    display: ${(props) => (props.path === "/login" ? "none" : "flex")};
+    display: ${({path}) => handleShow(path)};
     flex-direction: column;
 	.rights{
 		margin-bottom: 5rem;
@@ -25,7 +26,6 @@ export const LogoContainer = styled.div`
 export const Logo = styled.img`
     width: 100%;
     height: 100%;
-    
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

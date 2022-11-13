@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 export const Container = styled.div`
     position: absolute;
     width: ${(props) => (props.path === "/login" ? "100%" : "82%")};

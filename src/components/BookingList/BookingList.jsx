@@ -1,5 +1,5 @@
 import React from "react";
-import { MonthButton, BookingStatus, BookingTd } from "./BookingListStyled";
+import { MonthButton, BookingStatus } from "./BookingListStyled";
 import {
     ListButtonsContainer,
     Selectors,
@@ -21,14 +21,12 @@ import {
     Td,
     TdTextWeight,
     Span,
-    Status,
 } from "../../styles/Table";
 import { Avatar } from "../../styles/Avatar";
 import bookings from "../../db/bookings.json";
 import avatar from "../../assets/images/Alvaro.jpg";
 import { BiDotsVerticalRounded } from "@react-icons/all-files/bi/BiDotsVerticalRounded";
 import moment from "moment";
-import { Button } from "../../styles/Button";
 import PopUpResquests from "../PopUpRequests/PopUpResquests";
 
 const Booking = () => {

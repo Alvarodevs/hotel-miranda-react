@@ -1,10 +1,13 @@
 import React from 'react';
- 
+import { ErrorContainer, ErrorImg } from './ErrorStyled'; 
+import error from '../../assets/images/error.gif'
 const Error = () => {
  
     return (
         <div>
-            <h1>Error</h1>
+            <ErrorContainer>
+                <ErrorImg src={error} alt='Error gif'/>
+            </ErrorContainer>
         </div>
     );
 }

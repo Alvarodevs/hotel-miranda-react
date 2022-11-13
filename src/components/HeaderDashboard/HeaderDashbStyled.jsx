@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { handleShow } from "../../utils/handleShow";
 
 export const HeaderContainer = styled.div`
   width: 100%;
@@ -6,7 +7,7 @@ export const HeaderContainer = styled.div`
   padding: 25px 40px 25px 20%;
   background-color: var(--color-white);
   box-shadow: 0px 3px 10px var(--color-grey05);
-  display: ${(props) => (props.path === "/login" ? "none" : "flex")};
+  display: ${({path}) => handleShow(path)};
   align-items: center;
 `;
 
@@ -59,7 +60,7 @@ export const Searchbar = styled.input`
 `;
 
 export const IconsContainer = styled.div`
-    display: inline-block;
+    display: flex;
     padding-left: 1rem;
     svg {
         font-size: 1.4rem;
