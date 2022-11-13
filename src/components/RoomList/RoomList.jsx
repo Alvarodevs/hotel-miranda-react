@@ -1,28 +1,30 @@
 import React from "react";
 import rooms from "../../db/rooms.json";
-import {ListButtonsContainer, Selectors, Selector, NewBtnsContainer} from "../../styles/ListButtons";
 import {
-	NewRoomBtn,
-	RoomNewestBtn,
-    RoomNameImg,
-    Image,
-    Names,
-    RoomId,
-    RoomNumber,
-	RoomStatus
-} from "./RoomListStyled";
+    ListButtonsContainer,
+    Selectors,
+    Selector,
+    NewBtnsContainer,
+} from "../../styles/ListButtons";
+import {NewRoomBtn,RoomNewestBtn,RoomStatus} from "./RoomListStyled";
 import {
     ListContainer,
     THeaderContainer,
     HeaderTitle,
     TBody,
     ListCard,
+    NameImg,
+    Image,
+    Names,
+    Id,
+    Title,
     Td,
     TdTextWeight,
     Span,
 } from "../../styles/Table";
 import { FiChevronDown } from "@react-icons/all-files/fi/FiChevronDown";
 import roomImg from "../../assets/images/room.jpg";
+import { BiDotsVerticalRounded } from "@react-icons/all-files/bi/BiDotsVerticalRounded";
 
 const RoomList = () => {
     return (
@@ -43,7 +45,7 @@ const RoomList = () => {
             <ListContainer>
                 <THeaderContainer>
                     <tr>
-                        <HeaderTitle style={{ width: "300px" }}>
+                        <HeaderTitle style={{ width: "250px" }}>
                             Room Name
                         </HeaderTitle>
                         <HeaderTitle>Bed Type</HeaderTitle>
@@ -58,18 +60,18 @@ const RoomList = () => {
                 </THeaderContainer>
 
                 <TBody>
-                    {rooms.map((room) => (
-                        <ListCard key={room.id}>
+                    {rooms.map((room, i) => (
+                        <ListCard key={i}>
                             <Td>
-                                <RoomNameImg>
+                                <NameImg>
                                     <Image src={roomImg} alt="Image" />
                                     <Names>
-                                        <RoomId>#{room.id}</RoomId>
-                                        <RoomNumber>
+                                        <Id>#{room.id}</Id>
+                                        <Title>
                                             {room.room_number}
-                                        </RoomNumber>
+                                        </Title>
                                     </Names>
-                                </RoomNameImg>
+                                </NameImg>
                             </Td>
 
                             <TdTextWeight>{room.bed_type}</TdTextWeight>
@@ -88,7 +90,7 @@ const RoomList = () => {
                                 € {room.price.slice(0, -1)}
                                 <span>/night</span>
                             </TdTextWeight>
-							{/* CALCULATE PRICE WITH OFFER PERCENTAGE */}
+                            {/* CALCULATE PRICE WITH OFFER PERCENTAGE */}
                             {/* <RoomTdText>
 							{
 							parseFloat(room.price.slice(0, -1).replaceAll(',', '.')) -
@@ -101,6 +103,7 @@ const RoomList = () => {
                                     {room.status ? "Available" : "Booked"}
                                 </RoomStatus>
                             </Td>
+							<Td><BiDotsVerticalRounded className="dots"/></Td>
                         </ListCard>
                     ))}
                 </TBody>

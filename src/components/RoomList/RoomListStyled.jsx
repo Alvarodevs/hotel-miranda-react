@@ -22,43 +22,6 @@ export const RoomNewestBtn = styled(NewestBtn)`
     }
 `;
 
-//FIRST COLUMN DATA
-export const RoomNameImg = styled.div`
-    display: flex;
-    width: fit-content;
-    justify-content: space-between;
-`;
-
-export const Image = styled.img`
-    width: 150px;
-    height: 77px;
-    border-radius: 8px;
-    background-color: grey;
-    object-fit: cover;
-`;
-
-export const Names = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin-left: 20px;
-    align-items: center;
-    gap: 15px;
-    align-self: center;
-    font-family: var(--font-main);
-    padding-right: 30px;
-    width: 60px;
-`;
-
-export const RoomId = styled.div`
-    color: var(--color-greenGrey);
-`;
-
-export const RoomNumber = styled.div`
-    color: var(--color-grey39);
-    font-size: 16px;
-    font-weight: 700;
-`;
-
 export const RoomStatus = styled(Status)`
 	background-color: ${(props) => props.status ? "var(--color-greenLight)" : "var(--color-red)"};
 `;

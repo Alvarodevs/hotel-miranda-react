@@ -23,9 +23,44 @@ export const TBody = styled.tbody`
 `;
 
 export const ListCard = styled.tr`
-    padding: 20px 40px 0px 0px;
+    margin: 20px 40px 0px 0px;
     height: 85px;
 `;
+
+//FIRST COLUMN DATA
+export const NameImg = styled.div`
+    display: flex;
+    width: fit-content;
+    justify-content: space-between;
+`;
+
+export const Image = styled.img`
+    width: 150px;
+    height: 77px;
+    border-radius: 8px;
+    background-color: grey;
+    object-fit: cover;
+`;
+
+export const Names = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    gap: 10px;
+    font-family: var(--font-main);
+	padding-top: 10px;
+`;
+
+export const Id = styled.div`
+    color: var(--color-greenGrey);
+`;
+
+export const Title = styled.div`
+    color: var(--color-grey39);
+    font-size: 16px;
+    font-weight: 700;
+`;
+//---------------------------
 
 export const Td = styled.td`
     font-family: var(--font-main);
@@ -34,6 +69,9 @@ export const Td = styled.td`
         color: var(--color-greenGrey);
         font-size: 14px;
     }
+	.dots{
+		font-size: 20px;
+	}
 `;
 
 export const TdTextWeight = styled(Td)`
