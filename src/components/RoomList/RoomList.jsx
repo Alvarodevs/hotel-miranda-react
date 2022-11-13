@@ -1,67 +1,66 @@
 import React from "react";
 import rooms from "../../db/rooms.json";
+import {ListButtonsContainer, Selectors, Selector, NewBtnsContainer} from "../../styles/ListButtons";
 import {
-    RoomTHeaderContainer,
-    RoomListContainer,
-    RoomHeaderTitle,
-    RoomListButtons,
-    RoomSelectors,
-    RoomSelector,
-    RoomRightBtns,
-    NewRoomBtn,
-    RoomNewestBtn,
-    RoomTBody,
-    RoomListCard,
+	NewRoomBtn,
+	RoomNewestBtn,
     RoomNameImg,
     Image,
     Names,
     RoomId,
     RoomNumber,
-    RoomTd,
-    RoomTdText,
-    RoomSpan,
-    RoomStatus,
+	RoomStatus
 } from "./RoomListStyled";
+import {
+    ListContainer,
+    THeaderContainer,
+    HeaderTitle,
+    TBody,
+    ListCard,
+    Td,
+    TdTextWeight,
+    Span,
+} from "../../styles/Table";
 import { FiChevronDown } from "@react-icons/all-files/fi/FiChevronDown";
 import roomImg from "../../assets/images/room.jpg";
 
 const RoomList = () => {
     return (
         <div>
-            <RoomListButtons>
-                <RoomSelectors>
-                    <RoomSelector>All Rooms</RoomSelector>
-                    <RoomSelector>Active Employee</RoomSelector>
-                    <RoomSelector>Inactive Employee</RoomSelector>
-                </RoomSelectors>
-                <RoomRightBtns>
+            <ListButtonsContainer>
+                <Selectors>
+                    <Selector>All Rooms</Selector>
+                    <Selector>Active Employee</Selector>
+                    <Selector>Inactive Employee</Selector>
+                </Selectors>
+                <NewBtnsContainer>
                     <NewRoomBtn>+ New Room</NewRoomBtn>
                     <RoomNewestBtn>
                         Newest <FiChevronDown />
                     </RoomNewestBtn>
-                </RoomRightBtns>
-            </RoomListButtons>
-            <RoomListContainer>
-                <RoomTHeaderContainer>
+                </NewBtnsContainer>
+            </ListButtonsContainer>
+            <ListContainer>
+                <THeaderContainer>
                     <tr>
-                        <RoomHeaderTitle style={{ width: "300px" }}>
+                        <HeaderTitle style={{ width: "300px" }}>
                             Room Name
-                        </RoomHeaderTitle>
-                        <RoomHeaderTitle>Bed Type</RoomHeaderTitle>
-                        <RoomHeaderTitle>Room Floor</RoomHeaderTitle>
-                        <RoomHeaderTitle className="amenitie">
+                        </HeaderTitle>
+                        <HeaderTitle>Bed Type</HeaderTitle>
+                        <HeaderTitle>Room Floor</HeaderTitle>
+                        <HeaderTitle className="amenitie">
                             Amenities
-                        </RoomHeaderTitle>
-                        <RoomHeaderTitle>Rate</RoomHeaderTitle>
-                        {/* <RoomHeaderTitle>Offer Price</RoomHeaderTitle> */}
-                        <RoomHeaderTitle>Status</RoomHeaderTitle>
+                        </HeaderTitle>
+                        <HeaderTitle>Rate</HeaderTitle>
+                        {/* <HeaderTitle>Offer Price</HeaderTitle> */}
+                        <HeaderTitle>Status</HeaderTitle>
                     </tr>
-                </RoomTHeaderContainer>
+                </THeaderContainer>
 
-                <RoomTBody>
+                <TBody>
                     {rooms.map((room) => (
-                        <RoomListCard key={room.id}>
-                            <RoomTd>
+                        <ListCard key={room.id}>
+                            <Td>
                                 <RoomNameImg>
                                     <Image src={roomImg} alt="Image" />
                                     <Names>
@@ -71,24 +70,25 @@ const RoomList = () => {
                                         </RoomNumber>
                                     </Names>
                                 </RoomNameImg>
-                            </RoomTd>
+                            </Td>
 
-                            <RoomTdText>{room.bed_type}</RoomTdText>
-                            <RoomTdText>
+                            <TdTextWeight>{room.bed_type}</TdTextWeight>
+                            <TdTextWeight>
                                 {room.room_number.toString().charAt(0)}
-                            </RoomTdText>
-                            <RoomTdText>
+                            </TdTextWeight>
+                            <TdTextWeight>
                                 {Object.entries(room.facilities).map(
                                     (facility) =>
                                         facility[1] ? (
-                                            <RoomSpan>{facility[0]}, </RoomSpan>
+                                            <Span>{facility[0]}, </Span>
                                         ) : null
                                 )}
-                            </RoomTdText>
-                            <RoomTdText>
+                            </TdTextWeight>
+                            <TdTextWeight>
                                 € {room.price.slice(0, -1)}
                                 <span>/night</span>
-                            </RoomTdText>
+                            </TdTextWeight>
+							{/* CALCULATE PRICE WITH OFFER PERCENTAGE */}
                             {/* <RoomTdText>
 							{
 							parseFloat(room.price.slice(0, -1).replaceAll(',', '.')) -
@@ -96,15 +96,15 @@ const RoomList = () => {
 							% room.offer_price
 							}		
 						  </RoomTdText> */}
-                            <RoomTd>
+                            <Td>
                                 <RoomStatus status={room.status}>
                                     {room.status ? "Available" : "Booked"}
                                 </RoomStatus>
-                            </RoomTd>
-                        </RoomListCard>
+                            </Td>
+                        </ListCard>
                     ))}
-                </RoomTBody>
-            </RoomListContainer>
+                </TBody>
+            </ListContainer>
         </div>
     );
 };
