@@ -51,7 +51,8 @@ export const Names = styled.div`
     margin-left: 20px;
     gap: 10px;
     font-family: var(--font-main);
-	padding-top: 10px;
+    padding-top: 10px;
+    width: max-content;
 `;
 
 export const Id = styled.div`

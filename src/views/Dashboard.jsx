@@ -7,8 +7,7 @@ import KPI from "../components/KPI";
 import { KPIContainer } from "../styles/KPI";
 import { MdOutlineKingBed } from "react-icons/md";
 import { BiCalendarCheck } from "react-icons/bi";
-import { BsBoxArrowInRight } from "react-icons/bs";
-import { BsBoxArrowInLeft } from "react-icons/bs";
+import { BsBoxArrowInRight, BsBoxArrowInLeft } from "react-icons/bs";
 
 
 const Dashboard = () => {
