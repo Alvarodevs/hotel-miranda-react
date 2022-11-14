@@ -25,6 +25,9 @@ export const TBody = styled.tbody`
 export const ListCard = styled.tr`
     margin: 20px 40px 0px 0px;
     height: 85px;
+    :hover {
+        box-shadow: 0px 4px 30px #0000001a;
+    }
 `;
 
 //FIRST COLUMN DATA
