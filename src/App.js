@@ -56,7 +56,8 @@ function App() {
 
 							<Route exact path='/contact' element={<ContactView />} />
 						</Route>
-						<Route path='*' element={<NotFound />} />
+						<Route path='/error_404' element={<NotFound />} />
+						<Route path='*' element={<Navigate to="/error_404" replace/>} />
 					</Routes>
 				</MainContainer>
 			</BrowserRouter>
