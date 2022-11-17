@@ -2,7 +2,6 @@ import React from "react";
 import {
     ListButtonsContainer,
     Selectors,
-    Selector,
     NewBtnsContainer,
 } from "../../styles/ListButtons";
 import moment from "moment";
