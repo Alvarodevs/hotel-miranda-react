@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import rooms from "../../db/rooms.json";
 import {
     ListButtonsContainer,
@@ -25,8 +25,34 @@ import {
 import { FiChevronDown } from "@react-icons/all-files/fi/FiChevronDown";
 import roomImg from "../../assets/images/room.jpg";
 import { BiDotsVerticalRounded } from "@react-icons/all-files/bi/BiDotsVerticalRounded";
+import Pagination from "../Pagination/";
 
 const RoomList = () => {
+	const [currentPage, setCurrentPage] = useState(1);
+	const [roomsPerPage, setRoomsPerPage] = useState(10);
+
+	const indexLastRoom = currentPage * roomsPerPage;
+	const indexFirstRoom = indexLastRoom - roomsPerPage;
+	const currentRooms = rooms.slice(indexFirstRoom, indexLastRoom);
+	
+	//change page
+	const paginate = (pageNumber) => {setCurrentPage(pageNumber);}
+	
+	const buttonsPaginate = (direction) => {
+		if (currentPage === 1) {
+			return
+		} 
+		if (currentPage === Math.ceil(rooms.length / roomsPerPage)) {
+			return
+		}
+		if (direction === 'prev'){
+			return setCurrentPage(currentPage - 1)
+		}
+		if (direction === 'next'){
+			return setCurrentPage(currentPage + 1);
+		}
+	}
+
     return (
         <div>
             <ListButtonsContainer>
@@ -60,16 +86,14 @@ const RoomList = () => {
                 </THeaderContainer>
 
                 <TBody>
-                    {rooms.map((room, i) => (
-                        <ListCard key={i}>
+                    {currentRooms.map((room) => (
+                        <ListCard key={room.id}>
                             <Td>
                                 <NameImg>
                                     <Image src={roomImg} alt="Image" />
                                     <Names>
                                         <Id>#{room.id}</Id>
-                                        <Title>
-                                            {room.room_number}
-                                        </Title>
+                                        <Title>{room.room_number}</Title>
                                     </Names>
                                 </NameImg>
                             </Td>
@@ -103,11 +127,20 @@ const RoomList = () => {
                                     {room.status ? "Available" : "Booked"}
                                 </RoomStatus>
                             </Td>
-							<Td><BiDotsVerticalRounded className="dots"/></Td>
+                            <Td>
+                                <BiDotsVerticalRounded className="dots" />
+                            </Td>
                         </ListCard>
                     ))}
                 </TBody>
             </ListContainer>
+            <Pagination
+                itemsPerPage={roomsPerPage}
+                items={rooms.length}
+                paginate={paginate}
+                page={currentPage}
+				buttonsPaginate={buttonsPaginate}
+            />
         </div>
     );
 };
