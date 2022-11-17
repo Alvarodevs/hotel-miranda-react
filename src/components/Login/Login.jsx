@@ -28,11 +28,12 @@ const Login = () => {
     <div>
       <LoginContainer>
         <Header>Please, login with your account</Header>
-        <Form onSubmit={handleLogin}>
+        <Form onSubmit={handleLogin} className="login-form">
           <Input
             type="email"
             placeholder="Your email account"
             name="email"
+			className="email-login"
             value={user.email}
             onChange={handleChange}
           />
@@ -40,6 +41,7 @@ const Login = () => {
             type="password"
             placeholder="Password"
             name="password"
+			className="passw-login"
             value={user.password}
             onChange={handleChange}
           />

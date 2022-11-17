@@ -1,6 +1,5 @@
 import React from "react";
 import { KPICard, IconContainer, InfoContainer, Amount, Text } from "../../styles/KPI";
-import { MdOutlineKingBed } from "react-icons/md";
 
 const KPI = ({ icon, amount, text }) => {
     return (
