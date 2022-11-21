@@ -1,7 +1,6 @@
 import './styles/global/App.css';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { ContactView, Dashboard, NotFound, UserView, GuestView, GuestsView, ConciergeView } from './views';
-import PrivateRoutes from './utils/PrivateRoutes';
+import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
+import { ContactView, Dashboard, NotFound, GuestView, GuestsView, ConciergeView } from './views';
 import MenuDashboard from './components/MenuDashboard';
 import HeaderDashboard from './components/HeaderDashboard';
 import MainContainer from './components/MainContainer';
@@ -12,8 +11,23 @@ import Room from './components/Room';
 import Booking from './components/Booking';
 import UserList from './components/UserList';
 import User from './components/User';
+import { useEffect, useState } from 'react';
 
 function App() {
+	const [auth, setAuth] = useState(localStorage.getItem("authenticated") !== null)
+
+	//function check if auth to render components
+	const PrivateRoutes = (props) => {
+		return props.auth ? <Outlet /> : <Navigate to="/login" replace />
+	}
+
+	useEffect(() => {
+		if (auth) {
+			localStorage.setItem("authenticated", '1')
+		} else {
+			localStorage.removeItem("authenticated")
+		}
+	}, [auth])
 
 	return (
 		<div>
@@ -22,9 +36,11 @@ function App() {
 				<HeaderDashboard />
 				<MainContainer>
 					<Routes>
-						<Route exact path='/login' element={<Login />} />
+						<Route exact path='/login' element={<Login setAuth={setAuth} />} />
 						{/* PROTECTED ROUTES */}
-						<Route element={<PrivateRoutes />} >
+
+						<Route element={<PrivateRoutes auth={auth} />} >
+
 							<Route exact path='/' element={<Navigate to="/dashboard" replace />} />
 							<Route exact path='/dashboard' element={<Dashboard />} />
 
@@ -57,7 +73,7 @@ function App() {
 							<Route exact path='/contact' element={<ContactView />} />
 						</Route>
 						<Route path='/error_404' element={<NotFound />} />
-						<Route path='*' element={<Navigate to="/error_404" replace/>} />
+						<Route path='*' element={<Navigate to="/error_404" replace />} />
 					</Routes>
 				</MainContainer>
 			</BrowserRouter>
