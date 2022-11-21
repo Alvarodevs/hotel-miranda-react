@@ -1,6 +1,6 @@
 import './styles/global/App.css';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { ContactView, Dashboard, NotFound, UserView, GuestView, GuestsView, ConciergeView } from './views';
+import { ContactView, Dashboard, NotFound, GuestView, GuestsView, ConciergeView } from './views';
 import PrivateRoutes from './utils/PrivateRoutes';
 import MenuDashboard from './components/MenuDashboard';
 import HeaderDashboard from './components/HeaderDashboard';
