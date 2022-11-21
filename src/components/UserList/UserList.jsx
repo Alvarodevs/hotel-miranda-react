@@ -36,6 +36,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { Searchbar } from "../HeaderDashboard/HeaderDashbStyled";
 import Pagination from "../Pagination";
+import MainContainer from "../MainContainer";
 
 const UserList = () => {
    const [currentPage, setCurrentPage] = useState(1);
@@ -61,7 +62,7 @@ const UserList = () => {
       }
    };
    return (
-      <div>
+      <MainContainer>
          <ListButtonsContainer>
             <Selectors>
                <UserSelector>All Employee</UserSelector>
@@ -83,15 +84,17 @@ const UserList = () => {
          </ListButtonsContainer>
          <ListContainer>
             <THeaderContainer>
-               <HeaderTitle>Name</HeaderTitle>
-               <HeaderTitle>Job Desc.</HeaderTitle>
-               <HeaderTitle>Schedule</HeaderTitle>
-               <HeaderTitle>Contact</HeaderTitle>
-               <HeaderTitle>Status</HeaderTitle>
+               <tr>
+                  <HeaderTitle>Name</HeaderTitle>
+                  <HeaderTitle>Job Desc.</HeaderTitle>
+                  <HeaderTitle>Schedule</HeaderTitle>
+                  <HeaderTitle>Contact</HeaderTitle>
+                  <HeaderTitle>Status</HeaderTitle>
+               </tr>
             </THeaderContainer>
             <TBody>
                {currentUsers.map((user, i) => (
-                  <ListCard id={i}>
+                  <ListCard key={i}>
                      <Td>
                         <NameImg>
                            <UserAvatar src={user.image} alt="Image" />
@@ -132,7 +135,7 @@ const UserList = () => {
             page={currentPage}
             buttonsPaginate={buttonsPaginate}
          />
-      </div>
+      </MainContainer>
    );
 };
 

@@ -29,6 +29,7 @@ import { BiDotsVerticalRounded } from "@react-icons/all-files/bi/BiDotsVerticalR
 import moment from "moment";
 import PopUpResquests from "../PopUpRequests/PopUpResquests";
 import Pagination from "../Pagination";
+import MainContainer from "../MainContainer";
 
 const Booking = () => {
    const [currentPage, setCurrentPage] = useState(1);
@@ -68,7 +69,7 @@ const Booking = () => {
    };
 
    return (
-      <div>
+      <MainContainer>
          <ListButtonsContainer>
             <Selectors>
                <Selector>All Guests</Selector>
@@ -88,17 +89,19 @@ const Booking = () => {
          </ListButtonsContainer>
          <ListContainer>
             <THeaderContainer>
-               <HeaderTitle>Guest</HeaderTitle>
-               <HeaderTitle>Order Date</HeaderTitle>
-               <HeaderTitle>Check In</HeaderTitle>
-               <HeaderTitle>Check Out</HeaderTitle>
-               <HeaderTitle>Special Request</HeaderTitle>
-               <HeaderTitle>Room Type</HeaderTitle>
-               <HeaderTitle>Status</HeaderTitle>
+               <tr>
+                  <HeaderTitle>Guest</HeaderTitle>
+                  <HeaderTitle>Order Date</HeaderTitle>
+                  <HeaderTitle>Check In</HeaderTitle>
+                  <HeaderTitle>Check Out</HeaderTitle>
+                  <HeaderTitle>Special Request</HeaderTitle>
+                  <HeaderTitle>Room Type</HeaderTitle>
+                  <HeaderTitle>Status</HeaderTitle>
+               </tr>
             </THeaderContainer>
             <TBody>
-               {currentBookings.map((booking, i) => (
-                  <ListCard id={i}>
+               {currentBookings.map((booking) => (
+                  <ListCard key={booking.id}>
                      <Td>
                         <NameImg>
                            <Avatar src={avatar} alt="Image" />
@@ -151,7 +154,7 @@ const Booking = () => {
             page={currentPage}
             buttonsPaginate={buttonsPaginate}
          />
-      </div>
+      </MainContainer>
    );
 };
 

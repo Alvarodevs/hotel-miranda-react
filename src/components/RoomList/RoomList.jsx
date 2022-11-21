@@ -26,6 +26,7 @@ import { FiChevronDown } from "@react-icons/all-files/fi/FiChevronDown";
 import roomImg from "../../assets/images/room.jpg";
 import { BiDotsVerticalRounded } from "@react-icons/all-files/bi/BiDotsVerticalRounded";
 import Pagination from "../Pagination/";
+import MainContainer from "../MainContainer";
 
 const RoomList = () => {
    const [currentPage, setCurrentPage] = useState(1);
@@ -52,7 +53,7 @@ const RoomList = () => {
    };
 
    return (
-      <div>
+      <MainContainer>
          <ListButtonsContainer>
             <Selectors>
                <Selector>All Rooms</Selector>
@@ -134,7 +135,7 @@ const RoomList = () => {
             page={currentPage}
             buttonsPaginate={buttonsPaginate}
          />
-      </div>
+      </MainContainer>
    );
 };
 
