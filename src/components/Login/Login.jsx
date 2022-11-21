@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LoginContainer, Header, Form, Input, Submit } from "./LoginStyled";
 
-const Login = () => {
+const Login = ({setAuth}) => {
   const [user, setUser] = useState({ email: "", password: "" });
   const navigate = useNavigate();
   
@@ -17,7 +17,7 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     if (user.email === "alvaro@example.com" && user.password === "1234") {
-      localStorage.setItem("authenticated", JSON.stringify(user));
+      setAuth(true)
       navigate("/");
     } else {
       alert("Wrong email or password");
