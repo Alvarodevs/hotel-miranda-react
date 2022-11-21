@@ -18,24 +18,24 @@ const Dashboard = () => {
                   <KPIContainer>
                       <KPI
                           icon={<MdOutlineKingBed />}
-                          amount={5555}
-                          text={"New boret"}
+                          amount={8461}
+                          text={"New booking"}
                       ></KPI>
                       <KPI
                           icon={<BiCalendarCheck />}
-                          amount={5555}
-                          text={"New boret"}
+                          amount={963}
+                          text={"Scheduled Room"}
                       ></KPI>
                       <KPI
                           icon={<BsBoxArrowInRight />}
-                          amount={5555}
-                          text={"New boret"}
+                          amount={753}
+                          text={"Check In"}
                           className="arrow-right"
                       ></KPI>
                       <KPI
                           icon={<BsBoxArrowInLeft />}
-                          amount={5555}
-                          text={"New boret"}
+                          amount={516}
+                          text={"Check Out"}
                       ></KPI>
                   </KPIContainer>
               </BackgroundDashboard>
