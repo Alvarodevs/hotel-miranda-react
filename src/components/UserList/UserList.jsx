@@ -84,15 +84,17 @@ const UserList = () => {
          </ListButtonsContainer>
          <ListContainer>
             <THeaderContainer>
-               <HeaderTitle>Name</HeaderTitle>
-               <HeaderTitle>Job Desc.</HeaderTitle>
-               <HeaderTitle>Schedule</HeaderTitle>
-               <HeaderTitle>Contact</HeaderTitle>
-               <HeaderTitle>Status</HeaderTitle>
+               <tr>
+                  <HeaderTitle>Name</HeaderTitle>
+                  <HeaderTitle>Job Desc.</HeaderTitle>
+                  <HeaderTitle>Schedule</HeaderTitle>
+                  <HeaderTitle>Contact</HeaderTitle>
+                  <HeaderTitle>Status</HeaderTitle>
+               </tr>
             </THeaderContainer>
             <TBody>
                {currentUsers.map((user, i) => (
-                  <ListCard id={i}>
+                  <ListCard key={i}>
                      <Td>
                         <NameImg>
                            <UserAvatar src={user.image} alt="Image" />

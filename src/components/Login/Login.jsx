@@ -5,6 +5,7 @@ import { LoginContainer, Header, Form, Input, Submit } from "./LoginStyled";
 const Login = ({setAuth}) => {
   const [user, setUser] = useState({ email: "", password: "" });
   const navigate = useNavigate();
+
   
   const handleChange = (e) => {
     e.preventDefault();
@@ -25,30 +26,31 @@ const Login = ({setAuth}) => {
   };
 
   return (
-    <div>
-      <LoginContainer>
-        <Header>Please, login with your account</Header>
-        <Form onSubmit={handleLogin} className="login-form">
-          <Input
-            type="email"
-            placeholder="Your email account"
-            name="email"
-			className="email-login"
-            value={user.email}
-            onChange={handleChange}
-          />
-          <Input
-            type="password"
-            placeholder="Password"
-            name="password"
-			className="passw-login"
-            value={user.password}
-            onChange={handleChange}
-          />
-          <Submit type="submit" value="Submit" />
-        </Form>
-      </LoginContainer>
-    </div>
+        <div>
+           <LoginContainer>
+              <Header>Please, login with your account</Header>
+              <Form onSubmit={handleLogin} className="login-form">
+                 <Input
+                    type="email"
+                    placeholder="Your email account"
+                    name="email"
+                    className="email-login"
+                    value={user.email}
+                    onChange={handleChange}
+                 />
+                 <Input
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    className="passw-login"
+                    value={user.password}
+                    onChange={handleChange}
+                 />
+                 <Submit type="submit" value="Submit" />
+              </Form>
+           </LoginContainer>
+        </div>
+     
   );
 };
 

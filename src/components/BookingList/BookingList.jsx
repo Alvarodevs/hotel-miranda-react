@@ -89,17 +89,19 @@ const Booking = () => {
          </ListButtonsContainer>
          <ListContainer>
             <THeaderContainer>
-               <HeaderTitle>Guest</HeaderTitle>
-               <HeaderTitle>Order Date</HeaderTitle>
-               <HeaderTitle>Check In</HeaderTitle>
-               <HeaderTitle>Check Out</HeaderTitle>
-               <HeaderTitle>Special Request</HeaderTitle>
-               <HeaderTitle>Room Type</HeaderTitle>
-               <HeaderTitle>Status</HeaderTitle>
+               <tr>
+                  <HeaderTitle>Guest</HeaderTitle>
+                  <HeaderTitle>Order Date</HeaderTitle>
+                  <HeaderTitle>Check In</HeaderTitle>
+                  <HeaderTitle>Check Out</HeaderTitle>
+                  <HeaderTitle>Special Request</HeaderTitle>
+                  <HeaderTitle>Room Type</HeaderTitle>
+                  <HeaderTitle>Status</HeaderTitle>
+               </tr>
             </THeaderContainer>
             <TBody>
-               {currentBookings.map((booking, i) => (
-                  <ListCard id={i}>
+               {currentBookings.map((booking) => (
+                  <ListCard key={booking.id}>
                      <Td>
                         <NameImg>
                            <Avatar src={avatar} alt="Image" />

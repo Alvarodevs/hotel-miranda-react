@@ -29,7 +29,6 @@ function App() {
 	return (
 		<div>
 			<BrowserRouter>
-				
 					<Routes>
 						<Route exact path='/login' element={<Login setAuth={setAuth} />} />
 						{/* PROTECTED ROUTES */}

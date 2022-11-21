@@ -10,6 +10,7 @@ export const UserSelector = styled(Selector)`
 
 export const UsersSearchbarContainer = styled(SearchbarContainer)`
 	margin-left: 20px;
+	max-width: 12rem;
 `;
 
 export const UserAvatar = styled(Avatar)`
