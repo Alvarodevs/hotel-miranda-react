@@ -27,9 +27,32 @@ import roomImg from "../../assets/images/room.jpg";
 import { BiDotsVerticalRounded } from "@react-icons/all-files/bi/BiDotsVerticalRounded";
 import Pagination from "../Pagination/";
 
+import { DndProvider, useDrag, useDrop } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import itemTypes from "../../utils/items";
+
 const RoomList = () => {
    const [currentPage, setCurrentPage] = useState(1);
    const [roomsPerPage, setRoomsPerPage] = useState(10);
+
+	
+   const [{ isDragging }, drag] = useDrag({
+      type: itemTypes.CARD,
+      collect: (monitor) => ({
+        isDragging: console.log(monitor.isDragging()),
+		
+      }),
+   });
+
+   const [{ isOver }, drop] = useDrop({
+	accept: itemTypes.CARD,
+	collect: (monitor) => ({
+		isOver: monitor.isOver(),
+	}),
+   });
+
+   const opacity = isDragging ? 0 : 1;
+  
 
    const indexLastRoom = currentPage * roomsPerPage;
    const indexFirstRoom = indexLastRoom - roomsPerPage;
@@ -66,6 +89,7 @@ const RoomList = () => {
                </RoomNewestBtn>
             </NewBtnsContainer>
          </ListButtonsContainer>
+         {/* <DndProvider backend={HTML5Backend}> */}
          <ListContainer>
             <THeaderContainer>
                <tr>
@@ -81,9 +105,9 @@ const RoomList = () => {
                </tr>
             </THeaderContainer>
 
-            <TBody>
-               {currentRooms.map((room) => (
-                  <ListCard key={room.id}>
+            <TBody ref={drop}>
+               {currentRooms.map((room, index) => (
+                  <ListCard key={index} ref={drag} opacity={isDragging ? 0.5 : 1}>
                      <Td>
                         <NameImg>
                            <Image src={roomImg} alt="Image" />
@@ -127,6 +151,8 @@ const RoomList = () => {
                ))}
             </TBody>
          </ListContainer>
+         {/* </DndProvider> */}
+
          <Pagination
             itemsPerPage={roomsPerPage}
             items={rooms.length}
