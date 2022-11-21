@@ -1,9 +1,6 @@
 import './styles/global/App.css';
 import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import { ContactView, Dashboard, NotFound, GuestView, GuestsView, ConciergeView } from './views';
-import MenuDashboard from './components/MenuDashboard';
-import HeaderDashboard from './components/HeaderDashboard';
-import MainContainer from './components/MainContainer';
 import RoomList from './components/RoomList';
 import BookingList from './components/BookingList';
 import Login from './components/Login';
@@ -32,9 +29,7 @@ function App() {
 	return (
 		<div>
 			<BrowserRouter>
-				<MenuDashboard />
-				<HeaderDashboard />
-				<MainContainer>
+				
 					<Routes>
 						<Route exact path='/login' element={<Login setAuth={setAuth} />} />
 						{/* PROTECTED ROUTES */}
@@ -75,7 +70,6 @@ function App() {
 						<Route path='/error_404' element={<NotFound />} />
 						<Route path='*' element={<Navigate to="/error_404" replace />} />
 					</Routes>
-				</MainContainer>
 			</BrowserRouter>
 		</div>
 	);
