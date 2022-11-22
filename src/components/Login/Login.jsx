@@ -3,22 +3,25 @@ import { useNavigate } from "react-router-dom";
 import { LoginContainer, Header, Form, Input, Submit } from "./LoginStyled";
 
 const Login = ({setAuth}) => {
-  const [user, setUser] = useState({ email: "", password: "" });
+  const [userLogin, setUserLogin] = useState({ email: "", password: "" });
   const navigate = useNavigate();
 
   
   const handleChange = (e) => {
     e.preventDefault();
-    setUser((user) => ({
-      ...user,
+    setUserLogin((userLogin) => ({
+      ...userLogin,
       [e.target.name]: e.target.value,
     }));
   };
 
   const handleLogin = (e) => {
     e.preventDefault();
-    if (user.email === "alvaro@example.com" && user.password === "1234") {
-      setAuth(true)
+    if (userLogin.email === "alvaro@example.com" && userLogin.password === "1234") {
+      setAuth({ 
+			isAuth: true, 
+			user: userLogin
+		});
       navigate("/");
     } else {
       alert("Wrong email or password");
@@ -35,7 +38,7 @@ const Login = ({setAuth}) => {
                     placeholder="Your email account"
                     name="email"
                     className="email-login"
-                    value={user.email}
+                    value={userLogin.email}
                     onChange={handleChange}
                  />
                  <Input
@@ -43,7 +46,7 @@ const Login = ({setAuth}) => {
                     placeholder="Password"
                     name="password"
                     className="passw-login"
-                    value={user.password}
+                    value={userLogin.password}
                     onChange={handleChange}
                  />
                  <Submit type="submit" value="Submit" />
