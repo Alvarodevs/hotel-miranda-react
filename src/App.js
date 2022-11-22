@@ -8,38 +8,34 @@ import Room from './components/Room';
 import Booking from './components/Booking';
 import UserList from './components/UserList';
 import User from './components/User';
-import { useEffect, useState } from 'react';
+import { useReducer, useState } from 'react';
+import INIT_STATE from './store/initialState';
+import loginReducer from './store/loginReducer';
+import LoginContext from './store/LoginContext';
 
 function App() {
-	const [auth, setAuth] = useState({
-		isAuth: !!localStorage.getItem("authenticated"),
-		user: {
-			email: '',
-			passw: '',
-		}
-	})
+	//const [auth, setAuth] = useState(false)
+	const store = useReducer(loginReducer, INIT_STATE)
 
 	//function check if auth to render components
-	const PrivateRoutes = (props) => {
-		return props.auth ? <Outlet /> : <Navigate to="/login" replace />
+	const PrivateRoutes = ({auth}) => {
+		return auth ? <Outlet /> : <Navigate to="/login" replace />
 	}
-
-	useEffect(() => {
-		if (auth.user.email !== '' && auth.user.passw !== '') {
-			localStorage.setItem("authenticated", JSON.stringify(auth.user))
-		} else {
-			localStorage.removeItem("authenticated")
-		}
-	}, [auth])
+	const isAuth = () => {
+		const objectInLocal = JSON.parse(localStorage.getItem('authenticated'))
+		return objectInLocal?.isAuth
+	}
+	
 
 	return (
 		<div>
+			<LoginContext.Provider value={store}>
 			<BrowserRouter>
 				<Routes>
-					<Route exact path='/login' element={<Login setAuth={setAuth}/>} />
+					<Route exact path='/login' element={<Login />} />
 					{/* PROTECTED ROUTES */}
 
-					<Route element={<PrivateRoutes auth={auth.isAuth} />} >
+					<Route element={<PrivateRoutes auth={isAuth()} />} >
 
 						<Route exact path='/' element={<Navigate to="/dashboard" replace />} />
 						<Route exact path='/dashboard' element={<Dashboard />} />
@@ -76,6 +72,7 @@ function App() {
 					<Route path='*' element={<Navigate to="/error_404" replace />} />
 				</Routes>
 			</BrowserRouter>
+			</LoginContext.Provider>
 		</div>
 	);
 }

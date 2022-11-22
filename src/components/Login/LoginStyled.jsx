@@ -35,7 +35,10 @@ export const Input = styled.input`
     outline: 1px solid var(--color-greenLight);
   }
 `;
-
+export const ButtonsContainer = styled.div`
+	display: flex;
+	//justify-content: space-around;
+`;
 export const Submit = styled.input`
   width: 8rem;
   margin: 30px auto 0 auto;

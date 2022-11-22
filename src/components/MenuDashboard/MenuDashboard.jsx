@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import {
     MainContainer,
     LogoContainer,
@@ -22,9 +22,11 @@ import { AiFillHeart } from '@react-icons/all-files/ai/AiFillHeart';
 import { Link, useLocation } from "react-router-dom";
 import avatar from '../../assets/images/Alvaro.jpg';
 import logo from "../../assets/images/logo.jpg";
+import LoginContext from "../../store/LoginContext";
 
 const MenuDashboard = () => {
     const { pathname } = useLocation();
+	 const [state] = useContext(LoginContext)
 
     return (
         <div>
@@ -66,7 +68,7 @@ const MenuDashboard = () => {
                     <MenuAvatar src={avatar} />
                     <Name>Alvaro G.</Name>
                     <Email href="mailto:alvaro.develops@gmail.com">
-                        alvaro.develops@gmail.com
+                        {state.user.email}
                     </Email>
                     <EditButton>Edit</EditButton>
                 </UserCard>
