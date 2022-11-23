@@ -30,7 +30,7 @@ function App() {
 	return (
 		<div>
 			<LoginContext.Provider value={store}>
-			<BrowserRouter>
+			<BrowserRouter basename='process.env.PUBLIC_URL'>
 				<Routes>
 					<Route exact path='/login' element={<Login />} />
 					{/* PROTECTED ROUTES */}
