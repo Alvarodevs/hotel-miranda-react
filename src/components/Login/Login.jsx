@@ -9,7 +9,7 @@ const Login = ({setAuth}) => {
    const navigate = useNavigate();
    const [state, dispatch] = useContext(LoginContext);
 
-   console.log("STATE IN LOGIN", state);
+   //console.log("STATE IN LOGIN", state);
 
    const handleLogin = (e) => {
       e.preventDefault();
