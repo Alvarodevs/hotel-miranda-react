@@ -1,16 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { updateEmail, updateUsername, login } from "../../store/actions";
-import INIT_STATE from "../../store/initialState";
 import LoginContext from "../../store/LoginContext";
 import { LoginContainer, Header, Form, Input, Submit, Label } from "./LoginStyled";
 
 const Login = ({ setAuth }) => {
    const navigate = useNavigate();
    const [state, dispatch] = useContext(LoginContext);
-
-   //console.log("STATE IN LOGIN", state);
-
+	
    const handleLogin = (e) => {
       e.preventDefault();
       if (

@@ -34,6 +34,7 @@ import {
    filterByStatus,
    selectStatus,
 } from "../../features/rooms/roomsSlice";
+import { faLessThanEqual } from "@fortawesome/free-solid-svg-icons";
 
 
 const RoomList = () => {
@@ -42,26 +43,56 @@ const RoomList = () => {
 	
 	const dispatch = useDispatch();
 	const roomsRedux = useSelector(selectRooms)
-	const status = useSelector(selectStatus);
-	const [roomsState, setRoomsState] = useState(roomsRedux)
-
-	//console.log('ROOMS COMPONENT', roomsState);
+	const [roomStatus, setRoomStatus] = useState('');
+	const [roomsFiltered, setRoomsFiltered] = useState([]);
 
 	useEffect(() => {
 	  dispatch(getRooms())
-	  setRoomsState(...roomsRedux);
-	  
 	}, [dispatch])
 	
-	const filteringByStatus = (boolean) => {
-		const allRooms = dispatch(getRooms())
-		allRooms.then(() => dispatch(filterByStatus(boolean)));
+	function boolean() {
+      if (roomStatus === "ok") {
+         return true;
+      }
+      if (roomStatus === "ko") {
+         return false;
+      }
+      if (roomStatus === "") {
+         return setRoomsFiltered([]);
+      }
+   };
+
+	useEffect(() => {
+      const roomsToFilter = roomsRedux;
+		const roomsFiltered = roomsToFilter.filter(
+         (room) => room.status === boolean()
+      );
+      setRoomsFiltered(roomsFiltered);
+   }, [roomStatus]);
+
+	
+	const setAllRooms = () => {
+		setRoomStatus('');
+		return dispatch(getRooms())
 	}
+	
+	console.log(roomStatus);
+	console.log(roomsFiltered);
+
+	const roomsToRender = () => {
+		if (roomStatus === 'ok' && roomsFiltered !== []) {
+			return roomsFiltered;
+		} 
+		if (roomStatus === "ko" && roomsFiltered !== []) {
+         return roomsFiltered;
+      }
+      return roomsRedux;
+	};
 
 	//pagination logic
    const indexLastRoom = currentPage * roomsPerPage;
    const indexFirstRoom = indexLastRoom - roomsPerPage;
-   const currentRooms = roomsRedux.slice(indexFirstRoom, indexLastRoom);
+   const currentRooms = roomsToRender().slice(indexFirstRoom, indexLastRoom);
 
    //change pagination
    const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -79,18 +110,16 @@ const RoomList = () => {
       }
    };
 	//----------------------
-console.log('ROOMS STATE', roomsState);
-   return (
+	
+	return (
       <MainContainer>
          <ListButtonsContainer>
             <Selectors>
-               <Selector onClick={(e) => dispatch(getRooms())}>
-                  All Rooms
-               </Selector>
-               <Selector onClick={(e) => filteringByStatus(true)}>
+               <Selector onClick={(e) => setAllRooms()}>All Rooms</Selector>
+               <Selector onClick={(e) => setRoomStatus("ok")}>
                   Available Rooms
                </Selector>
-               <Selector onClick={(e) => filteringByStatus(false)}>
+               <Selector onClick={(e) => setRoomStatus("ko")}>
                   Booked Rooms
                </Selector>
             </Selectors>

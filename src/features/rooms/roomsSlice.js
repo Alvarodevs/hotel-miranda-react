@@ -9,7 +9,8 @@ export const getRooms = createAsyncThunk('fetch/rooms',
 );
 
 const initialState = {
-	rooms: [],
+	items: [],
+	single: {},
 	status: 'idle',
 }
 
@@ -32,7 +33,7 @@ export const roomsSlice = createSlice({
 			})
 			.addCase(getRooms.fulfilled, (state, action) => {
 				state.status = 'loading';
-				state.rooms = action.payload;
+				state.items = action.payload;
 				state.status = 'ok';
 			})
 			.addCase(getRooms.rejected, (state) => {
@@ -44,7 +45,8 @@ export const roomsSlice = createSlice({
 
 export const { filterByStatus, resetState } = roomsSlice.actions;
 
-export const selectRooms = (state) => state.rooms.rooms;
+export const selectRooms = (state) => state.rooms.items;
+export const selectRoom = (state) => state.rooms.single;
 export const selectStatus = (state) => state.rooms.status;
 
 export default roomsSlice.reducer;
