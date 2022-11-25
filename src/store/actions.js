@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT, UPDATE_EMAIL, UPDATE_PASSWORD } from './actionTypes';
+import { LOGIN, LOGOUT, UPDATE_EMAIL, UPDATE_USERNAME } from './actionTypes';
 
 export const login = ({isAuth, user}) => ({
 	type: LOGIN,
@@ -18,7 +18,7 @@ export const updateEmail = (email) => ({
 	payload: email,
 })
 
-export const updatePassword = (password) => ({
-	type: UPDATE_PASSWORD,
-	payload: password,
+export const updateUsername = (username) => ({
+	type: UPDATE_USERNAME,
+	payload: username,
 })

@@ -22,6 +22,11 @@ export const Form = styled.form`
   margin: auto;
   max-width: 600px;
 `;
+export const Label = styled.label`
+   padding: 0px 20px;
+   color: var(--color-black);
+   font-family: var(--font-main);
+`;
 
 export const Input = styled.input`
   height: 2rem;

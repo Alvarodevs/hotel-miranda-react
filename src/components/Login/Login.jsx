@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { updateEmail, updatePassword, login } from "../../store/actions";
+import { updateEmail, updateUsername, login } from "../../store/actions";
 import INIT_STATE from "../../store/initialState";
 import LoginContext from "../../store/LoginContext";
-import { LoginContainer, Header, Form, Input, Submit } from "./LoginStyled";
+import { LoginContainer, Header, Form, Input, Submit, Label } from "./LoginStyled";
 
-const Login = ({setAuth}) => {
+const Login = ({ setAuth }) => {
    const navigate = useNavigate();
    const [state, dispatch] = useContext(LoginContext);
 
@@ -14,15 +14,15 @@ const Login = ({setAuth}) => {
    const handleLogin = (e) => {
       e.preventDefault();
       if (
-         state.user.email === "alvaro@example.com" &&
-         state.user.passw === "1234"
+         state.user.name === "alvaro" &&
+         state.user.email === "alvaro@example.com"
       ) {
          dispatch(
             login({
                isAuth: true,
                user: {
+                  name: state.user.name,
                   email: state.user.email,
-                  passw: state.user.passw,
                },
             })
          );
@@ -30,20 +30,20 @@ const Login = ({setAuth}) => {
             ...state,
             isAuth: true,
          });
-			navigate("/")
+         navigate("/");
       } else {
          alert("Wrong email or password");
       }
    };
 
    const toLocalStorage = (user) => {
-		if (!localStorage.getItem("authenticated")){
-      	return localStorage.setItem("authenticated", JSON.stringify(user))
-		} else {
-			const currentItem = JSON.parse(localStorage.getItem('authenticated'))
-			currentItem.isAuth = true;
-			localStorage.setItem('authenticated', JSON.stringify(currentItem))
-		}
+      if (!localStorage.getItem("authenticated")) {
+         return localStorage.setItem("authenticated", JSON.stringify(user));
+      } else {
+         const currentItem = JSON.parse(localStorage.getItem("authenticated"));
+         currentItem.isAuth = true;
+         localStorage.setItem("authenticated", JSON.stringify(currentItem));
+      }
    };
 
    return (
@@ -51,21 +51,22 @@ const Login = ({setAuth}) => {
          <LoginContainer>
             <Header>Please, login with your account</Header>
             <Form onSubmit={handleLogin} className="login-form">
+               <Label htmlFor="username">Username:</Label>
+               <Input
+                  type="text"
+                  placeholder="User name"
+                  name="username"
+                  value={state.user?.name}
+                  onChange={(e) => dispatch(updateUsername(e.target.value))}
+               />
+               <Label htmlFor="email">Email:</Label>
                <Input
                   type="email"
                   placeholder="Your email account"
                   name="email"
                   className="email-login"
-                  value={state.user.email}
+                  value={state.user?.email}
                   onChange={(e) => dispatch(updateEmail(e.target.value))}
-               />
-               <Input
-                  type="password"
-                  placeholder="Password"
-                  name="password"
-                  className="passw-login"
-                  value={state.user.passw}
-                  onChange={(e) => dispatch(updatePassword(e.target.value))}
                />
                <Submit type="submit" value="Submit" />
             </Form>
