@@ -8,13 +8,12 @@ import Room from './components/Room';
 import Booking from './components/Booking';
 import UserList from './components/UserList';
 import User from './components/User';
-import { useReducer, useState } from 'react';
+import { useReducer } from 'react';
 import INIT_STATE from './store/initialState';
 import loginReducer from './store/loginReducer';
 import LoginContext from './store/LoginContext';
 
 function App() {
-	//const [auth, setAuth] = useState(false)
 	const store = useReducer(loginReducer, INIT_STATE)
 
 	//function check if auth to render components

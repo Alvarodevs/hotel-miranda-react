@@ -12,7 +12,8 @@ export const HeaderContainer = styled.div`
 `;
 
 export const TitleContainer = styled.div`
-	display: inline-block;
+   display: flex;
+   align-items: center;
 `;
 
 export const Logo = styled.div`
