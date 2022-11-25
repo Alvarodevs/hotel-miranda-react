@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import rooms from "../../db/rooms.json";
 import {
    ListButtonsContainer,
    Selectors,
@@ -12,15 +11,6 @@ import {
    THeaderContainer,
    HeaderTitle,
    TBody,
-   ListCard,
-   NameImg,
-   Image,
-   Names,
-   Id,
-   Title,
-   Td,
-   TdTextWeight,
-   Span,
 } from "../../styles/Table";
 import { FiChevronDown } from "@react-icons/all-files/fi/FiChevronDown";
 import roomImg from "../../assets/images/room.jpg";
@@ -31,26 +21,31 @@ import { useDispatch, useSelector } from "react-redux";
 import {
    getRooms,
    selectRooms,
-   filterByStatus,
    selectStatus,
 } from "../../features/rooms/roomsSlice";
 import { faLessThanEqual } from "@fortawesome/free-solid-svg-icons";
-
+import RoomCard from "./RoomCard";
 
 const RoomList = () => {
+   const roomsRedux = useSelector(selectRooms);
+
+   //states for pagintation
    const [currentPage, setCurrentPage] = useState(1);
    const [roomsPerPage, setRoomsPerPage] = useState(10);
-	
-	const dispatch = useDispatch();
-	const roomsRedux = useSelector(selectRooms)
-	const [roomStatus, setRoomStatus] = useState('');
-	const [roomsFiltered, setRoomsFiltered] = useState([]);
 
-	useEffect(() => {
-	  dispatch(getRooms())
-	}, [dispatch])
+   const dispatch = useDispatch();
+   const appState = useSelector(selectStatus);
+
+   //states for filtering
+   const [roomStatus, setRoomStatus] = useState("");
+   const [roomsFiltered, setRoomsFiltered] = useState([]);
 	
-	function boolean() {
+
+   useEffect(() => {
+      dispatch(getRooms());
+   }, [dispatch]);
+
+   function boolean() {
       if (roomStatus === "ok") {
          return true;
       }
@@ -58,43 +53,35 @@ const RoomList = () => {
          return false;
       }
       if (roomStatus === "") {
-         return setRoomsFiltered([]);
+         return;
       }
-   };
+   }
 
-	useEffect(() => {
+   //Effect for filtering by booked or not
+   useEffect(() => {
       const roomsToFilter = roomsRedux;
-		const roomsFiltered = roomsToFilter.filter(
+      const roomsFiltered = roomsToFilter.filter(
          (room) => room.status === boolean()
       );
       setRoomsFiltered(roomsFiltered);
+      setCurrentPage(1);
    }, [roomStatus]);
 
-	
-	const setAllRooms = () => {
-		setRoomStatus('');
-		return dispatch(getRooms())
-	}
-	
-	console.log(roomStatus);
-	console.log(roomsFiltered);
+   const setAllRooms = () => {
+      setRoomStatus("");
+      dispatch(getRooms());
+   };
 
-	const roomsToRender = () => {
-		if (roomStatus === 'ok' && roomsFiltered !== []) {
-			return roomsFiltered;
-		} 
-		if (roomStatus === "ko" && roomsFiltered !== []) {
-         return roomsFiltered;
-      }
-      return roomsRedux;
-	};
-
-	//pagination logic
+   //pagination logic
    const indexLastRoom = currentPage * roomsPerPage;
    const indexFirstRoom = indexLastRoom - roomsPerPage;
-   const currentRooms = roomsToRender().slice(indexFirstRoom, indexLastRoom);
+   const currentRoomsRedux = roomsRedux.slice(indexFirstRoom, indexLastRoom);
+   const currentRoomsFiltered = roomsFiltered.slice(
+      indexFirstRoom,
+      indexLastRoom
+   );
 
-   //change pagination
+   //change pagination,
    const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
    const buttonsPaginate = (direction) => {
@@ -109,14 +96,18 @@ const RoomList = () => {
             : setCurrentPage((previous) => previous + 1);
       }
    };
-	//----------------------
-	
-	return (
+   //----------------------
+   //console.log(roomsRedux);
+   return (
       <MainContainer>
          <ListButtonsContainer>
             <Selectors>
                <Selector onClick={(e) => setAllRooms()}>All Rooms</Selector>
-               <Selector onClick={(e) => setRoomStatus("ok")}>
+               <Selector
+                  onClick={(e) => {
+                     setRoomStatus("ok");
+                  }}
+               >
                   Available Rooms
                </Selector>
                <Selector onClick={(e) => setRoomStatus("ko")}>
@@ -146,54 +137,22 @@ const RoomList = () => {
             </THeaderContainer>
 
             <TBody>
-               {currentRooms.map((room) => (
-                  <ListCard key={room.id}>
-                     <Td>
-                        <NameImg>
-                           <Image src={roomImg} alt="Image" />
-                           <Names>
-                              <Id>#{room.id}</Id>
-                              <Title>{room.room_number}</Title>
-                           </Names>
-                        </NameImg>
-                     </Td>
+               {appState === "loading" && <h1>Loading...</h1>}
+               {appState === 'ok' &&
+                  currentRoomsRedux.map((room) => (
+                     <RoomCard key={room.id} room={room} />
+                  ))}
 
-                     <TdTextWeight>{room.bed_type}</TdTextWeight>
-                     <TdTextWeight>
-                        {room.room_number.toString().charAt(0)}
-                     </TdTextWeight>
-                     <TdTextWeight>
-                        {Object.entries(room.facilities).map((facility) =>
-                           facility[1] ? <Span>{facility[0]}, </Span> : null
-                        )}
-                     </TdTextWeight>
-                     <TdTextWeight>
-                        € {room.price.slice(0, -1)}
-                        <span>/night</span>
-                     </TdTextWeight>
-                     {/* CALCULATE PRICE WITH OFFER PERCENTAGE */}
-                     {/* <RoomTdText>
-							{
-							parseFloat(room.price.slice(0, -1).replaceAll(',', '.')) -
-							parseFloat(room.price.slice(0, -1).replaceAll(',', '.'))
-							% room.offer_price
-							}		
-						  </RoomTdText> */}
-                     <Td>
-                        <RoomStatus status={room.status}>
-                           {room.status ? "Available" : "Booked"}
-                        </RoomStatus>
-                     </Td>
-                     <Td>
-                        <BiDotsVerticalRounded className="dots" />
-                     </Td>
-                  </ListCard>
-               ))}
+               {/* {appState === "ok" &&
+                  roomStatus !== "" &&
+                  currentRoomsFiltered.map((room) => (
+                     <RoomCard key={room.id} room={room} />
+                  ))} */}
             </TBody>
          </ListContainer>
          <Pagination
             itemsPerPage={roomsPerPage}
-            numOfItems={roomsRedux.length}
+            numOfItems={!roomStatus ? roomsRedux.length : roomsFiltered.length}
             paginate={paginate}
             page={currentPage}
             buttonsPaginate={buttonsPaginate}

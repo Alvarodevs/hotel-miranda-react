@@ -3,7 +3,7 @@ export const fakeDelayPromise = (data) => {
 		new Promise((resolve, reject) => {
 			setTimeout(() => {
 				resolve(data)
-			}, 300)
+			}, 1000)
 		})
 	)
 }

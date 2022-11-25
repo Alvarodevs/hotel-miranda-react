@@ -8,6 +8,30 @@ export const getRooms = createAsyncThunk('fetch/rooms',
 	}
 );
 
+export const addRoom = createAsyncThunk("room/addRoom",
+	async (newRoom) => {
+		return await newRoom;
+	}
+);
+
+export const deleteRoom = createAsyncThunk("room/deleteRoom",
+	async (id) => {
+		return await id;
+	}
+);
+
+export const editRoom = createAsyncThunk("room/editRoom",
+	async (id) => {
+		return await id;
+	}
+);
+
+export const getRoom = createAsyncThunk("room/fetchRoom",
+	async (id) => {
+		return await id;
+	}
+);
+
 const initialState = {
 	items: [],
 	single: {},
@@ -18,13 +42,7 @@ export const roomsSlice = createSlice({
 	name: 'rooms',
 	initialState,
 	reducers: {
-		filterByStatus: (state, action) => {
-			state.status = 'loading';
-			state.rooms = state.rooms.filter((room) => (
-				room.status === action.payload
-			));
-			state.status = 'ok';
-		},
+
 	},
 	extraReducers: (builder) => {
 		builder
@@ -32,14 +50,38 @@ export const roomsSlice = createSlice({
 				state.status = 'loading';
 			})
 			.addCase(getRooms.fulfilled, (state, action) => {
-				state.status = 'loading';
 				state.items = action.payload;
 				state.status = 'ok';
 			})
 			.addCase(getRooms.rejected, (state) => {
 				state.status = 'ko';
-				console.log('No rooms loaded')
 			})
+
+			.addCase(addRoom.fulfilled, (state, action) => {
+				state.items = [...state.items, action.payload];
+				state.status = 'ok';
+			})
+
+			.addCase(deleteRoom.fulfilled, (state, action) => {
+				state.items = state.items.filter(
+					(room) => room.id !== action.payload
+				);
+				state.status = 'ok';
+			})
+
+			.addCase(editRoom.fulfilled, (state, action) => {
+				state.status = 'ok';
+				state.items = state.items.map((room) => {
+					return room.id === action.payload.id ? action.payload : room;
+				});
+			})
+
+			.addCase(getRoom.fulfilled, (state, action) => {
+				state.single = state.items.find((room) => room.id === action.payload);
+				state.status = 'ok';
+			})
+
+
 	}
 })
 
