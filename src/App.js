@@ -12,29 +12,20 @@ import { useReducer } from 'react';
 import INIT_STATE from './store/initialState';
 import loginReducer from './store/loginReducer';
 import LoginContext from './store/LoginContext';
+import PrivateRoutes from './utils/ProtectedRoutes';
 
 function App() {
-	const store = useReducer(loginReducer, INIT_STATE)
-
-	//function check if auth to render components
-	const PrivateRoutes = ({auth}) => {
-		return auth ? <Outlet /> : <Navigate to="/login" replace />
-	}
-	const isAuth = () => {
-		const objectInLocal = JSON.parse(localStorage.getItem('authenticated'))
-		return objectInLocal?.isAuth
-	}
-	
+	const store = useReducer(loginReducer, INIT_STATE)	
 
 	return (
 		<div>
 			<LoginContext.Provider value={store}>
-			<BrowserRouter basename='process.env.PUBLIC_URL'>
+				<BrowserRouter>
 				<Routes>
 					<Route exact path='/login' element={<Login />} />
 					{/* PROTECTED ROUTES */}
 
-					<Route element={<PrivateRoutes auth={isAuth()} />} >
+					<Route element={<PrivateRoutes/>} >
 
 						<Route exact path='/' element={<Navigate to="/dashboard" replace />} />
 						<Route exact path='/dashboard' element={<Dashboard />} />
