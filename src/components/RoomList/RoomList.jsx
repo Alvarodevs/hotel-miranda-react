@@ -28,7 +28,12 @@ import { BiDotsVerticalRounded } from "@react-icons/all-files/bi/BiDotsVerticalR
 import Pagination from "../Pagination/";
 import MainContainer from "../MainContainer";
 import { useDispatch, useSelector } from "react-redux";
-import { getRooms, selectRooms, filterByStatus } from "../../features/rooms/roomsSlice";
+import {
+   getRooms,
+   selectRooms,
+   filterByStatus,
+   selectStatus,
+} from "../../features/rooms/roomsSlice";
 
 
 const RoomList = () => {
@@ -36,17 +41,27 @@ const RoomList = () => {
    const [roomsPerPage, setRoomsPerPage] = useState(10);
 	
 	const dispatch = useDispatch();
-	const roomsState = useSelector(selectRooms)
+	const roomsRedux = useSelector(selectRooms)
+	const status = useSelector(selectStatus);
+	const [roomsState, setRoomsState] = useState(roomsRedux)
+
+	//console.log('ROOMS COMPONENT', roomsState);
 
 	useEffect(() => {
 	  dispatch(getRooms())
+	  setRoomsState(...roomsRedux);
+	  
 	}, [dispatch])
 	
+	const filteringByStatus = (boolean) => {
+		const allRooms = dispatch(getRooms())
+		allRooms.then(() => dispatch(filterByStatus(boolean)));
+	}
 
 	//pagination logic
    const indexLastRoom = currentPage * roomsPerPage;
    const indexFirstRoom = indexLastRoom - roomsPerPage;
-   const currentRooms = roomsState.slice(indexFirstRoom, indexLastRoom);
+   const currentRooms = roomsRedux.slice(indexFirstRoom, indexLastRoom);
 
    //change pagination
    const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -58,13 +73,13 @@ const RoomList = () => {
             : setCurrentPage((previous) => previous - 1);
       }
       if (direction === "next") {
-         return currentPage === Math.ceil(roomsState.length / roomsPerPage)
+         return currentPage === Math.ceil(roomsRedux.length / roomsPerPage)
             ? null
             : setCurrentPage((previous) => previous + 1);
       }
    };
 	//----------------------
-
+console.log('ROOMS STATE', roomsState);
    return (
       <MainContainer>
          <ListButtonsContainer>
@@ -72,10 +87,12 @@ const RoomList = () => {
                <Selector onClick={(e) => dispatch(getRooms())}>
                   All Rooms
                </Selector>
-               <Selector onClick={(e) => dispatch(filterByStatus(true))}>
+               <Selector onClick={(e) => filteringByStatus(true)}>
                   Available Rooms
                </Selector>
-               <Selector>Booked Rooms</Selector>
+               <Selector onClick={(e) => filteringByStatus(false)}>
+                  Booked Rooms
+               </Selector>
             </Selectors>
             <NewBtnsContainer>
                <NewRoomBtn>+ New Room</NewRoomBtn>
@@ -147,7 +164,7 @@ const RoomList = () => {
          </ListContainer>
          <Pagination
             itemsPerPage={roomsPerPage}
-            numOfItems={roomsState.length}
+            numOfItems={roomsRedux.length}
             paginate={paginate}
             page={currentPage}
             buttonsPaginate={buttonsPaginate}

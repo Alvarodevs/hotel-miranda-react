@@ -5,11 +5,12 @@ export const getRooms = createAsyncThunk('fetch/rooms',
 	async () => {
 		const response = await fetchData('rooms')
 		return response
-	} 
+	}
 );
 
 const initialState = {
-	rooms: []
+	rooms: [],
+	status: 'idle',
 }
 
 export const roomsSlice = createSlice({
@@ -17,25 +18,33 @@ export const roomsSlice = createSlice({
 	initialState,
 	reducers: {
 		filterByStatus: (state, action) => {
+			state.status = 'loading';
 			state.rooms = state.rooms.filter((room) => (
 				room.status === action.payload
-			))
+			));
+			state.status = 'ok';
 		},
-	}, 
+	},
 	extraReducers: (builder) => {
-		builder	
-			.addCase(getRooms.fulfilled, (state, action) => {
-				//console.log('ACTION EXTRARED', action)
-				state.rooms = action.payload
+		builder
+			.addCase(getRooms.pending, (state) => {
+				state.status = 'loading';
 			})
-			.addCase(getRooms.rejected, () => {
+			.addCase(getRooms.fulfilled, (state, action) => {
+				state.status = 'loading';
+				state.rooms = action.payload;
+				state.status = 'ok';
+			})
+			.addCase(getRooms.rejected, (state) => {
+				state.status = 'ko';
 				console.log('No rooms loaded')
 			})
 	}
 })
 
-export const { filterByStatus } = roomsSlice.actions;
+export const { filterByStatus, resetState } = roomsSlice.actions;
 
 export const selectRooms = (state) => state.rooms.rooms;
+export const selectStatus = (state) => state.rooms.status;
 
 export default roomsSlice.reducer;
