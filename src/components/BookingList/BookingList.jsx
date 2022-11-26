@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import { MonthButton, BookingStatus } from "./BookingListStyled";
 import {
    ListButtonsContainer,
@@ -13,47 +13,33 @@ import {
    THeaderContainer,
    HeaderTitle,
    TBody,
-   ListCard,
-   NameImg,
-   Names,
-   Id,
-   Title,
-   Td,
-   TdTextWeight,
-   Span,
 } from "../../styles/Table";
-import { Avatar } from "../../styles/Avatar";
 import bookings from "../../db/bookings.json";
-import avatar from "../../assets/images/Alvaro.jpg";
-import { BiDotsVerticalRounded } from "@react-icons/all-files/bi/BiDotsVerticalRounded";
-import moment from "moment";
-import PopUpResquests from "../PopUpRequests/PopUpResquests";
 import Pagination from "../Pagination";
 import MainContainer from "../MainContainer";
+import { useDispatch, useSelector } from "react-redux";
+import {
+   selectStatus,
+   selectBookings,
+   getBookings,
+} from "../../features/bookings/bookingsSlice";
+import BookingCard from "./BookingCard";
 
 const Booking = () => {
    const [currentPage, setCurrentPage] = useState(1);
    const [bookingsPerPage, setBookingsPerPage] = useState(10);
 
-   const indexLastRoom = currentPage * bookingsPerPage;
-   const indexFirstRoom = indexLastRoom - bookingsPerPage;
-   const currentBookings = bookings.slice(indexFirstRoom, indexLastRoom);
+   const dispatch = useDispatch();
+   const appState = useSelector(selectStatus);
+   const bookingsRedux = useSelector(selectBookings);
 
-   //change pagination
-   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+   const [bookingStatus, setBookingStatus] = useState("");
+   const [lengthFromRedux, setLengthFromRedux] = useState(true);
+   const [bookingsFiltered, setBookingsFiltered] = useState([]);
 
-   const buttonsPaginate = (direction) => {
-      if (direction === "prev") {
-         return currentPage === 1
-            ? null
-            : setCurrentPage((previous) => previous - 1);
-      }
-      if (direction === "next") {
-         return currentPage === Math.ceil(bookings.length / bookingsPerPage)
-            ? null
-            : setCurrentPage((previous) => previous + 1);
-      }
-   };
+   useEffect(() => {
+      dispatch(getBookings());
+   }, [dispatch]);
 
    const handleStatus = (status) => {
       switch (status) {
@@ -68,15 +54,92 @@ const Booking = () => {
       }
    };
 
+   const setAllBookings = () => {
+      setLengthFromRedux(true);
+      dispatch(getBookings());
+   };
+
+   useEffect(() => {
+      const bookingsToFilter = bookingsRedux;
+      const bookingsFiltered = bookingsToFilter.filter(
+         (booking) => booking.status === bookingStatus
+      );
+      setBookingsFiltered(bookingsFiltered);
+      setCurrentPage(1);
+   }, [bookingStatus, bookingsRedux]);
+
+   const indexLastRoom = currentPage * bookingsPerPage;
+   const indexFirstRoom = indexLastRoom - bookingsPerPage;
+   const currentBookingsRedux = bookingsRedux.slice(
+      indexFirstRoom,
+      indexLastRoom
+   );
+   const currentBookingsFiltered = bookingsFiltered.slice(
+      indexFirstRoom,
+      indexLastRoom
+   );
+
+   //change pagination
+   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+   const maxLength = () => {
+      return lengthFromRedux ? bookingsRedux : bookingsFiltered;
+   };
+   const buttonsPaginate = (direction) => {
+      if (direction === "prev") {
+         return currentPage === 1
+            ? null
+            : setCurrentPage((previous) => previous - 1);
+      }
+      if (direction === "next") {
+         return currentPage === Math.ceil(maxLength().length / bookingsPerPage)
+            ? null
+            : setCurrentPage((previous) => previous + 1);
+      }
+   };
+
+	function bookingsSwitch() {
+      if (lengthFromRedux) {
+         return currentBookingsRedux;
+      } else return currentBookingsFiltered;
+   }
+
    return (
       <MainContainer>
          <ListButtonsContainer>
             <Selectors>
-               <Selector>All Guests</Selector>
-               <Selector>Pending</Selector>
-               <Selector>Booked</Selector>
-               <Selector>Canceled</Selector>
-               <Selector>Refund</Selector>
+               <Selector onClick={() => setAllBookings()}>All Guests</Selector>
+               <Selector
+                  onClick={() => {
+                     setBookingStatus("Pending");
+                     setLengthFromRedux(false);
+                  }}
+               >
+                  Pending
+               </Selector>
+               <Selector
+                  onClick={() => {
+                     setBookingStatus("Booked");
+                     setLengthFromRedux(false);
+                  }}
+               >
+                  Booked
+               </Selector>
+               <Selector
+                  onClick={() => {
+                     setBookingStatus("Cancelled");
+                     setLengthFromRedux(false);
+                  }}
+               >
+                  Cancelled
+               </Selector>
+               <Selector
+                  onClick={() => {
+                     setBookingStatus("Refund");
+                     setLengthFromRedux(false);
+                  }}
+               >
+                  Refund
+               </Selector>
             </Selectors>
             <NewBtnsContainer>
                <MonthButton>
@@ -99,57 +162,32 @@ const Booking = () => {
                   <HeaderTitle>Status</HeaderTitle>
                </tr>
             </THeaderContainer>
-            <TBody>
-               {currentBookings.map((booking) => (
-                  <ListCard key={booking.id}>
-                     <Td>
-                        <NameImg>
-                           <Avatar src={avatar} alt="Image" />
-                           <Names>
-                              <Title>{booking.guest_name}</Title>
-                              <Id>#{booking.id}</Id>
-                           </Names>
-                        </NameImg>
-                     </Td>
-                     <TdTextWeight>
-                        {moment(booking.order_date).format(
-                           "MMM Do YYYY, h:mm:ss a"
-                        )}
-                     </TdTextWeight>
-                     <TdTextWeight>
-                        {moment(booking.check_in).format("MMM Do, YYYY")}
-                        <br />
-                        <Span>{moment(booking.check_in).format("h:mm a")}</Span>
-                     </TdTextWeight>
-                     <TdTextWeight>
-                        {moment(booking.check_out).format("MMM Do, YYYY")}
-                        <br />
-                        <Span>
-                           {moment(booking.check_out).format("h:mm a")}
-                        </Span>
-                     </TdTextWeight>
-                     <Td>
-                        <PopUpResquests
-                           status={booking.status}
-                           data={booking.request}
-                        ></PopUpResquests>
-                     </Td>
-                     <TdTextWeight>{booking.room_type}</TdTextWeight>
-                     <Td>
-                        <BookingStatus status={booking.status}>
-                           {handleStatus(booking.status)}
-                        </BookingStatus>
-                     </Td>
-                     <Td>
-                        <BiDotsVerticalRounded />
-                     </Td>
-                  </ListCard>
-               ))}
-            </TBody>
+
+            {/* CASE LOADING -- pending change to Spinner or Squeleton*/}
+            {appState === "loading" && (
+               <TBody>
+                  <h1>Loading...</h1>
+               </TBody>
+            )}
+
+            {/* CASE RENDERING DATA */}
+            {appState === "ok" && (
+               <TBody>
+                  {bookingsSwitch().map((booking) => (
+                     <BookingCard
+                        key={booking.id}
+                        booking={booking}
+                        handleStatus={handleStatus}
+                     />
+                  ))}
+               </TBody>
+            )}
          </ListContainer>
          <Pagination
             itemsPerPage={bookingsPerPage}
-            items={bookings.length}
+            numOfItems={
+               lengthFromRedux ? bookingsRedux.length : bookingsFiltered.length
+            }
             paginate={paginate}
             page={currentPage}
             buttonsPaginate={buttonsPaginate}
