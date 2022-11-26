@@ -44,6 +44,7 @@ export const roomsSlice = createSlice({
 	reducers: {
 
 	},
+	
 	extraReducers: (builder) => {
 		builder
 			.addCase(getRooms.pending, (state) => {

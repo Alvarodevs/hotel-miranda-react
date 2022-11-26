@@ -5,7 +5,7 @@ import {
    Selector,
    NewBtnsContainer,
 } from "../../styles/ListButtons";
-import { NewRoomBtn, RoomNewestBtn, RoomStatus } from "./RoomListStyled";
+import { NewRoomBtn, RoomNewestBtn } from "./RoomListStyled";
 import {
    ListContainer,
    THeaderContainer,
@@ -13,8 +13,6 @@ import {
    TBody,
 } from "../../styles/Table";
 import { FiChevronDown } from "@react-icons/all-files/fi/FiChevronDown";
-import roomImg from "../../assets/images/room.jpg";
-import { BiDotsVerticalRounded } from "@react-icons/all-files/bi/BiDotsVerticalRounded";
 import Pagination from "../Pagination/";
 import MainContainer from "../MainContainer";
 import { useDispatch, useSelector } from "react-redux";
@@ -23,81 +21,78 @@ import {
    selectRooms,
    selectStatus,
 } from "../../features/rooms/roomsSlice";
-import { faLessThanEqual } from "@fortawesome/free-solid-svg-icons";
 import RoomCard from "./RoomCard";
 
 const RoomList = () => {
-   const roomsRedux = useSelector(selectRooms);
-
-   //states for pagintation
+   //states for pagitation
    const [currentPage, setCurrentPage] = useState(1);
    const [roomsPerPage, setRoomsPerPage] = useState(10);
 
    const dispatch = useDispatch();
    const appState = useSelector(selectStatus);
+   const roomsRedux = useSelector(selectRooms);
 
    //states for filtering
-   const [roomStatus, setRoomStatus] = useState("");
+   const [roomIsAvailable, setRoomIsAvailable] = useState(true); //setter for booked or avail. rooms in filtered
+   const [lengthFromRedux, setLengthFromRedux] = useState(true); //render from redux state or filtered
    const [roomsFiltered, setRoomsFiltered] = useState([]);
-	
 
    useEffect(() => {
       dispatch(getRooms());
    }, [dispatch]);
 
-   function boolean() {
-      if (roomStatus === "ok") {
-         return true;
-      }
-      if (roomStatus === "ko") {
-         return false;
-      }
-      if (roomStatus === "") {
-         return;
-      }
-   }
-
    //Effect for filtering by booked or not
    useEffect(() => {
       const roomsToFilter = roomsRedux;
       const roomsFiltered = roomsToFilter.filter(
-         (room) => room.status === boolean()
+         (room) => room.status === roomIsAvailable
       );
       setRoomsFiltered(roomsFiltered);
       setCurrentPage(1);
-   }, [roomStatus]);
+   }, [roomIsAvailable, roomsRedux]);
 
+   //TRIGGER FROM SELECTORS UPPER TBODY
    const setAllRooms = () => {
-      setRoomStatus("");
+      setLengthFromRedux(true);
       dispatch(getRooms());
    };
 
    //pagination logic
    const indexLastRoom = currentPage * roomsPerPage;
    const indexFirstRoom = indexLastRoom - roomsPerPage;
+
    const currentRoomsRedux = roomsRedux.slice(indexFirstRoom, indexLastRoom);
    const currentRoomsFiltered = roomsFiltered.slice(
       indexFirstRoom,
       indexLastRoom
    );
 
+   function roomsSwitch() {
+      if (lengthFromRedux) {
+         return currentRoomsRedux;
+      } else return currentRoomsFiltered;
+   }
+
    //change pagination,
    const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
    const buttonsPaginate = (direction) => {
+      const maxLength = () => {
+         return lengthFromRedux ? roomsRedux : roomsFiltered;
+      };
       if (direction === "prev") {
          return currentPage === 1
             ? null
             : setCurrentPage((previous) => previous - 1);
       }
       if (direction === "next") {
-         return currentPage === Math.ceil(roomsRedux.length / roomsPerPage)
+         return currentPage === Math.ceil(maxLength().length / roomsPerPage)
             ? null
             : setCurrentPage((previous) => previous + 1);
       }
    };
    //----------------------
-   //console.log(roomsRedux);
+
    return (
       <MainContainer>
          <ListButtonsContainer>
@@ -105,12 +100,18 @@ const RoomList = () => {
                <Selector onClick={(e) => setAllRooms()}>All Rooms</Selector>
                <Selector
                   onClick={(e) => {
-                     setRoomStatus("ok");
+                     setRoomIsAvailable(true);
+                     setLengthFromRedux(false);
                   }}
                >
                   Available Rooms
                </Selector>
-               <Selector onClick={(e) => setRoomStatus("ko")}>
+               <Selector
+                  onClick={(e) => {
+                     setRoomIsAvailable(false);
+                     setLengthFromRedux(false);
+                  }}
+               >
                   Booked Rooms
                </Selector>
             </Selectors>
@@ -136,23 +137,27 @@ const RoomList = () => {
                </tr>
             </THeaderContainer>
 
-            <TBody>
-               {appState === "loading" && <h1>Loading...</h1>}
-               {appState === 'ok' &&
-                  currentRoomsRedux.map((room) => (
+            {/* CASE LOADING -- pending change to Spinner or Squeleton*/}
+            {appState === "loading" && (
+               <TBody>
+                  <h1>Loading...</h1>
+               </TBody>
+            )}
+
+            {/* CASE RENDERING DATA */}
+            {appState === "ok" && (
+               <TBody>
+                  {roomsSwitch().map((room) => (
                      <RoomCard key={room.id} room={room} />
                   ))}
-
-               {/* {appState === "ok" &&
-                  roomStatus !== "" &&
-                  currentRoomsFiltered.map((room) => (
-                     <RoomCard key={room.id} room={room} />
-                  ))} */}
-            </TBody>
+               </TBody>
+            )}
          </ListContainer>
          <Pagination
             itemsPerPage={roomsPerPage}
-            numOfItems={!roomStatus ? roomsRedux.length : roomsFiltered.length}
+            numOfItems={
+               lengthFromRedux ? roomsRedux.length : roomsFiltered.length
+            }
             paginate={paginate}
             page={currentPage}
             buttonsPaginate={buttonsPaginate}

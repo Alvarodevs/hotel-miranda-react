@@ -4,7 +4,7 @@ import { updateEmail, updateUsername, login } from "../../store/actions";
 import LoginContext from "../../store/LoginContext";
 import { LoginContainer, Header, Form, Input, Submit, Label } from "./LoginStyled";
 
-const Login = ({ setAuth }) => {
+const Login = () => {
    const navigate = useNavigate();
    const [state, dispatch] = useContext(LoginContext);
 	
