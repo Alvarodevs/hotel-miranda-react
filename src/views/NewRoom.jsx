@@ -1,11 +1,12 @@
 import React from 'react';
 import MainContainer from '../components/MainContainer';
+import RoomEditor from '../components/Room/RoomEditor';
 
 const NewRoom = () => {
  
 	 return (
 		 <MainContainer>
-			NewRoom
+			<RoomEditor/>
 		</MainContainer>
 	 )
 }

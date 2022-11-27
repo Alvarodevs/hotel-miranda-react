@@ -18,9 +18,9 @@
         "facilities": {
             "TV": true,
             "Bathtub": true,
-            "Sea-view": false,
-            "Late-checkout": false,
-            "City-tour": false
+            "Sea_view": false,
+            "Late_checkout": false,
+            "City_tour": false
         },
         "status": true
     },
@@ -43,9 +43,9 @@
         "facilities": {
             "TV": true,
             "Bathtub": true,
-            "Sea-view": true,
-            "Late-checkout": true,
-            "City-tour": false
+            "Sea_view": true,
+            "Late_checkout": true,
+            "City_tour": false
         },
         "status": true
     },
@@ -68,9 +68,9 @@
         "facilities": {
             "TV": true,
             "Bathtub": false,
-            "Sea-view": false,
-            "Late-checkout": false,
-            "City-tour": false
+            "Sea_view": false,
+            "Late_checkout": false,
+            "City_tour": false
         },
         "status": false
     },
@@ -93,9 +93,9 @@
         "facilities": {
             "TV": true,
             "Bathtub": true,
-            "Sea-view": false,
-            "Late-checkout": false,
-            "City-tour": false
+            "Sea_view": false,
+            "Late_checkout": false,
+            "City_tour": false
         },
         "status": true
     },
@@ -118,9 +118,9 @@
         "facilities": {
             "TV": true,
             "Bathtub": true,
-            "Sea-view": false,
-            "Late-checkout": false,
-            "City-tour": false
+            "Sea_view": false,
+            "Late_checkout": false,
+            "City_tour": false
         },
         "status": false
     },
@@ -143,9 +143,9 @@
         "facilities": {
             "TV": true,
             "Bathtub": true,
-            "Sea-view": false,
-            "Late-checkout": false,
-            "City-tour": true
+            "Sea_view": false,
+            "Late_checkout": false,
+            "City_tour": true
         },
         "status": false
     },
@@ -168,9 +168,9 @@
         "facilities": {
             "TV": true,
             "Bathtub": false,
-            "Sea-view": false,
-            "Late-checkout": true,
-            "City-tour": false
+            "Sea_view": false,
+            "Late_checkout": true,
+            "City_tour": false
         },
         "status": false
     },
@@ -193,9 +193,9 @@
         "facilities": {
             "TV": true,
             "Bathtub": false,
-            "Sea-view": true,
-            "Late-checkout": true,
-            "City-tour": false
+            "Sea_view": true,
+            "Late_checkout": true,
+            "City_tour": false
         },
         "status": false
     },
@@ -218,9 +218,9 @@
         "facilities": {
             "TV": true,
             "Bathtub": true,
-            "Sea-view": false,
-            "Late-checkout": false,
-            "City-tour": false
+            "Sea_view": false,
+            "Late_checkout": false,
+            "City_tour": false
         },
         "status": true
     },
@@ -243,9 +243,9 @@
         "facilities": {
             "TV": true,
             "Bathtub": false,
-            "Sea-view": false,
-            "Late-checkout": true,
-            "City-tour": true
+            "Sea_view": false,
+            "Late_checkout": true,
+            "City_tour": true
         },
         "status": false
     },
@@ -268,9 +268,9 @@
         "facilities": {
             "TV": true,
             "Bathtub": false,
-            "Sea-view": true,
-            "Late-checkout": true,
-            "City-tour": false
+            "Sea_view": true,
+            "Late_checkout": true,
+            "City_tour": false
         },
         "status": true
     },
@@ -293,9 +293,9 @@
         "facilities": {
             "TV": true,
             "Bathtub": true,
-            "Sea-view": false,
-            "Late-checkout": true,
-            "City-tour": true
+            "Sea_view": false,
+            "Late_checkout": true,
+            "City_tour": true
         },
         "status": true
     },
@@ -318,9 +318,9 @@
         "facilities": {
             "TV": true,
             "Bathtub": true,
-            "Sea-view": false,
-            "Late-checkout": false,
-            "City-tour": false
+            "Sea_view": false,
+            "Late_checkout": false,
+            "City_tour": false
         },
         "status": false
     },
@@ -343,9 +343,9 @@
         "facilities": {
             "TV": true,
             "Bathtub": true,
-            "Sea-view": true,
-            "Late-checkout": false,
-            "City-tour": true
+            "Sea_view": true,
+            "Late_checkout": false,
+            "City_tour": true
         },
         "status": true
     },
@@ -368,9 +368,9 @@
         "facilities": {
             "TV": true,
             "Bathtub": false,
-            "Sea-view": false,
-            "Late-checkout": false,
-            "City-tour": true
+            "Sea_view": false,
+            "Late_checkout": false,
+            "City_tour": true
         },
         "status": false
     },
@@ -393,9 +393,9 @@
         "facilities": {
             "TV": true,
             "Bathtub": false,
-            "Sea-view": false,
-            "Late-checkout": true,
-            "City-tour": false
+            "Sea_view": false,
+            "Late_checkout": true,
+            "City_tour": false
         },
         "status": false
     },
@@ -418,9 +418,9 @@
         "facilities": {
             "TV": true,
             "Bathtub": false,
-            "Sea-view": false,
-            "Late-checkout": true,
-            "City-tour": true
+            "Sea_view": false,
+            "Late_checkout": true,
+            "City_tour": true
         },
         "status": true
     },
@@ -443,9 +443,9 @@
         "facilities": {
             "TV": true,
             "Bathtub": true,
-            "Sea-view": true,
-            "Late-checkout": true,
-            "City-tour": true
+            "Sea_view": true,
+            "Late_checkout": true,
+            "City_tour": true
         },
         "status": true
     },
@@ -468,9 +468,9 @@
         "facilities": {
             "TV": true,
             "Bathtub": true,
-            "Sea-view": true,
-            "Late-checkout": false,
-            "City-tour": true
+            "Sea_view": true,
+            "Late_checkout": false,
+            "City_tour": true
         },
         "status": true
     },
@@ -493,9 +493,9 @@
         "facilities": {
             "TV": true,
             "Bathtub": true,
-            "Sea-view": true,
-            "Late-checkout": false,
-            "City-tour": false
+            "Sea_view": true,
+            "Late_checkout": false,
+            "City_tour": false
         },
         "status": true
     },
@@ -518,9 +518,9 @@
         "facilities": {
             "TV": true,
             "Bathtub": true,
-            "Sea-view": false,
-            "Late-checkout": false,
-            "City-tour": false
+            "Sea_view": false,
+            "Late_checkout": false,
+            "City_tour": false
         },
         "status": false
     },
@@ -543,9 +543,9 @@
         "facilities": {
             "TV": true,
             "Bathtub": false,
-            "Sea-view": true,
-            "Late-checkout": true,
-            "City-tour": false
+            "Sea_view": true,
+            "Late_checkout": true,
+            "City_tour": false
         },
         "status": false
     },
@@ -568,9 +568,9 @@
         "facilities": {
             "TV": true,
             "Bathtub": true,
-            "Sea-view": false,
-            "Late-checkout": false,
-            "City-tour": false
+            "Sea_view": false,
+            "Late_checkout": false,
+            "City_tour": false
         },
         "status": true
     },
@@ -593,9 +593,9 @@
         "facilities": {
             "TV": true,
             "Bathtub": true,
-            "Sea-view": false,
-            "Late-checkout": true,
-            "City-tour": false
+            "Sea_view": false,
+            "Late_checkout": true,
+            "City_tour": false
         },
         "status": true
     },
@@ -618,9 +618,9 @@
         "facilities": {
             "TV": true,
             "Bathtub": false,
-            "Sea-view": false,
-            "Late-checkout": false,
-            "City-tour": false
+            "Sea_view": false,
+            "Late_checkout": false,
+            "City_tour": false
         },
         "status": true
     },
@@ -643,9 +643,9 @@
         "facilities": {
             "TV": true,
             "Bathtub": true,
-            "Sea-view": true,
-            "Late-checkout": true,
-            "City-tour": false
+            "Sea_view": true,
+            "Late_checkout": true,
+            "City_tour": false
         },
         "status": true
     },
@@ -668,9 +668,9 @@
         "facilities": {
             "TV": true,
             "Bathtub": false,
-            "Sea-view": true,
-            "Late-checkout": true,
-            "City-tour": true
+            "Sea_view": true,
+            "Late_checkout": true,
+            "City_tour": true
         },
         "status": false
     },
@@ -693,9 +693,9 @@
         "facilities": {
             "TV": true,
             "Bathtub": false,
-            "Sea-view": false,
-            "Late-checkout": true,
-            "City-tour": false
+            "Sea_view": false,
+            "Late_checkout": true,
+            "City_tour": false
         },
         "status": true
     },
@@ -718,9 +718,9 @@
         "facilities": {
             "TV": true,
             "Bathtub": true,
-            "Sea-view": false,
-            "Late-checkout": false,
-            "City-tour": true
+            "Sea_view": false,
+            "Late_checkout": false,
+            "City_tour": true
         },
         "status": true
     },
@@ -743,9 +743,9 @@
         "facilities": {
             "TV": true,
             "Bathtub": true,
-            "Sea-view": true,
-            "Late-checkout": false,
-            "City-tour": true
+            "Sea_view": true,
+            "Late_checkout": false,
+            "City_tour": true
         },
         "status": false
     },
@@ -768,9 +768,9 @@
         "facilities": {
             "TV": true,
             "Bathtub": false,
-            "Sea-view": false,
-            "Late-checkout": false,
-            "City-tour": false
+            "Sea_view": false,
+            "Late_checkout": false,
+            "City_tour": false
         },
         "status": true
     },
@@ -793,9 +793,9 @@
         "facilities": {
             "TV": true,
             "Bathtub": true,
-            "Sea-view": false,
-            "Late-checkout": false,
-            "City-tour": true
+            "Sea_view": false,
+            "Late_checkout": false,
+            "City_tour": true
         },
         "status": true
     }
