@@ -13,6 +13,8 @@ import INIT_STATE from './store/initialState';
 import loginReducer from './store/loginReducer';
 import LoginContext from './store/LoginContext';
 import PrivateRoutes from './utils/ProtectedRoutes';
+import RoomEditor from './components/Room/RoomEditor';
+import UserEditor from './components/User/UserEditor';
 
 function App() {
 	const store = useReducer(loginReducer, INIT_STATE)
@@ -41,14 +43,14 @@ function App() {
 							<Route exact path='/room' element={<Navigate to="/rooms" replace />} />
 							<Route exact path='/rooms/:id' element={<Navigate to="/rooms" replace />} />
 							<Route exact path='/add_room' element={<NewRoom />} />
-							<Route exact path='/room/edit/:id' element={<Room />} />
+							<Route exact path='/room/edit/:id' element={<RoomEditor />} />
 
 							<Route exact path='/users' element={<UserList />} />
 							<Route exact path='/user/:id' element={<User />} />
 							<Route exact path='/user' element={<Navigate to="/users" replace />} />
 							<Route exact path='/users/:id' element={<Navigate to="/users" replace />} />
 							<Route exact path='/add_user' element={<NewUser />} />
-							<Route exact path='/user/edit/:id' element={<User />} />
+							<Route exact path='/user/edit/:id' element={<UserEditor />} />
 
 							<Route exact path='/guests' element={<GuestsView />} />
 							<Route exact path='/guest/:id' element={<GuestView />} />
