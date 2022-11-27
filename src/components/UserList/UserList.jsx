@@ -7,11 +7,7 @@ import {
 
 import { NewestBtn } from "../../styles/Button";
 import {
-   UserAvatar,
    NewEmployee,
-   UserStatus,
-   CheckText,
-   JobDesc,
    UserSelector,
    UsersSearchbarContainer,
 } from "./UserListStyled";
@@ -21,15 +17,7 @@ import {
    THeaderContainer,
    HeaderTitle,
    TBody,
-   ListCard,
-   NameImg,
-   Names,
-   Id,
-   Title,
-   Td,
-   TdTextWeight,
 } from "../../styles/Table";
-import users from "../../db/users.json";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
