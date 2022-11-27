@@ -22,6 +22,7 @@ import {
    selectStatus,
 } from "../../features/rooms/roomsSlice";
 import RoomCard from "./RoomCard";
+import Spiner from "../Spiner";
 
 const RoomList = () => {
    //states for pagitation
@@ -140,7 +141,7 @@ const RoomList = () => {
             {/* CASE LOADING -- pending change to Spinner or Squeleton*/}
             {appState === "loading" && (
                <TBody>
-                  <h1>Loading...</h1>
+                  <Spiner color={'success'}/>
                </TBody>
             )}
 

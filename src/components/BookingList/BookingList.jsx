@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { MonthButton, BookingStatus } from "./BookingListStyled";
+import { MonthButton } from "./BookingListStyled";
 import {
    ListButtonsContainer,
    Selectors,
@@ -14,7 +14,6 @@ import {
    HeaderTitle,
    TBody,
 } from "../../styles/Table";
-import bookings from "../../db/bookings.json";
 import Pagination from "../Pagination";
 import MainContainer from "../MainContainer";
 import { useDispatch, useSelector } from "react-redux";
@@ -24,6 +23,7 @@ import {
    getBookings,
 } from "../../features/bookings/bookingsSlice";
 import BookingCard from "./BookingCard";
+import Spiner from '../Spiner';
 
 const Booking = () => {
    const [currentPage, setCurrentPage] = useState(1);
@@ -166,7 +166,7 @@ const Booking = () => {
             {/* CASE LOADING -- pending change to Spinner or Squeleton*/}
             {appState === "loading" && (
                <TBody>
-                  <h1>Loading...</h1>
+                  <Spiner/>
                </TBody>
             )}
 
