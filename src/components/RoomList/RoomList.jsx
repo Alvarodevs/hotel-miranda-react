@@ -98,7 +98,10 @@ const RoomList = () => {
       <MainContainer>
          <ListButtonsContainer>
             <Selectors>
-               <Selector onClick={(e) => setAllRooms()}>All Rooms</Selector>
+               <Selector onClick={(e) => {
+						setAllRooms();
+						setCurrentPage(1);
+						}}>All Rooms</Selector>
                <Selector
                   onClick={(e) => {
                      setRoomIsAvailable(true);

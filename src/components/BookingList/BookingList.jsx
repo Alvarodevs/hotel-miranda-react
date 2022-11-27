@@ -23,7 +23,7 @@ import {
    getBookings,
 } from "../../features/bookings/bookingsSlice";
 import BookingCard from "./BookingCard";
-import Spiner from '../Spiner';
+import Spiner from "../Spiner";
 
 const Booking = () => {
    const [currentPage, setCurrentPage] = useState(1);
@@ -97,7 +97,7 @@ const Booking = () => {
       }
    };
 
-	function bookingsSwitch() {
+   function bookingsSwitch() {
       if (lengthFromRedux) {
          return currentBookingsRedux;
       } else return currentBookingsFiltered;
@@ -107,7 +107,14 @@ const Booking = () => {
       <MainContainer>
          <ListButtonsContainer>
             <Selectors>
-               <Selector onClick={() => setAllBookings()}>All Guests</Selector>
+               <Selector
+                  onClick={() => {
+                     setAllBookings();
+                     setCurrentPage(1);
+                  }}
+               >
+                  All Guests
+               </Selector>
                <Selector
                   onClick={() => {
                      setBookingStatus("Pending");
@@ -166,7 +173,7 @@ const Booking = () => {
             {/* CASE LOADING -- pending change to Spinner or Squeleton*/}
             {appState === "loading" && (
                <TBody>
-                  <Spiner/>
+                  <Spiner />
                </TBody>
             )}
 
