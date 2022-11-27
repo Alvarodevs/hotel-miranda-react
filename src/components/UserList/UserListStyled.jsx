@@ -19,9 +19,10 @@ export const UserAvatar = styled(Avatar)`
 `;
 
 export const NewEmployee = styled(Button)`
-    color: var(--color-white);
-    background-color: var(--color-greenDark);
-    padding: 14px 45px;
+   color: var(--color-white);
+   background-color: var(--color-greenDark);
+   padding: 14px 45px;
+   cursor: pointer;
 `; 
 
 export const JobDesc = styled(Td)`

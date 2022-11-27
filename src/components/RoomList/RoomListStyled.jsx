@@ -6,6 +6,7 @@ export const NewRoomBtn = styled(Button)`
     color: var(--color-white);
     background-color: var(--color-greenDark);
     padding: 14px 45px;
+	 cursor: pointer;
 `; 
 
 export const RoomNewestBtn = styled(NewestBtn)`

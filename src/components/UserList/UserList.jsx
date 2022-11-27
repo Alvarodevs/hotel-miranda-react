@@ -28,6 +28,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectStatus, selectUsers, getUsers } from "../../features/users/usersSlice";
 import Spiner from "../Spiner";
 import UserCard from "./UserCard";
+import { Link } from "react-router-dom";
 
 const UserList = () => {
    const [currentPage, setCurrentPage] = useState(1);
@@ -99,10 +100,12 @@ const UserList = () => {
       <MainContainer>
          <ListButtonsContainer>
             <Selectors>
-               <UserSelector onClick={() => {
-						setAllUsers();
-						setCurrentPage(1);
-					}}>
+               <UserSelector
+                  onClick={() => {
+                     setAllUsers();
+                     setCurrentPage(1);
+                  }}
+               >
                   All Employee
                </UserSelector>
                <UserSelector
@@ -127,9 +130,11 @@ const UserList = () => {
                </UsersSearchbarContainer>
             </Selectors>
             <NewBtnsContainer>
-               <NewEmployee>
-                  + New Employee <FiChevronDown />
-               </NewEmployee>
+               <Link to={'/add_user'}>
+                  <NewEmployee>
+                     + New Employee
+                  </NewEmployee>
+               </Link>
                <NewestBtn>
                   Newest <FiChevronDown />
                </NewestBtn>

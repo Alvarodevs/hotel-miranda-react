@@ -6,7 +6,6 @@ import ContactView from "./ContactView";
 import ConciergeView from "./ConciergeView";
 import NewUser from "./NewUser";
 import NewRoom from "./NewRoom";
-import NewBooking from "./NewBooking";
 
 export { Dashboard };
 export { NotFound };
@@ -16,4 +15,3 @@ export { ConciergeView };
 export { ContactView };
 export { NewUser };
 export { NewRoom };
-export { NewBooking };

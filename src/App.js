@@ -1,6 +1,6 @@
 import './styles/global/App.css';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { ContactView, Dashboard, NotFound, GuestView, GuestsView, ConciergeView, NewBooking, NewRoom, NewUser } from './views';
+import { ContactView, Dashboard, NotFound, GuestView, GuestsView, ConciergeView,  NewRoom, NewUser } from './views';
 import RoomList from './components/RoomList';
 import BookingList from './components/BookingList';
 import Login from './components/Login';
@@ -34,7 +34,6 @@ function App() {
 							<Route exact path='/booking/:id' element={<Booking />} />
 							<Route exact path='/booking' element={<Navigate to="/bookings" replace />} />
 							<Route exact path='/bookings/:id' element={<Navigate to="/bookings" replace />} />
-							<Route exact path='/add_booking' element={<NewBooking />} />
 							<Route exact path='/booking/edit/:id' element={<Booking />} />
 
 							<Route exact path='/rooms' element={<RoomList />} />

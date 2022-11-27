@@ -26,36 +26,39 @@ import LoginContext from "../../store/LoginContext";
 import { logout } from "../../store/actions";
 
 const HeaderDashboard = () => {
-   const [title, setTitle] = useState("");
    const [state, dispatch] = useContext(LoginContext);
 	const navigate = useNavigate()
    const { id } = useParams();
    const { pathname } = useLocation();
    const location = useLocation();
 
-   useEffect(() => {
-      if (pathname === "/dashboard") {
-         setTitle("Dashboard");
+	const setTitle = () => {
+		if (pathname === "/dashboard") {
+         return ("Dashboard");
       } else if (pathname === "/rooms") {
-         setTitle("Rooms list");
+         return ("Rooms list");
       } else if (id && pathname.includes("room")) {
-         setTitle(`Room ${id}`);
+         return (`Room ${id}`);
+      } else if (pathname === "/add_room") {
+         return (`Room creator`);
       } else if (pathname === "/bookings") {
-         setTitle("Bookings list");
+         return ("Bookings list");
       } else if (id && pathname.includes("booking")) {
-         setTitle(`Booking ${id}`);
+         return `Booking ${id}`;
       } else if (pathname === "/guests") {
-         setTitle("Guests list");
+         return "Guests list";
       } else if (id && pathname.includes("guest")) {
-         setTitle(`Guest ${id}`);
+         return `Guest ${id}`;
       } else if (pathname === "/users") {
-         setTitle("Users list");
+         return "Users list";
       } else if (id && pathname.includes("user")) {
-         setTitle(`User ${id}`);
+         return `User ${id}`;
+      } else if (pathname === "/add_user") {
+         return `User creator`;
       } else if (pathname === "/concierge") {
-         setTitle("Concierge");
+         return "Concierge";
       }
-   }, [location]);
+	}
 
 	const handleLogout = (state) => {
 		dispatch(logout(!state.isAuth));
@@ -71,7 +74,7 @@ const HeaderDashboard = () => {
             <Logo>
                <FontAwesomeIcon icon={faBars} />
             </Logo>
-            <Site>{title}</Site>
+            <Site>{setTitle()}</Site>
          </TitleContainer>
          <SearchbarContainer>
             <Searchbar />

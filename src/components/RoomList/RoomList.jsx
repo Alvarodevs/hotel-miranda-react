@@ -23,6 +23,7 @@ import {
 } from "../../features/rooms/roomsSlice";
 import RoomCard from "./RoomCard";
 import Spiner from "../Spiner";
+import { Link } from "react-router-dom";
 
 const RoomList = () => {
    //states for pagitation
@@ -98,10 +99,14 @@ const RoomList = () => {
       <MainContainer>
          <ListButtonsContainer>
             <Selectors>
-               <Selector onClick={(e) => {
-						setAllRooms();
-						setCurrentPage(1);
-						}}>All Rooms</Selector>
+               <Selector
+                  onClick={(e) => {
+                     setAllRooms();
+                     setCurrentPage(1);
+                  }}
+               >
+                  All Rooms
+               </Selector>
                <Selector
                   onClick={(e) => {
                      setRoomIsAvailable(true);
@@ -120,7 +125,9 @@ const RoomList = () => {
                </Selector>
             </Selectors>
             <NewBtnsContainer>
-               <NewRoomBtn>+ New Room</NewRoomBtn>
+               <Link to={'/add_room'}>
+                  <NewRoomBtn>+ New Room</NewRoomBtn>
+               </Link>
                <RoomNewestBtn>
                   Newest <FiChevronDown />
                </RoomNewestBtn>
@@ -144,7 +151,7 @@ const RoomList = () => {
             {/* CASE LOADING -- pending change to Spinner or Squeleton*/}
             {appState === "loading" && (
                <TBody>
-                  <Spiner color={'success'}/>
+                  <Spiner color={"success"} />
                </TBody>
             )}
 
