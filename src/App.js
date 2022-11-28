@@ -13,7 +13,6 @@ import INIT_STATE from './store/initialState';
 import loginReducer from './store/loginReducer';
 import LoginContext from './store/LoginContext';
 import PrivateRoutes from './utils/ProtectedRoutes';
-import RoomEditor from './components/Room/RoomEditor';
 import UserEditor from './components/User/UserEditor';
 
 function App() {
@@ -43,7 +42,7 @@ function App() {
 							<Route exact path='/room' element={<Navigate to="/rooms" replace />} />
 							<Route exact path='/rooms/:id' element={<Navigate to="/rooms" replace />} />
 							<Route exact path='/add_room' element={<NewRoom />} />
-							<Route exact path='/room/edit/:id' element={<RoomEditor />} />
+							<Route exact path='/room/edit/:id' element={<NewRoom />} />
 
 							<Route exact path='/users' element={<UserList />} />
 							<Route exact path='/user/:id' element={<User />} />

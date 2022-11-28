@@ -86,7 +86,7 @@ export const roomsSlice = createSlice({
 	}
 })
 
-export const { filterByStatus, resetState } = roomsSlice.actions;
+//export const { filterByStatus, resetState } = roomsSlice.actions;
 
 export const selectRooms = (state) => state.rooms.items;
 export const selectRoom = (state) => state.rooms.single;
