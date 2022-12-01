@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
 
+
 const Chart = () => {
    //Data for chart to display
    const [days] = useState([
@@ -38,7 +39,7 @@ const Chart = () => {
       //setting margins from parent component w. props
       const margin = {
          top: 30,
-         right: 20,
+         right: 5,
          bottom: 50,
          left: 40,
       };
@@ -64,36 +65,64 @@ const Chart = () => {
          .scaleBand()
          .domain(d3.range(days.length))
          .range([margin.left, chartWidth - margin.right])
-			.padding(0.3)
-	
-      svg.append("g")
-		.attr("transform", `translate(0, ${chartHeight})`)
-      .call(d3.axisBottom(xScale).tickFormat(i => days[i]).tickSizeOuter(0))
+         .padding(0.3);
 
-		const maxValueHeight = d3.max(data.sales, d => d.value)
-		const yScale = d3
+      svg.append("g")
+         .attr("transform", `translate(0, ${chartHeight})`)
+         .call(
+            d3
+               .axisBottom(xScale)
+               .tickFormat((i) => days[i])
+               .tickSizeOuter(0)
+         );
+
+      const maxValueHeightSales = d3.max(data.sales, (d) => d.value);
+      const yScaleSales = d3
          .scaleLinear()
-         .domain([0, maxValueHeight])
+         .domain([0, maxValueHeightSales])
          .range([chartHeight, margin.top]);
 
-		svg.append('g')
-			.attr('transform', `translate(${margin.left}, 0)`)
-			.call(d3.axisLeft(yScale))
+      const yScaleOccupancy = d3
+         .scaleLinear()
+         .domain([0, 100])
+         .range([chartHeight, margin.top]);
 
-		svg.append("g")
+      //creation of y (sales data) scale bar
+      svg.append("g")
+         .attr("transform", `translate(${margin.left}, 0)`)
+         .call(d3.axisLeft(yScaleSales));
+
+      //creation of y (occupancy data) scale bar
+      svg.append("g")
+         .attr("transform", `translate(${chartWidth - margin.right})`)
+         .call(d3.axisRight(yScaleOccupancy));
+
+      //rectangles of sales data
+      svg.append("g")
          .attr("fill", "var(--color-greenDark)")
          .selectAll("rect")
          .data(data.sales)
          .join("rect")
-				.attr("x", (d, i) => xScale(i))
-				.attr("y", (d) => yScale(d.value))
-				.attr("height", (d) => yScale(0) - yScale(d.value))
-				.attr("width", xScale.bandwidth())
+         .attr("x", (d, i) => xScale(i))
+         .attr("y", (d) => yScaleSales(d.value))
+         .attr("height", (d) => yScaleSales(0) - yScaleSales(d.value))
+         .attr("width", xScale.bandwidth());
+
+      svg.append("g")
+         .attr("fill", "var(--color-red)")
+         .selectAll("rect")
+         .data(data.occupation)
+         .join("rect")
+         .attr("x", (d, i) => xScale(i))
+         .attr("y", (d) => yScaleOccupancy(d.value))
+         .attr("height", (d) => yScaleOccupancy(0) - yScaleOccupancy(d.value))
+         .attr("width", xScale.bandwidth());
    }, []);
 
    return (
       <div>
-         <svg ref={ref} />
+         <svg ref={ref}>
+         </svg>
       </div>
    );
 };

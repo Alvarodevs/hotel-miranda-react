@@ -8,6 +8,8 @@ import { BiCalendarCheck } from "react-icons/bi";
 import { BsBoxArrowInRight, BsBoxArrowInLeft } from "react-icons/bs";
 import MainContainer from "../components/MainContainer";
 import Chart from "../components/Chart";
+import Calendar from "../components/Calendar";
+import { InfoContainer, InfoTitle, Square } from "../styles/views/DashboardStyled";
 
 const Dashboard = () => {
    return (
@@ -36,10 +38,22 @@ const Dashboard = () => {
             ></KPI>
          </KPIContainer>
          <ChartCalendarContainer>
-            <CalendarContainer />
-            <ChartContainer>
-					<Chart/>
-				</ChartContainer>
+            <CalendarContainer>
+               <Calendar />
+            </CalendarContainer>
+            <ChartContainer id="d3Parent">
+               <InfoContainer>
+                  <InfoTitle>
+                     <Square color="var(--color-red)" />
+                     Sales
+                  </InfoTitle>
+                  <InfoTitle>
+                     <Square color="var(--color-greenGrey)" />
+                     Ocuppancy
+                  </InfoTitle>
+               </InfoContainer>
+               <Chart />
+            </ChartContainer>
          </ChartCalendarContainer>
       </MainContainer>
    );
