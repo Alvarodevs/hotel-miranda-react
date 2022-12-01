@@ -9,11 +9,11 @@ export const ChartCalendarContainer = styled.div`
    display: flex;
    justify-content: space-between;
    padding: 20px;
+	gap:15px;
 `;
 
 export const CalendarContainer = styled.div`
-   border: 1px solid blue;
-   height: 500px;
+   height: 400px;
    width: 600px;
    border-radius: 20px;
 `;
