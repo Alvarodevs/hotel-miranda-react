@@ -1,2 +1,2 @@
-import Chart from './Chart';
-export default Chart;
+import Calendar from './Calendar';
+export default Calendar;
