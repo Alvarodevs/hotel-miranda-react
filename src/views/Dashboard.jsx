@@ -1,5 +1,5 @@
 import React from "react";
-import { BackgroundDashboard } from "../styles/views/DashboardStyled";
+import { BackgroundDashboard, ChartCalendarContainer, ChartContainer, CalendarContainer } from "../styles/views/DashboardStyled";
 import Theme from "../styles/Theme";
 import KPI from "../components/KPI";
 import { KPIContainer } from "../styles/KPI";
@@ -7,6 +7,7 @@ import { MdOutlineKingBed } from "react-icons/md";
 import { BiCalendarCheck } from "react-icons/bi";
 import { BsBoxArrowInRight, BsBoxArrowInLeft } from "react-icons/bs";
 import MainContainer from "../components/MainContainer";
+import Chart from "../components/Chart";
 
 const Dashboard = () => {
    return (
@@ -34,6 +35,12 @@ const Dashboard = () => {
                text={"Check Out"}
             ></KPI>
          </KPIContainer>
+         <ChartCalendarContainer>
+            <CalendarContainer />
+            <ChartContainer>
+					<Chart/>
+				</ChartContainer>
+         </ChartCalendarContainer>
       </MainContainer>
    );
 };
