@@ -1,19 +1,89 @@
-import React from 'react';
-import {useParams} from 'react-router';
-import MainContainer from '../MainContainer';
-import {BookingDetailsContainer, ImageDetailsContainer} from './BookingStyled';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectBooking, getBooking } from "../../features/bookings/bookingsSlice";
+import { useParams } from "react-router";
+import MainContainer from "../MainContainer";
+import {DetailsContainer, 
+   BookingDetailsContainer,
+   ImageDetailsContainer,
+	NameIdContainer,
+NameAndDots,
+Name, Id, Dates, Date, RoomType, Room, Price, Night, Description, Amenities, AmenitieCard
+} from "./BookingStyled";
+import { BiDotsVerticalRounded } from "@react-icons/all-files/bi/BiDotsVerticalRounded";
+
 
 const Booking = () => {
-    const {id} = useParams();
+   const { id } = useParams();
+	const dispatch = useDispatch();
+	const booking = useSelector(selectBooking);
+	
+	useEffect(() => {
+      dispatch(getBooking(id));
+   }, [dispatch, id]);
 
-    return (
-       <MainContainer>
-          <BookingDetailsContainer>
-				
-			 </BookingDetailsContainer>
-          <ImageDetailsContainer></ImageDetailsContainer>
-       </MainContainer>
-    );
-}
- 
+	const dateCheckIn = async (data) => {
+		const date = await data.slice(0,10);
+		const time = await data.slice(10, -1);
+		return date + " | " + time 
+	}
+
+	return (
+      <MainContainer>
+         <DetailsContainer>
+            <BookingDetailsContainer>
+               <NameIdContainer>
+                  <NameAndDots>
+                     <Name>{booking?.guest_name}</Name>
+                     <BiDotsVerticalRounded size={25} />
+                  </NameAndDots>
+                  <Id>ID {booking?.id}</Id>
+               </NameIdContainer>
+               <Dates>
+                  <Date>
+                     Check In
+                     <br />
+                     <span>
+                        {booking.check_in.slice(0, 10) +
+                           " | " +
+                           booking.check_in.slice(10)}
+                     </span>
+                  </Date>
+                  <Date>
+                     Check Out
+                     <br />
+                     <span>{booking.check_out.slice(0, 10)}</span>
+                  </Date>
+               </Dates>
+               <RoomType>
+                  <Room>
+                     Room Info
+                     <br />
+                     <span>{booking.room_type}</span>
+                  </Room>
+                  <Price>
+                     Price
+                     <br />
+                     <span>{booking.price}</span>
+                     <Night> /night</Night>
+                  </Price>
+               </RoomType>
+               <Description>{booking.room_desc}</Description>
+               <Amenities>
+                  {/* Amenities
+                  <br /> */}
+                  {booking.amenities.split("")}
+                  {/* {booking.amenities.map(item => (
+							item
+							// <AmenitieCard>{item}</AmenitieCard>
+							))  
+						} */}
+               </Amenities>
+            </BookingDetailsContainer>
+            <ImageDetailsContainer></ImageDetailsContainer>
+         </DetailsContainer>
+      </MainContainer>
+   );
+};
+
 export default Booking;

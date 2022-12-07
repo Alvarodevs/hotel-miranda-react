@@ -20,7 +20,7 @@ import { Link } from "react-router-dom";
 const BookingCard = ({ booking, handleStatus }) => {
    return (
       <ListCard key={booking.id}>
-         <Link to={`/booking/${booking.id}`}>
+         <Link to={`/booking/${booking.id}`} >
             <Td>
                <NameImg>
                   <Avatar src={avatar} alt="Image" />

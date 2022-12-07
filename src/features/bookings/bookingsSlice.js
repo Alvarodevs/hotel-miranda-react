@@ -8,6 +8,14 @@ export const getBookings = createAsyncThunk('fetch/bookings',
 	}
 );
 
+export const getBooking = createAsyncThunk("booking/fetchBooking",
+	async (id) => {
+		const response = await fetchData('bookings')
+		return response.filter(booking => booking.id === id)
+		//return await id
+	}
+);
+
 export const addBooking = createAsyncThunk("booking/addBooking",
 	async (newBooking) => {
 		return await newBooking;
@@ -21,12 +29,6 @@ export const deleteBooking = createAsyncThunk("booking/deleteBooking",
 );
 
 export const editBooking = createAsyncThunk("booking/editBooking",
-	async (id) => {
-		return await id;
-	}
-);
-
-export const getBooking = createAsyncThunk("booking/fetchBooking",
 	async (id) => {
 		return await id;
 	}
@@ -58,6 +60,13 @@ export const bookingsSlice = createSlice({
 				state.status = 'ko';
 			})
 
+			.addCase(getBooking.fulfilled, (state, action) => {
+				//console.log('ACTION', action.payload);
+				//state.single = state.items.filter(item => item.id === action.payload);
+				state.single = action.payload[0];
+				state.status = 'ok';
+			})
+
 			.addCase(addBooking.fulfilled, (state, action) => {
 				state.items = [...state.items, action.payload];
 				state.status = 'ok';
@@ -76,13 +85,6 @@ export const bookingsSlice = createSlice({
 					return booking.id === action.payload.id ? action.payload : booking;
 				});
 			})
-
-			.addCase(getBooking.fulfilled, (state, action) => {
-				state.single = state.items.find((booking) => booking.id === action.payload);
-				state.status = 'ok';
-			})
-
-
 	}
 })
 
