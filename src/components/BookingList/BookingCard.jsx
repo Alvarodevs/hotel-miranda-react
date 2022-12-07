@@ -51,12 +51,10 @@ const BookingCard = ({ booking, handleStatus }) => {
             </Link>
          </TdTextWeight>
          <Td>
-            <Link to={`/booking/${booking.id}`}>
                <PopUpResquests
                   status={booking.status}
                   data={booking.request}
                ></PopUpResquests>
-            </Link>
          </Td>
          <TdTextWeight>
             <Link to={`/booking/${booking.id}`}>{booking.room_type}</Link>

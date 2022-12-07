@@ -10,6 +10,7 @@ import {
    NewEmployee,
    UserSelector,
    UsersSearchbarContainer,
+   Searchbar,
 } from "./UserListStyled";
 import { FiChevronDown } from "@react-icons/all-files/fi/FiChevronDown";
 import {
@@ -21,7 +22,6 @@ import {
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import { Searchbar } from "../HeaderDashboard/HeaderDashbStyled";
 import Pagination from "../Pagination";
 import MainContainer from "../MainContainer";
 import { useDispatch, useSelector } from "react-redux";

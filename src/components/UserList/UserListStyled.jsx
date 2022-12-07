@@ -3,14 +3,37 @@ import { Button } from "../../styles/Button";
 import {Avatar} from "../../styles/Avatar";
 import { Td } from "../../styles/Table";
 import { Selector } from "../../styles/ListButtons";
-import {SearchbarContainer} from "../HeaderDashboard/HeaderDashbStyled"
 
 export const UserSelector = styled(Selector)`
 `;
 
-export const UsersSearchbarContainer = styled(SearchbarContainer)`
-	margin-left: 20px;
-	max-width: 12rem;
+export const UsersSearchbarContainer = styled.div`
+   width: 18rem;
+   height: 57px;
+   display: flex;
+   align-items: center;
+   position: relative;
+   padding-left: 5%;
+
+   svg {
+      font-size: 20px;
+      position: absolute;
+      right: 20px;
+      color: var(--color-grey6E);
+   }
+`;
+
+
+export const Searchbar = styled.input`
+   background-color: var(--color-whiteFC);
+   width: 100%;
+   height: 100%;
+   border-radius: 12px;
+   border: none;
+   display: inline-block;
+   padding: 0 20px;
+   font-family: var(--font-main);
+   font-size: 16px;
 `;
 
 export const UserAvatar = styled(Avatar)`

@@ -43,40 +43,12 @@ export const Site = styled.h3`
    padding-left: 20px;
 `;
 
-export const SearchbarContainer = styled.div`
-   width: 350px;
-   height: 57px;
-   display: flex;
-   align-items: center;
-   position: relative;
-   margin-left: 10%;
-
-   svg {
-      font-size: 20px;
-      position: absolute;
-      right: 20px;
-      color: var(--color-grey6E);
-   }
-`;
-
-export const Searchbar = styled.input`
-   background-color: var(--color-whiteFC);
-   width: 100%;
-   height: 100%;
-   border-radius: 12px;
-   border: none;
-   display: inline-block;
-   padding: 0 20px;
-   font-family: var(--font-main);
-   font-size: 16px;
-`;
-
 export const IconsContainer = styled.div`
    display: flex;
    padding-left: 1rem;
    svg {
       font-size: 1.4rem;
-      margin: auto 15px;
+      margin: auto 0px auto 30px;
       color: var(--color-greenDark);
       vertical-align: middle;
    }
