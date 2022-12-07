@@ -1,13 +1,18 @@
 import React from 'react';
 import {useParams} from 'react-router';
+import MainContainer from '../MainContainer';
+import {BookingDetailsContainer, ImageDetailsContainer} from './BookingStyled';
 
 const Booking = () => {
     const {id} = useParams();
 
     return (
-        <div>
-            <h1>{id ? "Booking id: " + id : "Bookings"}</h1>
-        </div>
+       <MainContainer>
+          <BookingDetailsContainer>
+				
+			 </BookingDetailsContainer>
+          <ImageDetailsContainer></ImageDetailsContainer>
+       </MainContainer>
     );
 }
  

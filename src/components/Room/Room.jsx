@@ -1,13 +1,16 @@
 import React from 'react';
 import {useParams} from 'react-router';
+import MainContainer from '../MainContainer';
+import {RoomDetailsContainer, ImageDetailsContainer} from './RoomStyled';
 
 const Room = () => {
     const {id} = useParams();
 
     return (
-        <div>
-            <h1>{id ? "Room id: " + id : "Rooms"}</h1>
-        </div>
+       <MainContainer>
+          <RoomDetailsContainer></RoomDetailsContainer>
+          <ImageDetailsContainer></ImageDetailsContainer>
+       </MainContainer>
     );
 }
  

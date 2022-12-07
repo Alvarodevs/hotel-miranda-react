@@ -28,6 +28,9 @@ export const ListCard = styled.tr`
     :hover {
         box-shadow: 0px 4px 30px #0000001a;
     }
+	 a{
+		color:inherit;
+	 }
 `;
 
 //FIRST COLUMN DATA

@@ -14,6 +14,7 @@ export const MonthButton = styled(Button)`
       margin-left: 1rem;
    }
    cursor: pointer;
+	
 `;
 
 export const RequestButton = styled(Button)`

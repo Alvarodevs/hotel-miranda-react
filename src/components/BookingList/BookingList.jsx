@@ -24,6 +24,7 @@ import {
 } from "../../features/bookings/bookingsSlice";
 import BookingCard from "./BookingCard";
 import Spiner from "../Spiner";
+import { Link } from "react-router-dom";
 
 const Booking = () => {
    const [currentPage, setCurrentPage] = useState(1);
@@ -180,7 +181,7 @@ const Booking = () => {
             {/* CASE RENDERING DATA */}
             {appState === "ok" && (
                <TBody>
-                  {bookingsSwitch().map((booking) => (
+                  {bookingsSwitch().map((booking) => (	
                      <BookingCard
                         key={booking.id}
                         booking={booking}
