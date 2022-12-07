@@ -8,19 +8,18 @@ export const ErrorContainer = styled.div`
 `;
 
 export const HomeIcon = styled.div`
-    background-color: var(--color-white);
-    font-size: 1.5rem;
-	width: max-content;
-	padding: 10px;
-	border-radius: 12px;
-	position: absolute;
-	top:3%;
-	right:10%;
+   background-color: var(--color-white);
+   font-size: 1.5rem;
+   width: max-content;
+   padding: 13px 12px 10px 12px;
+   border-radius: 12px;
+   position: absolute;
+   top: 3%;
+   right: 10%;
 `;
 
 export const ErrorImg = styled.img`
     width: 60%;
-    //height: 70%;
     margin-left: 20%;
-    margin-top: 10%;
+    margin-top: 2%;
 `;

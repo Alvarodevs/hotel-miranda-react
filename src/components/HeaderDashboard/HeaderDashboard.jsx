@@ -16,6 +16,7 @@ import {
    faBars,
    faMagnifyingGlass,
    faComment,
+	faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { AiOutlineHeart } from "@react-icons/all-files/ai/AiOutlineHeart";
 import { BsEnvelope } from "@react-icons/all-files/bs/BsEnvelope";
@@ -25,7 +26,7 @@ import { IoMdExit } from "@react-icons/all-files/io/IoMdExit";
 import LoginContext from "../../store/LoginContext";
 import { logout } from "../../store/actions";
 
-const HeaderDashboard = () => {
+const HeaderDashboard = ({setShow, show}) => {
    const [state, dispatch] = useContext(LoginContext);
 	const navigate = useNavigate()
    const { id } = useParams();
@@ -69,27 +70,27 @@ const HeaderDashboard = () => {
 	}
 
    return (
-      <HeaderContainer path={pathname}>
+      <HeaderContainer path={pathname} show={show}>
          <TitleContainer>
             <Logo>
-               <FontAwesomeIcon icon={faBars} />
+               <FontAwesomeIcon icon={show ? faBars : faArrowRight} onClick={(e) => setShow(prev => !prev)}/>
             </Logo>
             <Site>{setTitle()}</Site>
          </TitleContainer>
-         <SearchbarContainer>
+         {/* <SearchbarContainer>
             <Searchbar />
             <FontAwesomeIcon icon={faMagnifyingGlass} />
-         </SearchbarContainer>
+         </SearchbarContainer> */}
          <IconsContainer>
-            <AiOutlineHeart />
+            {/* <AiOutlineHeart /> */}
             <BsEnvelope />
             <BiBell />
             <BiCommentDetail />
 
-            <LanguageSelect>
+            {/* <LanguageSelect>
                <option value="EN">EN</option>
                <option value="ES">ES</option>
-            </LanguageSelect>
+            </LanguageSelect> */}
             <IoMdExit onClick={handleLogout} />
          </IconsContainer>
       </HeaderContainer>

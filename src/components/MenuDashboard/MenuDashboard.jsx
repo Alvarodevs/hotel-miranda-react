@@ -24,13 +24,13 @@ import avatar from '../../assets/images/Alvaro.jpg';
 import logo from "../../assets/images/logo.jpg";
 import LoginContext from "../../store/LoginContext";
 
-const MenuDashboard = () => {
+const MenuDashboard = ({show}) => {
     const { pathname } = useLocation();
 	 const [state] = useContext(LoginContext)
 
     return (
         <div>
-            <MainContainer path={pathname}>
+            <MainContainer className="MENUDASHB" path={pathname} show={show}>
                 <LogoContainer>
                     <Logo src={logo} />
                 </LogoContainer>

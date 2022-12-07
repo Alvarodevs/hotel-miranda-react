@@ -4,18 +4,26 @@ import { Avatar } from "../../styles/Avatar";
 import {handleShow} from "../../utils/handleShow";
 
 export const MainContainer = styled.div`
-    width: 18%;
-    height: 100vh;
-    background-color: var(--color-white);
-    box-shadow: 13px 3px 40px var(--color-grey05);
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: ${({path}) => handleShow(path)};
-    flex-direction: column;
-	.rights{
-		margin-bottom: 5rem;
-	}
+   width: 18%;
+   height: 100vh;
+   background-color: var(--color-white);
+   box-shadow: 13px 3px 40px var(--color-grey05);
+   position: absolute;
+   top: 0;
+   left: 0;
+   display: ${({ path }) => handleShow(path)};
+   flex-direction: column;
+   ${({ show }) =>
+      !show
+         ? `
+		transform: translateX(-100%);
+		transition: 0.8s ease-in-out
+		` : `
+		transition: 0.8s ease-in-out
+		`};
+   .rights {
+      margin-bottom: 5rem;
+   }
 `;
 
 export const LogoContainer = styled.div`

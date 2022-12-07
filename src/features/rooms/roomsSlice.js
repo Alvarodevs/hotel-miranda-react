@@ -81,8 +81,6 @@ export const roomsSlice = createSlice({
 				state.single = state.items.find((room) => room.id === action.payload);
 				state.status = 'ok';
 			})
-
-
 	}
 })
 

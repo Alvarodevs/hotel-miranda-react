@@ -27,7 +27,7 @@ const Login = () => {
             ...state,
             isAuth: true,
          });
-         navigate("/");
+         navigate("/dashboard");
       } else {
          alert("Wrong email or password");
       }

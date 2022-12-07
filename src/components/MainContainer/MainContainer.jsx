@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { useLocation } from "react-router-dom";
 import Theme from "../../styles/Theme";
 import { BackgroundDashboard } from "../../styles/views/DashboardStyled";
@@ -8,14 +8,15 @@ import { Container } from "./MainContainerStyled";
 
 const MainContainer = ({ children }) => {
    const { pathname } = useLocation();
+	const [ show, setShow ] = useState(true);
 
-   return (
+	return (
       <div>
          <Theme>
             <BackgroundDashboard>
-               <MenuDashboard />
-               <HeaderDashboard />
-               <Container className="MAIN" path={pathname}>
+               <MenuDashboard show={show} />
+               <HeaderDashboard show={show} setShow={setShow} />
+               <Container className="MAIN" path={pathname} show={show}>
                   {children}
                </Container>
             </BackgroundDashboard>

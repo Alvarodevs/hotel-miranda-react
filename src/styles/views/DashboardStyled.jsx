@@ -13,13 +13,13 @@ export const ChartCalendarContainer = styled.div`
 `;
 
 export const CalendarContainer = styled.div`
-   height: 400px;
+   height: 520px;
    width: 600px;
    border-radius: 20px;
 `;
 
 export const ChartContainer = styled.div`
-   height: 500px;
+   height: 520px;
    width: 550px;
    border-radius: 20px;
 	background-color: var(--color-white);
