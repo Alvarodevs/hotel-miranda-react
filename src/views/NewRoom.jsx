@@ -3,9 +3,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import MainContainer from "../components/MainContainer";
 import { selectRooms, getRooms } from "../features/rooms/roomsSlice";
+import {Title,
+Form,
+Container,
+Label,
+Input,
+Select,
+Checkbox,
+ButtonContainer,
+SaveButton,
+ClearButton} from '../styles/views/NewRoomStyled';
 
 const NewRoom = () => {
    const [imageLoaded, setImageLoaded] = useState(null)
+	const [value, setValue] = useState("default");
    const [roomObject, setRoomObject] = useState({
       id: 0,
       images: [],
@@ -41,56 +52,88 @@ const NewRoom = () => {
 	const imageHandler = (e) => {
 		return setRoomObject({...roomObject, images: [...roomObject.images, imageLoaded]})
 	}
-   console.log(roomObject.id);
+   console.log(roomObject.images);
    return (
       <MainContainer>
-         <h1>Room Form</h1>
-         <form
-            action=""
-            style={{ display: "flex", flexDirection: "column", gap: "10px" }}
-         >
-            <label htmlFor="load-images">Select images (max. 5 images)</label>
-            <input
-               name="load-images"
-               type="file"
-               onChange={(e) => setImageLoaded(e.target.files[0])}
-            />
-            <button onClick={imageHandler}>Save image</button>
-            <select
-               onSelect={() =>
-                  setRoomObject({ ...roomObject, bed_type: "Single" })
-               }
-            >
-               <option>Select bed type</option>
-               <option value="Single">Single</option>
-               <option value="Double">Double</option>
-               <option value="Double Superior">Double Superior</option>
-               <option value="Suite">Suite</option>
-            </select>
-            <label htmlFor="roomNumber">Room number</label>
-            <input
-               name="roomNumber"
-               type="number"
-               min={100}
-               defaultValue={100}
-            />
-            <label htmlFor="description">
-               Enter room description max. 100 characters
-            </label>
-            <input name="description" type="text" maxLength={100} />
-            <label htmlFor="price">Room rate</label>
-            <input name="price" type="number" />
-            <label htmlFor="offer">Room is on offer</label>
-            <input name="offer" type="checkbox" />
-            <label htmlFor="offer-percentage">Room offer percentage</label>
-            <input name="offer-percentage" type="number" />
-            <label htmlFor="cancellation">Room cancellation policy</label>
-            <input name="cancellation" type="text" />
-            <div>
-               <button type="submit">Save</button>
-               <button type="submit">Clear</button>
-            </div>
-         </form>
+         <Title>Room Form</Title>
+         <Form action="">
+            <Container>
+               <Label htmlFor="load-images">
+                  Select images (max. 5 images) :
+               </Label>
+               <Input
+                  name="load-images"
+                  type="file"
+                  style={{ width: "32%" }}
+                  onChange={(e) => setImageLoaded(e.target.files[0])}
+               />
+               <ClearButton onClick={imageHandler}>Upload</ClearButton>
+            </Container>
+            <Container>
+               <Label>Select bed type : </Label>
+               <Select
+                  defaultValue={value}
+                  onSelect={() =>
+                     setRoomObject({ ...roomObject, bed_type: "Single" })
+                  }
+               >
+                  <option value="default" disabled hidden>
+                     {" "}
+                     Select bed type{" "}
+                  </option>
+                  <option value="Single">Single</option>
+                  <option value="Double">Double</option>
+                  <option value="Double Superior">Double Superior</option>
+                  <option value="Suite">Suite</option>
+               </Select>
+            </Container>
+            <Container>
+               <Label htmlFor="roomNumber">Room number :</Label>
+               <Input
+                  name="roomNumber"
+                  type="number"
+                  min={100}
+                  defaultValue={100}
+               />
+            </Container>
+            <Container>
+               <Label htmlFor="description">
+                  Room description (max. 100 characters) :
+               </Label>
+               <Input
+                  name="description"
+                  type="text"
+                  maxLength={100}
+                  style={{ width: "600px", textAlign: "left", paddingLeft: "10px" }}
+               />
+            </Container>
+            <Container>
+               <Label htmlFor="price">Room rate : </Label>
+               <div>
+                  € <Input name="price" type="number" />
+               </div>
+            </Container>
+            <Container>
+               <Label htmlFor="offer">Room is on offer :</Label>
+               <Checkbox name="offer" type="checkbox" />
+            </Container>
+            <Container>
+               <Label htmlFor="offer-percentage">Room offer percentage :</Label>
+               <Input name="offer-percentage" type="number" />
+            </Container>
+            <Container>
+               <Label htmlFor="cancellation">Room cancellation policy :</Label>
+               <Input
+                  name="cancellation"
+                  type="text"
+                  style={{ width: "600px", textAlign: "left" }}
+               />
+            </Container>
+            <ButtonContainer>
+               <SaveButton type="submit">Save</SaveButton>
+               <ClearButton type="submit">Clear</ClearButton>
+            </ButtonContainer>
+         </Form>
       </MainContainer>
    );
 };

@@ -22,6 +22,7 @@ import {
    AmenitiesCardsContainer, AmenitieCard,
 } from "./BookingStyled";
 import { BiDotsVerticalRounded } from "@react-icons/all-files/bi/BiDotsVerticalRounded";
+import Slider from "../Slider";
 
 
 const Booking = () => {
@@ -84,7 +85,9 @@ const Booking = () => {
                   </AmenitiesCardsContainer>
                </Amenities>
             </BookingDetailsContainer>
-            <ImageDetailsContainer></ImageDetailsContainer>
+            <ImageDetailsContainer>
+               <Slider description={booking.room_desc} />
+            </ImageDetailsContainer>
          </DetailsContainer>
       </MainContainer>
    );

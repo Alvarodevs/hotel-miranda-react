@@ -91,12 +91,14 @@ export const Description = styled.p`
 	font-size: 13px;
 	color: var(--color-black);
 	font-family: var(--font-main);
-	margin-bottom: 20px;
+	margin-bottom: 5px;
 `;
 
 export const Amenities = styled.div`
    font-family: var(--font-main);
-	width: 100%;	
+	width: 100%;
+	font-weight: 600;
+	margin-bottom: 5px;
 `;
 export const AmenitiesCardsContainer = styled.div`
    display: flex;
