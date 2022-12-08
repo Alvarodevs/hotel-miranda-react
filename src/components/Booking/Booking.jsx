@@ -3,12 +3,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectBooking, getBooking } from "../../features/bookings/bookingsSlice";
 import { useParams } from "react-router";
 import MainContainer from "../MainContainer";
-import {DetailsContainer, 
+import {
+   DetailsContainer,
    BookingDetailsContainer,
    ImageDetailsContainer,
-	NameIdContainer,
-NameAndDots,
-Name, Id, Dates, Date, RoomType, Room, Price, Night, Description, Amenities, AmenitieCard
+   NameIdContainer,
+   NameAndDots,
+   Name,
+   Id,
+   Dates,
+   Date,
+   RoomType,
+   Room,
+   Price,
+   Night,
+   Description,
+   Amenities,
+   AmenitiesCardsContainer, AmenitieCard,
 } from "./BookingStyled";
 import { BiDotsVerticalRounded } from "@react-icons/all-files/bi/BiDotsVerticalRounded";
 
@@ -22,22 +33,16 @@ const Booking = () => {
       dispatch(getBooking(id));
    }, [dispatch, id]);
 
-	const dateCheckIn = async (data) => {
-		const date = await data.slice(0,10);
-		const time = await data.slice(10, -1);
-		return date + " | " + time 
-	}
-
 	return (
       <MainContainer>
          <DetailsContainer>
             <BookingDetailsContainer>
                <NameIdContainer>
                   <NameAndDots>
-                     <Name>{booking?.guest_name}</Name>
+                     <Name>{booking.guest_name}</Name>
                      <BiDotsVerticalRounded size={25} />
                   </NameAndDots>
-                  <Id>ID {booking?.id}</Id>
+                  <Id>ID {booking.id}</Id>
                </NameIdContainer>
                <Dates>
                   <Date>
@@ -70,14 +75,13 @@ const Booking = () => {
                </RoomType>
                <Description>{booking.room_desc}</Description>
                <Amenities>
-                  {/* Amenities
-                  <br /> */}
-                  {booking.amenities.split("")}
-                  {/* {booking.amenities.map(item => (
-							item
-							// <AmenitieCard>{item}</AmenitieCard>
-							))  
-						} */}
+                  Amenities
+                  <br />
+                  <AmenitiesCardsContainer>
+                     {booking.amenities.split(",").map((item) => (
+                        <AmenitieCard>{item}</AmenitieCard>
+                     ))}
+                  </AmenitiesCardsContainer>
                </Amenities>
             </BookingDetailsContainer>
             <ImageDetailsContainer></ImageDetailsContainer>

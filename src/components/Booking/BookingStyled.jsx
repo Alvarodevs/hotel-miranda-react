@@ -46,7 +46,7 @@ export const Dates = styled.div`
 export const Date = styled.p`
    font-size: 13px;
    color: var(--color-grey6E);
-   margin: 0 130px 30px 0px;
+   margin: 0 130px 15px 0px;
    span {
       font-size: 15px;
       color: var(--color-black);
@@ -59,7 +59,7 @@ export const RoomType = styled.div`
    display: flex;
    justify-content: space-between;
    font-family: var(--font-main);
-	margin-top: 30px;
+	margin-top: 15px;
 `;
 
 export const Room = styled.p`
@@ -95,15 +95,24 @@ export const Description = styled.p`
 `;
 
 export const Amenities = styled.div`
-   display: flex;
    font-family: var(--font-main);
-	height: 20px;
+	width: 100%;	
+`;
+export const AmenitiesCardsContainer = styled.div`
+   display: flex;
+   flex-wrap: wrap;
 `;
 
 export const AmenitieCard = styled.div`
    background-color: #e8f2ef;
    font-family: var(--font-main);
-	color: white;
+   color: var(--color-greenDark);
+   margin: 5px 20px 5px 0;
+   padding: 10px 20px;
+   min-width: fit-content;
+   text-align: center;
+   font-weight: 700;
+   border-radius: 10px; ;
 `;
 export const ImageDetailsContainer = styled.div`
    width: 50%;

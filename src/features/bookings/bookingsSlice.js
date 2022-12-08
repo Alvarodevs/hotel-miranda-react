@@ -11,8 +11,8 @@ export const getBookings = createAsyncThunk('fetch/bookings',
 export const getBooking = createAsyncThunk("booking/fetchBooking",
 	async (id) => {
 		const response = await fetchData('bookings')
-		return response.filter(booking => booking.id === id)
-		//return await id
+		const result = response.filter(booking => booking.id === id)
+		return result
 	}
 );
 
@@ -36,7 +36,20 @@ export const editBooking = createAsyncThunk("booking/editBooking",
 
 const initialState = {
 	items: [],
-	single: {},
+	single: {
+		id: "7035706674",
+		photo: "http://dummyimage.com/347x337.png/dddddd/000000",
+		guest_name: "Reinaldos Derington",
+		order_date: "2021-11-10 05:10:44",
+		check_in: "2021-09-09 17:47:08",
+		check_out: "2021-08-28 07:52:20",
+		request: "Toxic effect of hydrogen cyanide, undetermined, init encntr",
+		room_type: "Single",
+		status: "Booked",
+		price: "€523,87",
+		amenities: "LED tv, bath, late-checkout, sea view, city tour",
+		room_desc: "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti. Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris. Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis."
+	},
 	status: 'idle',
 }
 

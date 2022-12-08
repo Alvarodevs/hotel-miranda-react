@@ -41,7 +41,7 @@ const NewRoom = () => {
 	const imageHandler = (e) => {
 		return setRoomObject({...roomObject, images: [...roomObject.images, imageLoaded]})
 	}
-   console.log(roomObject.images);
+   console.log(roomObject.id);
    return (
       <MainContainer>
          <h1>Room Form</h1>

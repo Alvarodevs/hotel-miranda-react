@@ -55,6 +55,6 @@ export const CalendarContainer = styled.div`
       background-color: var(--color-greenDark);
       border-radius: 20px;
       color: var(--color-white);
-      min-height: 20px;
+      min-height: 10px;
    }
 `;
