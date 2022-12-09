@@ -86,7 +86,7 @@ const Booking = () => {
                </Amenities>
             </BookingDetailsContainer>
             <ImageDetailsContainer>
-               <Slider description={booking.room_desc} />
+               <Slider description={booking.room_desc} status={booking.status}/>
             </ImageDetailsContainer>
          </DetailsContainer>
       </MainContainer>

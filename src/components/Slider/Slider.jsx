@@ -32,39 +32,43 @@ const Slider = ({description}) => {
          <SwiperSlide style={{ position: "relative" }}>
             <ImageSlider src={roomImg} alt="Room" />
             <Container>
-               <NavigationContainer>
+               {/* <NavigationContainer>
                   <BsArrowLeftSquare
                      size={30}
                      onClick={() => swiper.slidePrev()}
+							className="swiper-button-prev"
                   />
                   <BsArrowRightSquare
                      size={30}
                      onClick={() => swiper.slideNext()}
+							className="swiper-button-next"
                   />
-               </NavigationContainer>
+               </NavigationContainer> */}
                <Description>{description.slice(0, 150)}</Description>
             </Container>
          </SwiperSlide>
          <SwiperSlide>
             <ImageSlider src={roomImg} alt="Room" />
             <Container>
-               <NavigationContainer>
+               {/* <NavigationContainer>
                   <BsArrowLeftSquare
                      size={30}
                      onClick={() => swiper.slidePrev()}
+							className="swiper-button-prev"
                   />
                   <BsArrowRightSquare
                      size={30}
                      onClick={() => swiper.slideNext()}
+							className="swiper-button-next"
                   />
-               </NavigationContainer>
+               </NavigationContainer> */}
                <Description>{description.slice(0, 150)}</Description>
             </Container>
          </SwiperSlide>
          <SwiperSlide>
             <ImageSlider src={roomImg} alt="Room" />
             <Container>
-               <NavigationContainer>
+               {/* <NavigationContainer>
                   <BsArrowLeftSquare
                      size={30}
                      onClick={(e) => swiper.slidePrev()}
@@ -73,26 +77,29 @@ const Slider = ({description}) => {
                      size={30}
                      onClick={(e) => swiper.slideNext()}
                   />
-               </NavigationContainer>
+               </NavigationContainer> */}
                <Description>{description.slice(0, 150)}</Description>
             </Container>
          </SwiperSlide>
          <SwiperSlide>
             <ImageSlider src={roomImg} alt="Room" />
             <Container>
-               <NavigationContainer>
+               {/* <NavigationContainer>
                   <BsArrowLeftSquare
                      size={30}
                      onClick={() => swiper.slidePrev()}
+							className="swiper-button-prev"
                   />
                   <BsArrowRightSquare
                      size={30}
                      onClick={() => swiper.slideNext()}
+							className="swiper-button-next"
                   />
-               </NavigationContainer>
+               </NavigationContainer> */}
                <Description>{description.slice(0, 150)}</Description>
             </Container>
          </SwiperSlide>
+         
       </Swiper>
    );
 };

@@ -29,13 +29,10 @@ export const NavigationContainer = styled.div`
    }
 `;
 
-export const Arrow = styled.div`
- width: 50px;
- color: white;
-`;
 export const Description = styled.p`
 	padding: 5px 15px;
 	font-family: var(--font-main);
 	color: var(--color-white);
 	text-align: center;
 `;
+
