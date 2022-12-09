@@ -8,12 +8,11 @@ import {
    ImageSlider,
    Container,
    Description,
-   NavigationContainer,
-   Arrow,
+   StatusFlag
 } from "./SliderStyled";
 import { BsArrowLeftSquare, BsArrowRightSquare } from "react-icons/bs";
 
-const Slider = ({description}) => {
+const Slider = ({description, status}) => {
 	const swiper = useSwiper();
 
    return (
@@ -30,76 +29,33 @@ const Slider = ({description}) => {
          loop
       >
          <SwiperSlide style={{ position: "relative" }}>
+            <StatusFlag status={status}>{status}</StatusFlag>
             <ImageSlider src={roomImg} alt="Room" />
             <Container>
-               {/* <NavigationContainer>
-                  <BsArrowLeftSquare
-                     size={30}
-                     onClick={() => swiper.slidePrev()}
-							className="swiper-button-prev"
-                  />
-                  <BsArrowRightSquare
-                     size={30}
-                     onClick={() => swiper.slideNext()}
-							className="swiper-button-next"
-                  />
-               </NavigationContainer> */}
                <Description>{description.slice(0, 150)}</Description>
             </Container>
          </SwiperSlide>
          <SwiperSlide>
+            <StatusFlag status={status}>{status}</StatusFlag>
             <ImageSlider src={roomImg} alt="Room" />
             <Container>
-               {/* <NavigationContainer>
-                  <BsArrowLeftSquare
-                     size={30}
-                     onClick={() => swiper.slidePrev()}
-							className="swiper-button-prev"
-                  />
-                  <BsArrowRightSquare
-                     size={30}
-                     onClick={() => swiper.slideNext()}
-							className="swiper-button-next"
-                  />
-               </NavigationContainer> */}
                <Description>{description.slice(0, 150)}</Description>
             </Container>
          </SwiperSlide>
          <SwiperSlide>
+            <StatusFlag status={status}>{status}</StatusFlag>
             <ImageSlider src={roomImg} alt="Room" />
             <Container>
-               {/* <NavigationContainer>
-                  <BsArrowLeftSquare
-                     size={30}
-                     onClick={(e) => swiper.slidePrev()}
-                  />
-                  <BsArrowRightSquare
-                     size={30}
-                     onClick={(e) => swiper.slideNext()}
-                  />
-               </NavigationContainer> */}
                <Description>{description.slice(0, 150)}</Description>
             </Container>
          </SwiperSlide>
          <SwiperSlide>
+            <StatusFlag status={status}>{status}</StatusFlag>
             <ImageSlider src={roomImg} alt="Room" />
             <Container>
-               {/* <NavigationContainer>
-                  <BsArrowLeftSquare
-                     size={30}
-                     onClick={() => swiper.slidePrev()}
-							className="swiper-button-prev"
-                  />
-                  <BsArrowRightSquare
-                     size={30}
-                     onClick={() => swiper.slideNext()}
-							className="swiper-button-next"
-                  />
-               </NavigationContainer> */}
                <Description>{description.slice(0, 150)}</Description>
             </Container>
          </SwiperSlide>
-         
       </Swiper>
    );
 };
