@@ -46,7 +46,7 @@ const Booking = () => {
                   <Id>ID {booking.id}</Id>
                </NameIdContainer>
                <Dates>
-                  <Date style={{paddingRight: "30px"}}>
+                  <Date style={{ paddingRight: "30px" }}>
                      Check In
                      <br />
                      <span>
@@ -86,7 +86,10 @@ const Booking = () => {
                </Amenities>
             </BookingDetailsContainer>
             <ImageDetailsContainer>
-               <Slider description={booking.room_desc} status={booking.status}/>
+               <Slider
+                  description={booking.room_desc}
+                  status={booking.status}
+               />
             </ImageDetailsContainer>
          </DetailsContainer>
       </MainContainer>

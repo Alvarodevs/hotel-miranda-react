@@ -120,7 +120,46 @@ export const AmenitieCard = styled.div`
 export const ImageDetailsContainer = styled.div`
    width: 50%;
    background-color: grey;
-   //height: 600px;
    display: inline-block;
    border-radius: 0 3% 3% 0;
+
+	//Styles for navigation in Slider
+   .swiper-button-prev {
+      position: absolute;
+      bottom: 6rem;
+      width: 40px;
+      padding: 10px;
+      margin: 10px 20px;
+      border: 1px solid var(--color-black);
+      z-index: 1;
+      fill: #135846;
+      background: rgba(110, 110, 110, 0.5);
+      filter: invert(1);
+      content: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgdmlld0JveD0iMCAwIDQ5MiA0OTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQ5MiA0OTI7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxnPg0KCQk8cGF0aCBkPSJNNDY0LjM0NCwyMDcuNDE4bDAuNzY4LDAuMTY4SDEzNS44ODhsMTAzLjQ5Ni0xMDMuNzI0YzUuMDY4LTUuMDY0LDcuODQ4LTExLjkyNCw3Ljg0OC0xOS4xMjQNCgkJCWMwLTcuMi0yLjc4LTE0LjAxMi03Ljg0OC0xOS4wODhMMjIzLjI4LDQ5LjUzOGMtNS4wNjQtNS4wNjQtMTEuODEyLTcuODY0LTE5LjAwOC03Ljg2NGMtNy4yLDAtMTMuOTUyLDIuNzgtMTkuMDE2LDcuODQ0DQoJCQlMNy44NDQsMjI2LjkxNEMyLjc2LDIzMS45OTgtMC4wMiwyMzguNzcsMCwyNDUuOTc0Yy0wLjAyLDcuMjQ0LDIuNzYsMTQuMDIsNy44NDQsMTkuMDk2bDE3Ny40MTIsMTc3LjQxMg0KCQkJYzUuMDY0LDUuMDYsMTEuODEyLDcuODQ0LDE5LjAxNiw3Ljg0NGM3LjE5NiwwLDEzLjk0NC0yLjc4OCwxOS4wMDgtNy44NDRsMTYuMTA0LTE2LjExMmM1LjA2OC01LjA1Niw3Ljg0OC0xMS44MDgsNy44NDgtMTkuMDA4DQoJCQljMC03LjE5Ni0yLjc4LTEzLjU5Mi03Ljg0OC0xOC42NTJMMTM0LjcyLDI4NC40MDZoMzI5Ljk5MmMxNC44MjgsMCwyNy4yODgtMTIuNzgsMjcuMjg4LTI3LjZ2LTIyLjc4OA0KCQkJQzQ5MiwyMTkuMTk4LDQ3OS4xNzIsMjA3LjQxOCw0NjQuMzQ0LDIwNy40MTh6Ii8+DQoJPC9nPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPC9zdmc+DQo=");
+      border-radius: 5px;
+   }
+
+   .swiper-button-next {
+      position: absolute;
+      transform: rotate(180deg);
+      bottom: 6rem;
+      border: 1px solid var(--color-black);
+      width: 40px;
+      padding: 10px;
+      right: 0;
+      margin: 10px 20px;
+      z-index: 1;
+      background: rgba(110, 110, 110, 0.5);
+      filter: invert(1);
+      content: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgdmlld0JveD0iMCAwIDQ5MiA0OTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQ5MiA0OTI7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxnPg0KCQk8cGF0aCBkPSJNNDY0LjM0NCwyMDcuNDE4bDAuNzY4LDAuMTY4SDEzNS44ODhsMTAzLjQ5Ni0xMDMuNzI0YzUuMDY4LTUuMDY0LDcuODQ4LTExLjkyNCw3Ljg0OC0xOS4xMjQNCgkJCWMwLTcuMi0yLjc4LTE0LjAxMi03Ljg0OC0xOS4wODhMMjIzLjI4LDQ5LjUzOGMtNS4wNjQtNS4wNjQtMTEuODEyLTcuODY0LTE5LjAwOC03Ljg2NGMtNy4yLDAtMTMuOTUyLDIuNzgtMTkuMDE2LDcuODQ0DQoJCQlMNy44NDQsMjI2LjkxNEMyLjc2LDIzMS45OTgtMC4wMiwyMzguNzcsMCwyNDUuOTc0Yy0wLjAyLDcuMjQ0LDIuNzYsMTQuMDIsNy44NDQsMTkuMDk2bDE3Ny40MTIsMTc3LjQxMg0KCQkJYzUuMDY0LDUuMDYsMTEuODEyLDcuODQ0LDE5LjAxNiw3Ljg0NGM3LjE5NiwwLDEzLjk0NC0yLjc4OCwxOS4wMDgtNy44NDRsMTYuMTA0LTE2LjExMmM1LjA2OC01LjA1Niw3Ljg0OC0xMS44MDgsNy44NDgtMTkuMDA4DQoJCQljMC03LjE5Ni0yLjc4LTEzLjU5Mi03Ljg0OC0xOC42NTJMMTM0LjcyLDI4NC40MDZoMzI5Ljk5MmMxNC44MjgsMCwyNy4yODgtMTIuNzgsMjcuMjg4LTI3LjZ2LTIyLjc4OA0KCQkJQzQ5MiwyMTkuMTk4LDQ3OS4xNzIsMjA3LjQxOCw0NjQuMzQ0LDIwNy40MTh6Ii8+DQoJPC9nPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPC9zdmc+DQo=");
+      border-radius: 5px;
+   }
+
+   .swiper-button-prev:hover {
+      background: rgba(110, 110, 110, 1);
+   }
+
+   .swiper-button-next:hover {
+      background: rgba(110, 110, 110, 1);
+   }
 `;

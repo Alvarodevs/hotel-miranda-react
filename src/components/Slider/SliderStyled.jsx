@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const StatusFlag = styled.div`
    font-family: var(--font-main);
    transform: rotate(45deg);
@@ -42,7 +41,7 @@ export const ImageSlider = styled.img`
    background-repeat: no-repeat;
    background-size: cover;
    height: 100%;
-   background: linear-gradient(180deg, transparent 0%, grey 100%);
+   background-image: linear-gradient(to bottom, transparent, rgba(87,87,87, 0.5));
 `;
 
 export const Container = styled.div`

@@ -1,5 +1,5 @@
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
-import SwiperCore, {Autoplay, Navigation} from 'swiper';
+import { Swiper, SwiperSlide } from "swiper/react";
+import {Autoplay, Navigation} from 'swiper';
 
 import roomImg from '../../assets/images/room.jpg'
 // Import Swiper styles
@@ -10,10 +10,8 @@ import {
    Description,
    StatusFlag
 } from "./SliderStyled";
-import { BsArrowLeftSquare, BsArrowRightSquare } from "react-icons/bs";
 
 const Slider = ({description, status}) => {
-	const swiper = useSwiper();
 
    return (
       <Swiper
@@ -23,14 +21,13 @@ const Slider = ({description, status}) => {
          onSlideChange={() => console.log("slide change")}
          onSwiper={(swiper) => console.log(swiper)}
          autoplay={{ delay: 5000 }}
-         effect={"slide"}
          navigation
          style={{ height: "600px", borderRadius: "0 10px 10px 0" }}
          loop
       >
          <SwiperSlide style={{ position: "relative" }}>
             <StatusFlag status={status}>{status}</StatusFlag>
-            <ImageSlider src={roomImg} alt="Room" />
+            <ImageSlider src={roomImg} alt="Room"/>
             <Container>
                <Description>{description.slice(0, 150)}</Description>
             </Container>
