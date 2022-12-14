@@ -3,7 +3,8 @@ import { ErrorContainer, ErrorImg, HomeIcon } from './ErrorStyled';
 import error from '../../assets/images/error.gif';
 import {GrHomeRounded} from 'react-icons/gr';
 import { Link } from 'react-router-dom';
-const Error = () => {
+
+const Error = () :JSX.Element => {
  
     return (
         <div>
@@ -11,7 +12,7 @@ const Error = () => {
                 <ErrorImg src={error} alt="Error gif" />
                 <Link to={"/"}>
                     <HomeIcon>
-                        <GrHomeRounded style={{ border: "white" }} />
+                        <GrHomeRounded />
                     </HomeIcon>
                 </Link>
             </ErrorContainer>
