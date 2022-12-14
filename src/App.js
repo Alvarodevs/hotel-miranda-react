@@ -24,6 +24,7 @@ function App() {
 				<BrowserRouter>
 					<Routes>
 						<Route exact path='/login' element={<Login />} />
+						<Route exact path='/hotel-miranda-react' element={<Navigate to="/" replace />} />
 						{/* PROTECTED ROUTES */}
 
 						<Route element={<PrivateRoutes />} >
