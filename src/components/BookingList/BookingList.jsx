@@ -44,14 +44,12 @@ const Booking = () => {
 
    const handleStatus = (status) => {
       switch (status) {
-         case "Refund":
-            return "Refund";
-         case "Booked":
-            return "Booked";
-         case "Pending":
-            return "Pending";
+         case "Check in":
+            return "Check in";
+         case "Check out":
+            return "Check out";
          default:
-            return "Cancelled";
+            return "In Progress";
       }
    };
 
@@ -118,35 +116,27 @@ const Booking = () => {
                </Selector>
                <Selector
                   onClick={() => {
-                     setBookingStatus("Pending");
+                     setBookingStatus("Check in");
                      setLengthFromRedux(false);
                   }}
                >
-                  Pending
+                  Check In
                </Selector>
                <Selector
                   onClick={() => {
-                     setBookingStatus("Booked");
+                     setBookingStatus("Check out");
                      setLengthFromRedux(false);
                   }}
                >
-                  Booked
+                  Check Out
                </Selector>
                <Selector
                   onClick={() => {
-                     setBookingStatus("Cancelled");
+                     setBookingStatus("In Progress");
                      setLengthFromRedux(false);
                   }}
                >
-                  Cancelled
-               </Selector>
-               <Selector
-                  onClick={() => {
-                     setBookingStatus("Refund");
-                     setLengthFromRedux(false);
-                  }}
-               >
-                  Refund
+                  In Progress
                </Selector>
             </Selectors>
             <NewBtnsContainer>
@@ -181,7 +171,7 @@ const Booking = () => {
             {/* CASE RENDERING DATA */}
             {appState === "ok" && (
                <TBody>
-                  {bookingsSwitch().map((booking) => (	
+                  {bookingsSwitch().map((booking) => (
                      <BookingCard
                         key={booking.id}
                         booking={booking}

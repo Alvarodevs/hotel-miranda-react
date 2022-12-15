@@ -23,6 +23,7 @@ const HeaderDashboard = ({ setShow, show }) => {
    const { id } = useParams();
    const { pathname } = useLocation();
 
+	
    const setTitle = () => {
       if (pathname === "/dashboard") {
          return "Dashboard";

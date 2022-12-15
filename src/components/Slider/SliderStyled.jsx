@@ -9,27 +9,22 @@ export const StatusFlag = styled.div`
    width: 13rem;
    font-size: 20px;
    text-align: center;
-	padding: 8px 0;
+   padding: 8px 0;
    ${({ status }) => {
-      if (status === "Refund") {
+      if (status === "Check out") {
          return `
 				background-color: var(--color-pinkPale); 
 				color: var(--color-red);
 			`;
-      } else if (status === "Booked") {
+      } else if (status === "Check in") {
          return `
 				background-color: var(--color-greeenBooked); 
 				color: var(--color-greenLight);
 			`;
-      } else if (status === "Pending") {
-         return `
-				background-color: var(--color-greyB2); 
-				color: var(--color-grey6D);
-			`;
       } else {
          return `
-			background-color: var(--color-grey57); 
-			color: var(--color-greyB2);
+			background-color: var(--color-yellowLight); 
+			color: var(--color-yellowDark);
 		`;
       }
    }};

@@ -1,5 +1,13 @@
 import React from "react";
-import { BackgroundDashboard, ChartCalendarContainer, ChartContainer, CalendarContainer } from "../styles/views/DashboardStyled";
+import {
+   BackgroundDashboard,
+   ChartCalendarContainer,
+   ChartContainer,
+   CalendarContainer,
+   InfoContainer,
+   InfoTitle,
+   Square,
+} from "../styles/views/DashboardStyled";
 import Theme from "../styles/Theme";
 import KPI from "../components/KPI";
 import { KPIContainer } from "../components/KPI/KPIStyled";
@@ -9,7 +17,6 @@ import { BsBoxArrowInRight, BsBoxArrowInLeft } from "react-icons/bs";
 import MainContainer from "../components/MainContainer";
 import Chart from "../components/Chart";
 import Calendar from "../components/Calendar";
-import { InfoContainer, InfoTitle, Square } from "../styles/views/DashboardStyled";
 
 const Dashboard = () => {
 

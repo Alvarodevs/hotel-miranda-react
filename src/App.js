@@ -23,44 +23,44 @@ function App() {
 			<LoginContext.Provider value={store}>
 				<BrowserRouter>
 					<Routes>
-						<Route exact path='/login' element={<Login />} />
-						<Route exact path='/hotel-miranda-react' element={<Navigate to="/" replace />} />
+						<Route path='/login' element={<Login />} />
+						<Route path='/hotel-miranda-react' element={<Navigate to="/" replace />} />
 						{/* PROTECTED ROUTES */}
 
 						<Route element={<PrivateRoutes />} >
 
-							<Route exact path='/' element={<Navigate to="/dashboard" replace />} />
-							<Route exact path='/dashboard' element={<Dashboard />} />
+							<Route path='/' element={<Navigate to="/dashboard" replace />} />
+							<Route path='/dashboard' element={<Dashboard />} />
 
-							<Route exact path='/bookings' element={<BookingList />} />
-							<Route exact path='/booking/:id' element={<Booking />} />
-							<Route exact path='/booking' element={<Navigate to="/bookings" replace />} />
-							<Route exact path='/bookings/:id' element={<Navigate to="/bookings" replace />} />
-							<Route exact path='/booking/edit/:id' element={<Booking />} />
+							<Route path='/bookings' element={<BookingList />} />
+							<Route path='/booking/:id' element={<Booking />} />
+							<Route path='/booking' element={<Navigate to="/bookings" replace />} />
+							<Route path='/bookings/:id' element={<Navigate to="/bookings" replace />} />
+							<Route path='/booking/edit/:id' element={<Booking />} />
 
-							<Route exact path='/rooms' element={<RoomList />} />
-							<Route exact path='/room/:id' element={<Room />} />
-							<Route exact path='/room' element={<Navigate to="/rooms" replace />} />
-							<Route exact path='/rooms/:id' element={<Navigate to="/rooms" replace />} />
-							<Route exact path='/add_room' element={<NewRoom />} />
-							<Route exact path='/room/edit/:id' element={<NewRoom />} />
+							<Route path='/rooms' element={<RoomList />} />
+							<Route path='/room/:id' element={<Room />} />
+							<Route path='/room' element={<Navigate to="/rooms" replace />} />
+							<Route path='/rooms/:id' element={<Navigate to="/rooms" replace />} />
+							<Route path='/add_room' element={<NewRoom />} />
+							<Route path='/room/edit/:id' element={<NewRoom />} />
 
-							<Route exact path='/users' element={<UserList />} />
-							<Route exact path='/user/:id' element={<User />} />
-							<Route exact path='/user' element={<Navigate to="/users" replace />} />
-							<Route exact path='/users/:id' element={<Navigate to="/users" replace />} />
-							<Route exact path='/add_user' element={<NewUser />} />
-							<Route exact path='/user/edit/:id' element={<UserEditor />} />
+							<Route path='/users' element={<UserList />} />
+							<Route path='/user/:id' element={<User />} />
+							<Route path='/user' element={<Navigate to="/users" replace />} />
+							<Route path='/users/:id' element={<Navigate to="/users" replace />} />
+							<Route path='/add_user' element={<NewUser />} />
+							<Route path='/user/edit/:id' element={<UserEditor />} />
 
-							<Route exact path='/guests' element={<GuestsView />} />
-							<Route exact path='/guest/:id' element={<GuestView />} />
-							<Route exact path='/guest' element={<Navigate to="/guests" replace />} />
-							<Route exact path='/guests/:id' element={<Navigate to="/guests" replace />} />
-							<Route exact path='/guest/edit/:id' element={<GuestView />} />
+							<Route path='/guests' element={<GuestsView />} />
+							<Route path='/guest/:id' element={<GuestView />} />
+							<Route path='/guest' element={<Navigate to="/guests" replace />} />
+							<Route path='/guests/:id' element={<Navigate to="/guests" replace />} />
+							<Route path='/guest/edit/:id' element={<GuestView />} />
 
-							<Route exact path='/concierge' element={<ConciergeView />} />
+							<Route path='/concierge' element={<ConciergeView />} />
 
-							<Route exact path='/contact' element={<ContactView />} />
+							<Route path='/contact' element={<ContactView />} />
 						</Route>
 						<Route path='/error_404' element={<NotFound />} />
 						<Route path='*' element={<Navigate to="/error_404" replace />} />
