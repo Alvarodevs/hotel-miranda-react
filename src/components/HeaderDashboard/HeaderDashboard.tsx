@@ -17,14 +17,20 @@ import LoginContext from "../../store/LoginContext";
 import { logout } from "../../store/actions";
 import Badge from "@mui/material/Badge";
 
-const HeaderDashboard = ({ setShow, show }) => {
-   const [state, dispatch] = useContext(LoginContext);
+interface IHeaderProps {
+	setShow: Function,
+	show: boolean
+}
+
+const HeaderDashboard = ({ setShow, show } :IHeaderProps) :JSX.Element => {
+
+   const [dispatch] = useContext(LoginContext);
    const navigate = useNavigate();
    const { id } = useParams();
    const { pathname } = useLocation();
 
 	
-   const setTitle = () => {
+   const setTitle = () :string | undefined => {
       if (pathname === "/dashboard") {
          return "Dashboard";
       } else if (pathname === "/rooms") {
@@ -52,9 +58,11 @@ const HeaderDashboard = ({ setShow, show }) => {
       }
    };
 
-   const handleLogout = (state) => {
-      dispatch(logout(!state.isAuth));
-      const currentItem = JSON.parse(localStorage.getItem("authenticated"));
+   const handleLogout = (): void => {
+      //not updating isAuth to false
+      dispatch(logout({ isAuth: false }));
+      //--------------
+      const currentItem = JSON.parse(localStorage.getItem("authenticated") || '') ;
       currentItem.isAuth = false;
       localStorage.setItem("authenticated", JSON.stringify(currentItem));
       return navigate("/login");
@@ -66,17 +74,12 @@ const HeaderDashboard = ({ setShow, show }) => {
             <Logo>
                <FontAwesomeIcon
                   icon={show ? faBars : faArrowRight}
-                  onClick={(e) => setShow((prev) => !prev)}
+                  onClick={(e) => setShow((prev :boolean) => !prev)}
                />
             </Logo>
             <Site>{setTitle()}</Site>
          </TitleContainer>
-         {/* <SearchbarContainer>
-            <Searchbar />
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
-         </SearchbarContainer> */}
          <IconsContainer>
-            {/* <AiOutlineHeart /> */}
             <Badge badgeContent={4} color="error">
                <BsEnvelope />
             </Badge>
@@ -86,11 +89,6 @@ const HeaderDashboard = ({ setShow, show }) => {
             <Badge badgeContent={"0"} color="primary">
                <BiCommentDetail />
             </Badge>
-
-            {/* <LanguageSelect>
-               <option value="EN">EN</option>
-               <option value="ES">ES</option>
-            </LanguageSelect> */}
             <IoMdExit onClick={handleLogout} />
          </IconsContainer>
       </HeaderContainer>

@@ -1,7 +1,12 @@
 import styled from "styled-components";
 import { handleShow } from "../../utils/handleShow";
 
-export const HeaderContainer = styled.div`
+interface HeaderProps {
+	path: string,
+	show: boolean
+}
+
+export const HeaderContainer = styled.div<HeaderProps>`
    width: 100%;
    height: 5rem;
    padding: 25px 40px 25px 20%;
