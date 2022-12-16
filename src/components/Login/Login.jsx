@@ -37,7 +37,7 @@ const Login = () => {
       if (!localStorage.getItem("authenticated")) {
          return localStorage.setItem("authenticated", JSON.stringify(user));
       } else {
-         const currentItem = JSON.parse(localStorage.getItem("authenticated"));
+         const currentItem = JSON.parse(localStorage.getItem("authenticated") || '');
          currentItem.isAuth = true;
          localStorage.setItem("authenticated", JSON.stringify(currentItem));
       }

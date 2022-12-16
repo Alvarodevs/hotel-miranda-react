@@ -25,18 +25,21 @@ import {
 import BookingCard from "./BookingCard";
 import Spiner from "../Spiner";
 import { Link } from "react-router-dom";
+import { AppDispatch } from "../../app/store";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { IBooking } from "../../interfaces/IBooking";
 
 const Booking = () => {
    const [currentPage, setCurrentPage] = useState(1);
    const [bookingsPerPage, setBookingsPerPage] = useState(10);
 
-   const dispatch = useDispatch();
-   const appState = useSelector(selectStatus);
-   const bookingsRedux = useSelector(selectBookings);
+   const dispatch = useAppDispatch();
+   const appState = useAppSelector(selectStatus);
+   const bookingsRedux = useAppSelector(selectBookings);
 
    const [bookingStatus, setBookingStatus] = useState("");
    const [lengthFromRedux, setLengthFromRedux] = useState(true);
-   const [bookingsFiltered, setBookingsFiltered] = useState([]);
+   const [bookingsFiltered, setBookingsFiltered] = useState<IBooking[]>();
 
    useEffect(() => {
       dispatch(getBookings());
