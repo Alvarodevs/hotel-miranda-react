@@ -16,8 +16,11 @@ import { BookingStatus } from "./BookingListStyled";
 import PopUpResquests from "../PopUpRequests/PopUpResquests";
 import { BiDotsVerticalRounded } from "@react-icons/all-files/bi/BiDotsVerticalRounded";
 import { Link } from "react-router-dom";
+import { IBooking } from "../../interfaces/IBooking";
 
-const BookingCard = ({ booking, handleStatus }) => {
+
+
+const BookingCard = ({ booking, handleStatus }) :JSX.Element => {
    return (
       <ListCard key={booking.id}>
          <Link to={`/booking/${booking.id}`} >

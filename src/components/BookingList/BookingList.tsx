@@ -16,7 +16,6 @@ import {
 } from "../../styles/Table";
 import Pagination from "../Pagination";
 import MainContainer from "../MainContainer";
-import { useDispatch, useSelector } from "react-redux";
 import {
    selectStatus,
    selectBookings,
@@ -24,28 +23,26 @@ import {
 } from "../../features/bookings/bookingsSlice";
 import BookingCard from "./BookingCard";
 import Spiner from "../Spiner";
-import { Link } from "react-router-dom";
-import { AppDispatch } from "../../app/store";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { IBooking } from "../../interfaces/IBooking";
 
 const Booking = () => {
-   const [currentPage, setCurrentPage] = useState(1);
-   const [bookingsPerPage, setBookingsPerPage] = useState(10);
+   const [currentPage, setCurrentPage] = useState<number>(1);
+   const [bookingsPerPage, setBookingsPerPage] = useState<number>(10);
 
    const dispatch = useAppDispatch();
    const appState = useAppSelector(selectStatus);
    const bookingsRedux = useAppSelector(selectBookings);
 
-   const [bookingStatus, setBookingStatus] = useState("");
-   const [lengthFromRedux, setLengthFromRedux] = useState(true);
-   const [bookingsFiltered, setBookingsFiltered] = useState<IBooking[]>();
+   const [bookingStatus, setBookingStatus] = useState<string>("");
+   const [lengthFromRedux, setLengthFromRedux] = useState<boolean>(true);
+   const [bookingsFiltered, setBookingsFiltered] = useState<IBooking[]>([]);
 
    useEffect(() => {
       dispatch(getBookings());
    }, [dispatch]);
 
-   const handleStatus = (status) => {
+   const handleStatus = (status :string) => {
       switch (status) {
          case "Check in":
             return "Check in";
@@ -56,7 +53,7 @@ const Booking = () => {
       }
    };
 
-   const setAllBookings = () => {
+   const setAllBookings = () :void => {
       setLengthFromRedux(true);
       dispatch(getBookings());
    };
@@ -76,17 +73,17 @@ const Booking = () => {
       indexFirstRoom,
       indexLastRoom
    );
-   const currentBookingsFiltered = bookingsFiltered.slice(
+   const currentBookingsFiltered = bookingsFiltered?.slice(
       indexFirstRoom,
       indexLastRoom
    );
 
    //change pagination
-   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-   const maxLength = () => {
-      return lengthFromRedux ? bookingsRedux : bookingsFiltered;
+   const paginate = (pageNumber :number) => setCurrentPage(pageNumber);
+   const maxLength = () :IBooking[] => {
+      return lengthFromRedux ? bookingsRedux : bookingsFiltered
    };
-   const buttonsPaginate = (direction) => {
+   const buttonsPaginate = (direction :string) => {
       if (direction === "prev") {
          return currentPage === 1
             ? null
@@ -174,7 +171,7 @@ const Booking = () => {
             {/* CASE RENDERING DATA */}
             {appState === "ok" && (
                <TBody>
-                  {bookingsSwitch().map((booking) => (
+                  {bookingsSwitch()?.map((booking) => (
                      <BookingCard
                         key={booking.id}
                         booking={booking}
@@ -187,7 +184,7 @@ const Booking = () => {
          <Pagination
             itemsPerPage={bookingsPerPage}
             numOfItems={
-               lengthFromRedux ? bookingsRedux.length : bookingsFiltered.length
+               lengthFromRedux ? bookingsRedux.length : bookingsFiltered?.length
             }
             paginate={paginate}
             page={currentPage}
