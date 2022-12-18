@@ -7,10 +7,7 @@ const loginReducer = (state, action) => {
 		case LOGIN:
 			return { ...state, ...payload }
 		case LOGOUT:
-			return { 
-				...state,
-				isAuth: payload 
-			}
+			return { ...state,...payload }
 		case UPDATE_EMAIL:
 			return { 
 				...state, 
