@@ -24,7 +24,7 @@ interface IHeaderProps {
 
 const HeaderDashboard = ({ setShow, show } :IHeaderProps) :JSX.Element => {
 
-   const [dispatch] = useContext(LoginContext);
+   const [state, dispatch] = useContext(LoginContext);
    const navigate = useNavigate();
    const { id } = useParams();
    const { pathname } = useLocation();
@@ -60,11 +60,12 @@ const HeaderDashboard = ({ setShow, show } :IHeaderProps) :JSX.Element => {
 
    const handleLogout = (): void => {
       //not updating isAuth to false
-      dispatch(logout({ isAuth: false }));
+      //dispatch(logout(false));
       //--------------
       const currentItem = JSON.parse(localStorage.getItem("authenticated") || '') ;
       currentItem.isAuth = false;
       localStorage.setItem("authenticated", JSON.stringify(currentItem));
+		console.log('state', state)
       return navigate("/login");
    };
 

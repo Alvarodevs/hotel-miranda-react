@@ -1,17 +1,17 @@
 {
    "compilerOptions": {
-      "jsx": "preserve",
-      "noImplicitAny": true,
+      "jsx": "react-jsx",
+      "noImplicitAny": false,
       "removeComments": true,
       "preserveConstEnums": true,
       "sourceMap": true,
       "allowJs": true,
       "target": "es2016",
       "module": "commonjs",
-      "checkJs": true,
+      "checkJs": false,
       "esModuleInterop": true,
       "forceConsistentCasingInFileNames": true,
-      "strict": false,
+      "strict": true,
       "skipLibCheck": true,
       "outDir": "build"
    },
