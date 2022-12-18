@@ -1,4 +1,5 @@
-const userLocalStorage = JSON.parse(localStorage.getItem('authenticated'))
+import { ILogin } from "./actions";
+const userLocalStorage :ILogin = JSON.parse(localStorage.getItem('authenticated') || '')
 
 //auth true/false if userLocalStorage
 const INIT_STATE = {

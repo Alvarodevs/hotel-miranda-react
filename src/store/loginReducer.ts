@@ -1,6 +1,8 @@
+import { ILogin, IAction } from './actions';
+
 import { LOGIN, LOGOUT, UPDATE_EMAIL, UPDATE_USERNAME } from './actionTypes';
 
-const loginReducer = (state, action) => {
+const loginReducer = (state :ILogin, action: IAction) => {
    const { type, payload } = action;
 
 	switch (type) {

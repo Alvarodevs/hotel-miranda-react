@@ -18,9 +18,12 @@ import { BiDotsVerticalRounded } from "@react-icons/all-files/bi/BiDotsVerticalR
 import { Link } from "react-router-dom";
 import { IBooking } from "../../interfaces/IBooking";
 
+type Booking = {
+   booking: IBooking;
+   handleStatus: Function;
+};
 
-
-const BookingCard = ({ booking, handleStatus }) :JSX.Element => {
+const BookingCard = ({ booking, handleStatus } :Booking) :JSX.Element => {
    return (
       <ListCard key={booking.id}>
          <Link to={`/booking/${booking.id}`} >

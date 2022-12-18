@@ -1,5 +1,5 @@
 import { createContext } from "react";
 
-const LoginContext = createContext([]);
+const LoginContext :React.Context<[]> = createContext([]);
 
 export default LoginContext;
