@@ -66,6 +66,7 @@ const HeaderDashboard = ({ setShow, show } :IHeaderProps) :JSX.Element => {
          })
       );
       //--------------
+		localStorage.removeItem("token");
       const currentItem = JSON.parse(localStorage.getItem("authenticated") || '') ;
       currentItem.isAuth = false;
       localStorage.setItem("authenticated", JSON.stringify(currentItem));

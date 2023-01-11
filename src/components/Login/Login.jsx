@@ -1,25 +1,42 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { updateEmail, updateUsername, login } from "../../store/actions";
+import { login } from "../../store/actions";
 import LoginContext from "../../store/LoginContext";
 import { LoginContainer, Header, Form, Input, Submit, Label } from "./LoginStyled";
+import fetchApi from "../../features/fetchApi";
 
 const Login = () => {
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
    const navigate = useNavigate();
    const [state, dispatch] = useContext(LoginContext);
 	
-   const handleLogin = (e) => {
+   const handleLogin = async (e) => {
       e.preventDefault();
-      if (
-         state.user.name === "alvaro" &&
-         state.user.email === "alvaro@example.com"
-      ) {
+      const url = process.env.REACT_APP_URI
+
+		const response = await fetch(url+"login", {
+         method: "POST",
+         mode: "cors",
+         cache: "no-cache",
+         credentials: "same-origin",
+         headers: {
+            "Content-Type": "application/json",
+         },
+         redirect: "follow",
+         referrerPolicy: "no-referrer",  
+         body: JSON.stringify({email: email, password: password}), 
+      }); 
+
+		const {token} = await response.json()
+
+		if (token) {
+			localStorage.setItem("token", token)
          dispatch(
             login({
                isAuth: true,
                user: {
-                  name: state.user.name,
-                  email: state.user.email,
+                  email: state.user.email
                },
             })
          );
@@ -43,27 +60,28 @@ const Login = () => {
       }
    };
 
+	console.log('STATE IN LOGIN', state)
    return (
       <div>
          <LoginContainer>
             <Header>Please, login with your account</Header>
             <Form onSubmit={handleLogin} className="login-form">
-               <Label htmlFor="username">Username:</Label>
-               <Input
-                  type="text"
-                  placeholder="User name"
-                  name="username"
-                  value={state.user?.name}
-                  onChange={(e) => dispatch(updateUsername(e.target.value))}
-               />
                <Label htmlFor="email">Email:</Label>
                <Input
                   type="email"
                   placeholder="Your email account"
                   name="email"
                   className="email-login"
-                  value={state.user?.email}
-                  onChange={(e) => dispatch(updateEmail(e.target.value))}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+               />
+               <Label htmlFor="password">Password:</Label>
+               <Input
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                />
                <Submit type="submit" value="Submit" />
             </Form>

@@ -1,10 +1,10 @@
-import { LOGIN, LOGOUT, UPDATE_EMAIL, UPDATE_USERNAME } from './actionTypes';
+import { LOGIN, LOGOUT, UPDATE_EMAIL } from './actionTypes';
 
 export interface ILogin {
 	isAuth: boolean,
 	user: {
-		name: string,
-		email: string
+		email: string, 
+		token?: string,
 	}
 }
 
@@ -32,9 +32,4 @@ export const logout = ({ isAuth, user }) : IAction => ({
 export const updateEmail = (email: string) => ({
 	type: UPDATE_EMAIL,
 	payload: email,
-})
-
-export const updateUsername = (username: string) => ({
-	type: UPDATE_USERNAME,
-	payload: username,
 })
