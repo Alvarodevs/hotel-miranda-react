@@ -1,130 +1,287 @@
-import React, { useEffect, useRef, useState } from "react";
-import * as d3 from "d3";
+import React, { useEffect, useRef } from "react";
 
+// D3
+import { scaleLinear, select, axisBottom, scaleBand, scaleOrdinal } from "d3";
+import { axisLeft } from "d3";
+import { axisRight } from "d3";
+
+// Styled components
+import {
+  FilterContainer,
+  StatsContainer,
+  Stat,
+  Square,
+} from "./ChartStyled.jsx";
+
+// Local Data
+const data = [
+  {
+    day: "Monday",
+    sales: 50,
+    percentage: 50,
+  },
+  {
+    day: "Tuesday",
+    sales: 80,
+    percentage: 70,
+  },
+  {
+    day: "Wednesday",
+    sales: 70,
+    percentage: 20,
+  },
+  {
+    day: "Thursday",
+    sales: 180,
+    percentage: 50,
+  },
+  {
+    day: "Friday",
+    sales: 30,
+    percentage: 10,
+  },
+  {
+    day: "Saturday",
+    sales: 90,
+    percentage: 30,
+  },
+  {
+    day: "Sunday",
+    sales: 100,
+    percentage: 100,
+  },
+];
 
 const Chart = () => {
-   //Data for chart to display
-   const [days] = useState([
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-      "Sunday",
-   ]);
-   const [data] = useState({
-      sales: [
-         { day: "12/02/2022", value: 2500 },
-         { day: "12/03/2022", value: 3000 },
-         { day: "12/04/2022", value: 1100 },
-         { day: "12/05/2022", value: 800 },
-         { day: "12/06/2022", value: 2850 },
-         { day: "12/07/2022", value: 4673 },
-         { day: "12/08/2022", value: 3857 },
-      ],
-      occupation: [
-         { day: "12/02/2022", value: 20 },
-         { day: "12/03/2022", value: 32 },
-         { day: "12/04/2022", value: 38 },
-         { day: "12/05/2022", value: 30 },
-         { day: "12/06/2022", value: 67 },
-         { day: "12/07/2022", value: 89 },
-         { day: "12/08/2022", value: 70 },
-      ],
-   });
+  // ATM the graph width is hard coded... I was trying to make it responsive but did not manage. InnerWidth gives me unexpected behaviour when resizing the window
+  // const [graphWidth, setGraphWidth] = useState((window.innerWidth * 40) / 100);
+  const graphWidth = 500;
 
-   const ref = useRef();
-   useEffect(() => {
-      //setting margins from parent component w. props
-      const margin = {
-         top: 30,
-         right: 5,
-         bottom: 50,
-         left: 40,
-      };
+  const ref = useRef();
 
-      //setting width & height of chart using the one from parent
-      const chartWidth =
-         parseInt(d3.select("#d3Parent").style("width")) -
-         margin.left -
-         margin.right;
-      const chartHeight =
-         parseInt(d3.select("#d3Parent").style("height")) -
-         margin.top -
-         margin.bottom;
+  const margin = {
+    top: 30,
+    right: 40,
+    bottom: 30,
+    left: 35,
+  };
+  const width = graphWidth - margin.left - margin.right;
+  const height = 400 - margin.top - margin.bottom;
 
-      //sizing svg
-      const svg = d3
-         .select(ref.current)
-         .attr("width", chartWidth + margin.right + margin.left)
-         .attr("height", chartHeight + margin.top + margin.bottom);
+  const days = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
 
-      //xScale & yScale creation
-      const xScale = d3
-         .scaleBand()
-         .domain(d3.range(days.length))
-         .range([margin.left, chartWidth - margin.right])
-         .padding(0.3);
+  const dataTypes = ["sales", "percentage"];
 
-      svg.append("g")
-         .attr("transform", `translate(0, ${chartHeight})`)
-         .call(
-            d3
-               .axisBottom(xScale)
-               .tickFormat((i) => days[i])
-               .tickSizeOuter(0)
-         );
+  useEffect(() => {
+    const svgElement = select(ref.current);
 
-      const maxValueHeightSales = d3.max(data.sales, (d) => d.value);
-      const yScaleSales = d3
-         .scaleLinear()
-         .domain([0, maxValueHeightSales])
-         .range([chartHeight, margin.top]);
+    setTimeout(() => {
+      createGraph(svgElement);
+    }, 200);
+  });
 
-      const yScaleOccupancy = d3
-         .scaleLinear()
-         .domain([0, 100])
-         .range([chartHeight, margin.top]);
+  const createGraph = (svgElement) => {
+    // X scale. Creating a group with the days array. Taking the whole width from 0 to the width of the graph
+    const scaleDays = scaleBand().domain(days).range([0, width]);
+    svgElement
+      .append("g")
+      .attr("color", "#6E6E6E")
+      .attr("transform", `translate(${margin.left}, ${height + margin.top})`)
+      .call(axisBottom(scaleDays));
 
-      //creation of y (sales data) scale bar
-      svg.append("g")
-         .attr("transform", `translate(${margin.left}, 0)`)
-         .call(d3.axisLeft(yScaleSales));
+    // Y scale (sales). Creating a group with the sales data. Taking the height based on the total sales collected from the data
+    const scaleSales = scaleLinear()
+      .domain([0, getMaxSales()])
+      .range([height, 0]);
+    const axisYLeft = axisLeft(scaleSales);
+    // The max sales will be divided in 10 "ticks"
+    axisYLeft.ticks(10).tickFormat((value) => {
+      return value + " €";
+    });
+    svgElement
+      .append("g")
+      .attr("color", "#6E6E6E")
+      .attr("transform", `translate(${margin.left}, ${margin.top})`)
+      .call(axisYLeft);
 
-      //creation of y (occupancy data) scale bar
-      svg.append("g")
-         .attr("transform", `translate(${chartWidth - margin.right})`)
-         .call(d3.axisRight(yScaleOccupancy));
+    // Y scale (occupancy). As this is a % it goes from 0 to 100
+    const scaleOccupancy = scaleLinear().domain([0, 100]).range([height, 0]);
+    const axisYRight = axisRight(scaleOccupancy);
+    // Divided in 5 ticks (20%)
+    axisYRight.ticks(5).tickFormat((value) => {
+      return value + " %";
+    });
+    svgElement
+      .append("g")
+      .attr("color", "#6E6E6E")
+      .attr("transform", `translate(${width + margin.left}, ${margin.top})`)
+      .call(axisYRight);
 
-      //rectangles of sales data
-      svg.append("g")
-         .attr("fill", "var(--color-greenDark)")
-         .selectAll("rect")
-         .data(data.sales)
-         .join("rect")
-         .attr("x", (d, i) => xScale(i))
-         .attr("y", (d) => yScaleSales(d.value))
-         .attr("height", (d) => yScaleSales(0) - yScaleSales(d.value))
-         .attr("width", xScale.bandwidth());
+    // Scale for the sales and occupancy sub-categories
+    const scaleProperties = scaleBand()
+      .domain(dataTypes)
+      .range([0, scaleDays.bandwidth()])
+      .padding([0.10]);
 
-      svg.append("g")
-         .attr("fill", "var(--color-red)")
-         .selectAll("rect")
-         .data(data.occupation)
-         .join("rect")
-         .attr("x", (d, i) => xScale(i))
-         .attr("y", (d) => yScaleOccupancy(d.value))
-         .attr("height", (d) => yScaleOccupancy(0) - yScaleOccupancy(d.value))
-         .attr("width", xScale.bandwidth());
-   }, []);
+    // Color for the sales and occupancy
+    const color = scaleOrdinal()
+      .domain(dataTypes)
+      .range(["#135846", "#E23428"]);
 
-   return (
-      <div>
-         <svg ref={ref}>
-         </svg>
-      </div>
-   );
+    const colorHover = scaleOrdinal()
+      .domain(dataTypes)
+      .range(["#4A8A76", "#E09B8D"]);
+
+    // popUp to display the data related to each rect
+    const popUp = select("body")
+      .append("div")
+      .style("opacity", 0)
+      .style("background-color", "#FFFFFF")
+      .style("padding", "0")
+      .style("border-radius", "8px")
+      .style("border", "1px solid black")
+      .style("box-shadow", "0px 16px 30px #00000014")
+      .style("font-family", "Poppins")
+      .style("font-size", "1.5rem")
+      .style("text-align", "center");
+
+    // Creating a rect for each day and for each subcategory
+    svgElement
+      .append("g")
+      .selectAll("g")
+      .data(data)
+      .enter()
+      .append("g")
+      .attr("transform", (d) => {
+        return "translate(" + scaleDays(d.day) + ",0)";
+      })
+      .selectAll("rect")
+      .data((d) => {
+        return dataTypes.map((item) => {
+          return {
+            item: item,
+            value: d[item],
+          };
+        });
+      })
+      // Entering the rect and giving it x & y to set the position where it is displayed and width & height based on the data
+      .enter()
+      .append("rect")
+      .attr("x", (d) => {
+        return scaleProperties(d.item) + margin.left + 8;
+      })
+      .attr("y", (d) => {
+        return d.item === dataTypes[0]
+          ? scaleSales(d.value) + margin.top
+          : scaleOccupancy(d.value) + margin.top;
+      })
+      .attr("width", scaleProperties.bandwidth() - 16)
+      .attr("height", (d) => {
+        return d.item === dataTypes[0]
+          ? height - scaleSales(d.value)
+          : height - scaleOccupancy(d.value);
+      })
+      .attr("fill", (d) => {
+        return color(d.item);
+      })
+      // Showing the popUp on mouse enter
+      .on("mouseenter", (e, d) => {
+        select(e.srcElement)
+          .transition()
+          .duration("100")
+          .attr("fill", (d) => colorHover(d.item));
+
+        popUp.transition().duration("100").style("opacity", 1);
+        popUp
+          .html(
+            d.item === dataTypes[0]
+              ? "Sales: " + d.value + " €"
+              : "Occupancy: " + d.value + " %"
+          )
+          .style("position", "absolute")
+          .style("width", "fit-content")
+          .style("left", e.pageX + 10 + "px")
+          .style("top", e.pageY - 5 + "px")
+          .style("padding", "1rem");
+      })
+      .on("mouseleave", (e, d) => {
+        select(e.srcElement)
+          .transition()
+          .duration("100")
+          .attr("fill", (d) => color(d.item));
+
+        popUp.transition().duration("100").style("opacity", 0);
+      });
+  };
+
+  // Going through the data and adding together the sales values. For the stats at the top of the graph
+  const getTotalSales = () => {
+    let sales = 0;
+
+    data.forEach((item) => {
+      sales += item.sales;
+    });
+    return sales;
+  };
+
+  // Going through the data and adding together the occupancy values. Dividing it by the amount of data to get the average occupancy. For the stats at the top of the graph
+  const getOccupancyPercentage = () => {
+    let occupancy = 0;
+
+    data.forEach((item) => {
+      occupancy += item.percentage;
+    });
+
+    occupancy = Math.round(occupancy / data.length);
+    return occupancy;
+  };
+
+  // Setting the maximum that was sold on any given data. Used to set the Y scale for the sales
+  const getMaxSales = () => {
+    let max = 0;
+    data.forEach((item) => {
+      if (item.sales > max) {
+        max = item.sales;
+      }
+    });
+    return max;
+  };
+
+  return (
+    <div>
+      <FilterContainer>
+        <p>Reservation stats</p>
+      </FilterContainer>
+      <StatsContainer>
+        <Stat>
+          <Square color="#135846" />
+          <p>Sales</p>
+          <p>{getTotalSales()} €</p>
+        </Stat>
+        <Stat>
+          <Square color="#E23428" />
+          <p>Occupancy</p>
+          <p>{getOccupancyPercentage()} %</p>
+        </Stat>
+      </StatsContainer>
+      <svg
+        ref={ref}
+        width={width + margin.left + margin.right}
+        height={height + margin.top + margin.bottom}
+        style={{ display: "flex", margin: "auto" }}
+      ></svg>
+    </div>
+  );
 };
 
 export default Chart;
+
+// export default Chart;

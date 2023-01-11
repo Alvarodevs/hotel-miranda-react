@@ -22,7 +22,8 @@ export const ChartContainer = styled.div`
    height: 520px;
    width: 550px;
    border-radius: 20px;
-	background-color: var(--color-white);
+   background-color: var(--color-white);
+   padding: 10px;
 `;
 
 export const InfoContainer = styled.div`

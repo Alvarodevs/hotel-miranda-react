@@ -4,9 +4,6 @@ import {
    ChartCalendarContainer,
    ChartContainer,
    CalendarContainer,
-   InfoContainer,
-   InfoTitle,
-   Square,
 } from "../styles/views/DashboardStyled";
 import Theme from "../styles/Theme";
 import KPI from "../components/KPI";
@@ -50,17 +47,7 @@ const Dashboard = () => {
                <Calendar />
             </CalendarContainer>
             <ChartContainer id="d3Parent">
-               <InfoContainer>
-                  <InfoTitle>
-                     <Square color="var(--color-red)" />
-                     Sales
-                  </InfoTitle>
-                  <InfoTitle>
-                     <Square color="var(--color-greenGrey)" />
-                     Ocuppancy
-                  </InfoTitle>
-               </InfoContainer>
-               <Chart />
+               <Chart/>
             </ChartContainer>
          </ChartCalendarContainer>
       </MainContainer>
