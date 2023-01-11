@@ -24,7 +24,7 @@ function App() {
 				<BrowserRouter basename={process.env.PUBLIC_URL}>
 					<Routes>
 						<Route path='/login' element={<Login />} />
-						{/* <Route path='/hotel-miranda-react' element={<Navigate to="/" replace />} /> */}
+
 						{/* PROTECTED ROUTES */}
 
 						<Route element={<PrivateRoutes />} >
