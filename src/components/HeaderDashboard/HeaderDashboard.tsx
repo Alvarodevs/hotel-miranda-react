@@ -31,7 +31,7 @@ const HeaderDashboard = ({ setShow, show } :IHeaderProps) :JSX.Element => {
 
 	
    const setTitle = () :string | undefined => {
-      if (pathname === "/dashboard") {
+      if (pathname === "/") {
          return "Dashboard";
       } else if (pathname === "/rooms") {
          return "Rooms list";

@@ -21,16 +21,16 @@ function App() {
 	return (
 		<div>
 			<LoginContext.Provider value={store}>
-				<BrowserRouter>
+				<BrowserRouter basename={process.env.PUBLIC_URL}>
 					<Routes>
 						<Route path='/login' element={<Login />} />
-						<Route path='/hotel-miranda-react' element={<Navigate to="/" replace />} />
+						{/* <Route path='/hotel-miranda-react' element={<Navigate to="/" replace />} /> */}
 						{/* PROTECTED ROUTES */}
 
 						<Route element={<PrivateRoutes />} >
 
-							<Route path='/' element={<Navigate to="/dashboard" replace />} />
-							<Route path='/dashboard' element={<Dashboard />} />
+							<Route path='/' element={<Dashboard />} />
+							{/* <Route path='/dashboard' element={<Dashboard />} /> */}
 
 							<Route path='/bookings' element={<BookingList />} />
 							<Route path='/booking/:id' element={<Booking />} />
