@@ -60,7 +60,6 @@ const Login = () => {
       }
    };
 
-	console.log('STATE IN LOGIN', state)
    return (
       <div>
          <LoginContainer>

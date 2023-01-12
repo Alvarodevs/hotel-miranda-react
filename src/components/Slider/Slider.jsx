@@ -18,8 +18,6 @@ const Slider = ({description, status}) => {
          modules={[Navigation, Autoplay]}
          spaceBetween={50}
          slidesPerView={1}
-         onSlideChange={() => console.log("slide change")}
-         onSwiper={(swiper) => console.log(swiper)}
          autoplay={{ delay: 5000 }}
          navigation
          style={{ height: "600px", borderRadius: "0 10px 10px 0" }}

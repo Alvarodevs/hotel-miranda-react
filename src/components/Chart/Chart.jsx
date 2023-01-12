@@ -1,9 +1,14 @@
 import React, { useEffect, useRef } from "react";
 
 // D3
-import { scaleLinear, select, axisBottom, scaleBand, scaleOrdinal } from "d3";
-import { axisLeft } from "d3";
-import { axisRight } from "d3";
+import {
+   axisLeft,
+   axisRight, scaleLinear,
+   select,
+   axisBottom,
+   scaleBand,
+   scaleOrdinal,
+} from "d3";
 
 // Styled components
 import {
@@ -53,8 +58,7 @@ const data = [
 ];
 
 const Chart = () => {
-  // ATM the graph width is hard coded... I was trying to make it responsive but did not manage. InnerWidth gives me unexpected behaviour when resizing the window
-  // const [graphWidth, setGraphWidth] = useState((window.innerWidth * 40) / 100);
+  
   const graphWidth = 500;
 
   const ref = useRef();
@@ -284,4 +288,3 @@ const Chart = () => {
 
 export default Chart;
 
-// export default Chart;
