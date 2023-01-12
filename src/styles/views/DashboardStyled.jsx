@@ -16,6 +16,9 @@ export const CalendarContainer = styled.div`
    height: 520px;
    width: 600px;
    border-radius: 20px;
+	@media screen and (max-width: 1420px){
+		height:450px;
+	}
 `;
 
 export const ChartContainer = styled.div`
