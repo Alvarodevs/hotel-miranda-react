@@ -24,7 +24,7 @@ import {
 import BookingCard from "./BookingCard";
 import Spiner from "../Spiner";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { IBooking } from "../../interfaces/IBooking";
+import { IBooking } from "../../interfaces";
 import handleStatus from "../../utils/handleStatus";
 
 const Booking = () => {

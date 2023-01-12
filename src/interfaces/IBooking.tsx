@@ -1,4 +1,4 @@
-export interface IBooking  {
+export default interface IBooking  {
    _id: string,
    photo: string,
    guest_name: string,

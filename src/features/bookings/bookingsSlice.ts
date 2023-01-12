@@ -1,8 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import fetchApi from "../fetchApi";
 import type { RootState } from "../../app/store";
-import { IBooking } from "../../interfaces/IBooking";
-import { IActionThunk } from "../../interfaces/IActionThunks";
+import { IBooking, IActionThunk } from "../../interfaces";
 
 interface BookingsState {
    items: IBooking[] | [];

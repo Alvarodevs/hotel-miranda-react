@@ -1,4 +1,4 @@
-export interface IContact {
+export default interface IContact {
    id: number;
    date: string;
    customer: string;

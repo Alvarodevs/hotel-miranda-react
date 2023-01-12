@@ -159,7 +159,7 @@ const RoomList = () => {
             {appState === "ok" && (
                <TBody>
                   {roomsSwitch().map((room) => (
-                     <RoomCard key={room.id} room={room} />
+                     <RoomCard key={room._id} room={room} />
                   ))}
                </TBody>
             )}

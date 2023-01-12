@@ -15,7 +15,7 @@ import { BookingStatus } from "./BookingListStyled";
 import PopUpResquests from "../PopUpRequests/PopUpResquests";
 import { BiDotsVerticalRounded } from "@react-icons/all-files/bi/BiDotsVerticalRounded";
 import { Link } from "react-router-dom";
-import { IBooking } from "../../interfaces/IBooking";
+import { IBooking } from "../../interfaces";
 
 type Booking = {
    booking: IBooking;

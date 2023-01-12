@@ -16,14 +16,17 @@ import {Link} from 'react-router-dom';
 
 const RoomCard = ({room}) => {
 
+	const price = room.price/1000
+	const facilities = room.facilities.split(',')
+
    return (
-      <ListCard key={room.id}>
+      <ListCard key={room._id}>
          <Td>
-            <Link to={`/room/${room.id}`}>
+            <Link to={`/room/${room._id}`}>
                <NameImg>
-                  <Image src={roomImg} alt="Image" />
+                  <Image src={room.images} alt="Image" />
                   <Names>
-                     <Id>#{room.id}</Id>
+                     <Id>#{room._id}</Id>
                      <Title>{room.room_number}</Title>
                   </Names>
                </NameImg>
@@ -31,23 +34,23 @@ const RoomCard = ({room}) => {
          </Td>
 
          <TdTextWeight>
-            <Link to={`/room/${room.id}`}>{room.bed_type}</Link>
+            <Link to={`/room/${room._id}`}>{room.bed_type}</Link>
          </TdTextWeight>
          <TdTextWeight>
-            <Link to={`/room/${room.id}`}>
+            <Link to={`/room/${room._id}`}>
                {room.room_number.toString().charAt(0)}
             </Link>
          </TdTextWeight>
          <TdTextWeight>
-            <Link to={`/room/${room.id}`}>
-               {Object.entries(room.facilities).map((facility) =>
-                  facility[1] ? <Span>{facility[0]}, </Span> : null
-               )}
+            <Link to={`/room/${room._id}`}>
+               {facilities.map((facility, i) => {
+                  return <Span key={i}>{facility.replace('_', ' ')}{i === facilities.length-1 ? '' : ', '}</Span>
+               })}
             </Link>
          </TdTextWeight>
          <TdTextWeight>
-            <Link to={`/room/${room.id}`}>
-               € {room.price.slice(0, -1)}
+            <Link to={`/room/${room._id}`}>
+               {`€ ${price}`}
                <span>/night</span>
             </Link>
          </TdTextWeight>
@@ -60,7 +63,7 @@ const RoomCard = ({room}) => {
       					}
       				  </RoomTdText> */}
          <Td>
-            <Link to={`/room/${room.id}`}>
+            <Link to={`/room/${room._id}`}>
                <RoomStatus status={room.status}>
                   {room.status ? "Available" : "Booked"}
                </RoomStatus>
