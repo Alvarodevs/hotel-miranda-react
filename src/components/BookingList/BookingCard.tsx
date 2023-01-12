@@ -29,7 +29,7 @@ const BookingCard = ({ booking, handleStatus } :Booking) :JSX.Element => {
          <Link to={`/booking/${booking._id}`} >
             <Td>
                <NameImg>
-                  <Avatar src={avatar} alt="Image" />
+                  <Avatar src={booking.photo} alt="Image" />
                   <Names>
                      <Title>{booking.guest_name}</Title>
                      <Id>#{booking._id}</Id>
