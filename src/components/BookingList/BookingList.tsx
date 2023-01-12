@@ -116,7 +116,7 @@ const Booking = () => {
                </Selector>
                <Selector
                   onClick={() => {
-                     setBookingStatus("Check in");
+                     setBookingStatus("check_in");
                      setLengthFromRedux(false);
                   }}
                >
@@ -124,7 +124,7 @@ const Booking = () => {
                </Selector>
                <Selector
                   onClick={() => {
-                     setBookingStatus("Check out");
+                     setBookingStatus("check_out");
                      setLengthFromRedux(false);
                   }}
                >
@@ -132,7 +132,7 @@ const Booking = () => {
                </Selector>
                <Selector
                   onClick={() => {
-                     setBookingStatus("In Progress");
+                     setBookingStatus("in_progress");
                      setLengthFromRedux(false);
                   }}
                >
@@ -173,7 +173,7 @@ const Booking = () => {
                <TBody>
                   {bookingsSwitch()?.map((booking) => (
                      <BookingCard
-                        key={booking.id}
+                        key={booking._id}
                         booking={booking}
                         handleStatus={handleStatus}
                      />

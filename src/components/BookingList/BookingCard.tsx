@@ -25,32 +25,32 @@ type Booking = {
 
 const BookingCard = ({ booking, handleStatus } :Booking) :JSX.Element => {
    return (
-      <ListCard key={booking.id}>
-         <Link to={`/booking/${booking.id}`} >
+      <ListCard key={booking._id}>
+         <Link to={`/booking/${booking._id}`} >
             <Td>
                <NameImg>
                   <Avatar src={avatar} alt="Image" />
                   <Names>
                      <Title>{booking.guest_name}</Title>
-                     <Id>#{booking.id}</Id>
+                     <Id>#{booking._id}</Id>
                   </Names>
                </NameImg>
             </Td>
          </Link>
          <TdTextWeight>
-            <Link to={`/booking/${booking.id}`}>
+            <Link to={`/booking/${booking._id}`}>
                {moment(booking.order_date).format("MMM Do YYYY, h:mm:ss a")}
             </Link>
          </TdTextWeight>
          <TdTextWeight>
-            <Link to={`/booking/${booking.id}`}>
+            <Link to={`/booking/${booking._id}`}>
                {moment(booking.check_in).format("MMM Do, YYYY")}
                <br />
                <Span>{moment(booking.check_in).format("h:mm a")}</Span>
             </Link>
          </TdTextWeight>
          <TdTextWeight>
-            <Link to={`/booking/${booking.id}`}>
+            <Link to={`/booking/${booking._id}`}>
                {moment(booking.check_out).format("MMM Do, YYYY")}
                <br />
                <Span>{moment(booking.check_out).format("h:mm a")}</Span>
@@ -63,10 +63,10 @@ const BookingCard = ({ booking, handleStatus } :Booking) :JSX.Element => {
                ></PopUpResquests>
          </Td>
          <TdTextWeight>
-            <Link to={`/booking/${booking.id}`}>{booking.room_type}</Link>
+            <Link to={`/booking/${booking._id}`}>{booking.room_type}</Link>
          </TdTextWeight>
          <Td>
-            <Link to={`/booking/${booking.id}`}>
+            <Link to={`/booking/${booking._id}`}>
                <BookingStatus status={booking.status}>
                   {handleStatus(booking.status)}
                </BookingStatus>
