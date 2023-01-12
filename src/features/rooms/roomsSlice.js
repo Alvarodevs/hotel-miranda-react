@@ -1,10 +1,16 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import fetchData from "../fetchData";
+import fetchApi from "../fetchApi";
 
-export const getRooms = createAsyncThunk('fetch/rooms',
-	async () => {
-		const response = await fetchData('rooms')
-		return response
+const url = process.env.REACT_APP_URI;
+
+export const getRooms = createAsyncThunk("fetch/bookings", async () => {
+	const response = await fetchApi(`${url}rooms`, "GET");
+	return response;
+});
+
+export const getRoom = createAsyncThunk("room/fetchRoom",
+	async (id) => {
+		return await id;
 	}
 );
 
@@ -26,11 +32,7 @@ export const editRoom = createAsyncThunk("room/editRoom",
 	}
 );
 
-export const getRoom = createAsyncThunk("room/fetchRoom",
-	async (id) => {
-		return await id;
-	}
-);
+
 
 const initialState = {
 	items: [],

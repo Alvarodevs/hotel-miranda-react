@@ -11,12 +11,12 @@ export const StatusFlag = styled.div`
    text-align: center;
    padding: 8px 0;
    ${({ status }) => {
-      if (status === "Check out") {
+      if (status === "check_out") {
          return `
 				background-color: var(--color-pinkPale); 
 				color: var(--color-red);
 			`;
-      } else if (status === "Check in") {
+      } else if (status === "check_in") {
          return `
 				background-color: var(--color-greeenBooked); 
 				color: var(--color-greenLight);

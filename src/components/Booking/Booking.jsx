@@ -34,6 +34,8 @@ const Booking = () => {
       dispatch(getBooking(id));
    }, [dispatch, id]);
 
+	const price = Number(booking.price)/1000
+	
 	return (
       <MainContainer>
          <DetailsContainer>
@@ -43,7 +45,7 @@ const Booking = () => {
                      <Name>{booking.guest_name}</Name>
                      <BiDotsVerticalRounded size={25} />
                   </NameAndDots>
-                  <Id>ID {booking.id}</Id>
+                  <Id>ID {booking._id}</Id>
                </NameIdContainer>
                <Dates>
                   <Date style={{ paddingRight: "30px" }}>
@@ -52,7 +54,7 @@ const Booking = () => {
                      <span>
                         {booking.check_in.slice(0, 10) +
                            " | " +
-                           booking.check_in.slice(10)}
+                           booking.check_in.slice(11, 16)}
                      </span>
                   </Date>
                   <Date>
@@ -70,7 +72,7 @@ const Booking = () => {
                   <Price>
                      Price
                      <br />
-                     <span>{booking.price}</span>
+                     <span>{`€ ${price}`}</span>
                      <Night> /night</Night>
                   </Price>
                </RoomType>
@@ -79,8 +81,8 @@ const Booking = () => {
                   Amenities
                   <br />
                   <AmenitiesCardsContainer>
-                     {booking.amenities.split(",").map((item) => (
-                        <AmenitieCard>{item}</AmenitieCard>
+                     {booking.amenities.split(",").map((item, i) => (
+                        <AmenitieCard key={i}>{item}</AmenitieCard>
                      ))}
                   </AmenitiesCardsContainer>
                </Amenities>

@@ -10,5 +10,8 @@ export interface IBooking  {
    status: string,
    price: string,
    amenities: string,
-   room_desc: string
+   room_desc: string, 
+	room_id: string,
+	user_id: string,
+	room_images?: string[],
 }

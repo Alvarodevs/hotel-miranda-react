@@ -25,6 +25,7 @@ import BookingCard from "./BookingCard";
 import Spiner from "../Spiner";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { IBooking } from "../../interfaces/IBooking";
+import handleStatus from "../../utils/handleStatus";
 
 const Booking = () => {
    const [currentPage, setCurrentPage] = useState<number>(1);
@@ -42,18 +43,18 @@ const Booking = () => {
       dispatch(getBookings());
    }, [dispatch]);
 
-   const handleStatus = (status :string) => {
-      switch (status) {
-         case "check_in":
-            return "Check in";
-         case "check_out":
-            return "Check out";
-         default:
-            return "In Progress";
-      }
-   };
+   // const handleStatus = (status: string) => {
+   //    switch (status) {
+   //       case "check_in":
+   //          return "Check in";
+   //       case "check_out":
+   //          return "Check out";
+   //       default:
+   //          return "In Progress";
+   //    }
+   // };
 
-   const setAllBookings = () :void => {
+   const setAllBookings = (): void => {
       setLengthFromRedux(true);
       dispatch(getBookings());
    };
@@ -79,11 +80,11 @@ const Booking = () => {
    );
 
    //change pagination
-   const paginate = (pageNumber :number) => setCurrentPage(pageNumber);
-   const maxLength = () :IBooking[] => {
-      return lengthFromRedux ? bookingsRedux : bookingsFiltered
+   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+   const maxLength = (): IBooking[] => {
+      return lengthFromRedux ? bookingsRedux : bookingsFiltered;
    };
-   const buttonsPaginate = (direction :string) => {
+   const buttonsPaginate = (direction: string) => {
       if (direction === "prev") {
          return currentPage === 1
             ? null
@@ -164,7 +165,9 @@ const Booking = () => {
             {/* CASE LOADING -- pending change to Spinner or Squeleton*/}
             {appState === "loading" && (
                <TBody>
-                  <Spiner />
+                  <tr>
+                     <Spiner />
+                  </tr>
                </TBody>
             )}
 

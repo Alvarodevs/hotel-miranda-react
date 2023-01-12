@@ -10,7 +10,6 @@ import {
    Span,
 } from "../../styles/Table";
 import { Avatar } from "../../styles/Avatar";
-import avatar from "../../assets/images/Alvaro.jpg";
 import moment from "moment";
 import { BookingStatus } from "./BookingListStyled";
 import PopUpResquests from "../PopUpRequests/PopUpResquests";

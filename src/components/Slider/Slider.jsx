@@ -1,5 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import {Autoplay, Navigation} from 'swiper';
+import { useSelector } from "react-redux";
+import { selectBooking } from "../../features/bookings/bookingsSlice";
 
 import roomImg from '../../assets/images/room.jpg'
 // Import Swiper styles
@@ -10,8 +12,10 @@ import {
    Description,
    StatusFlag
 } from "./SliderStyled";
+import handleStatus from '../../utils/handleStatus'
 
 const Slider = ({description, status}) => {
+	const {room_images} = useSelector(selectBooking);
 
    return (
       <Swiper
@@ -24,28 +28,28 @@ const Slider = ({description, status}) => {
          loop
       >
          <SwiperSlide style={{ position: "relative" }}>
-            <StatusFlag status={status}>{status}</StatusFlag>
-            <ImageSlider src={roomImg} alt="Room"/>
+            <StatusFlag status={status}>{handleStatus(status)}</StatusFlag>
+            <ImageSlider src={room_images} alt="Room" />
             <Container>
                <Description>{description.slice(0, 150)}</Description>
             </Container>
          </SwiperSlide>
          <SwiperSlide>
-            <StatusFlag status={status}>{status}</StatusFlag>
+            <StatusFlag status={status}>{handleStatus(status)}</StatusFlag>
             <ImageSlider src={roomImg} alt="Room" />
             <Container>
                <Description>{description.slice(0, 150)}</Description>
             </Container>
          </SwiperSlide>
          <SwiperSlide>
-            <StatusFlag status={status}>{status}</StatusFlag>
-            <ImageSlider src={roomImg} alt="Room" />
+            <StatusFlag status={status}>{handleStatus(status)}</StatusFlag>
+            <ImageSlider src={room_images} alt="Room" />
             <Container>
                <Description>{description.slice(0, 150)}</Description>
             </Container>
          </SwiperSlide>
          <SwiperSlide>
-            <StatusFlag status={status}>{status}</StatusFlag>
+            <StatusFlag status={status}>{handleStatus(status)}</StatusFlag>
             <ImageSlider src={roomImg} alt="Room" />
             <Container>
                <Description>{description.slice(0, 150)}</Description>

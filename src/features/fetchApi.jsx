@@ -9,7 +9,7 @@ async function fetchApi(url, method, data) {
       credentials: "same-origin",
       headers: {
          "Content-Type": "application/json",
-         "Authorization": "Bearer " + tokenStored,
+         "Authorization": `Bearer ${tokenStored}`,
       },
       redirect: "follow",
       referrerPolicy: "no-referrer",

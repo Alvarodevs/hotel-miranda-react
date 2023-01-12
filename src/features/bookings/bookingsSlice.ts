@@ -1,32 +1,30 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import fetchData from "../fetchData";
 import fetchApi from "../fetchApi";
-import type { RootState } from '../../app/store'
+import type { RootState } from "../../app/store";
 import { IBooking } from "../../interfaces/IBooking";
 import { IActionThunk } from "../../interfaces/IActionThunks";
 
 interface BookingsState {
-	items: IBooking[] | [],
-	single: IBooking,
-	status: string
+   items: IBooking[] | [];
+   single: IBooking;
+   status: string;
 }
 
-const url = process.env.REACT_APP_URI
+const url = process.env.REACT_APP_URI;
 
-export const getBookings = createAsyncThunk('fetch/bookings',
-	async () => {
-		const response = await fetchApi(url+"bookings", "GET");
-		console.log(response)
-		return response
-	}
-);
+export const getBookings = createAsyncThunk("fetch/bookings", async () => {
+   const response = await fetchApi(`${url}bookings`, "GET");
+   return response;
+});
 
-export const getBooking = createAsyncThunk("booking/fetchBooking",
-	async (id) => {
-		const response = await fetchData('bookings')
-		const result = response.filter(booking => booking.id === id)
-		return result
-	}
+export const getBooking = createAsyncThunk(
+   "booking/fetchBooking",
+   async (id) => {
+      const bookingData = await fetchApi(`${url}bookings/${id}`, "GET");
+      const roomId = bookingData.room_id;
+      const roomData = await fetchApi(`${url}rooms/${roomId}`, "GET");
+      return { response: bookingData, roomImages: roomData.images };
+   }
 );
 
 // export const addBooking = createAsyncThunk("booking/addBooking",
@@ -50,36 +48,38 @@ export const getBooking = createAsyncThunk("booking/fetchBooking",
 const initialState: BookingsState = {
    items: [],
    single: {
-      _id: "7035706674",
-      photo: "http://dummyimage.com/347x337.png/dddddd/000000",
-      guest_name: "Reinaldos Derington",
-      order_date: "2021-11-10 05:10:44",
-      check_in: "2021-09-09 17:47:08",
-      check_out: "2021-08-28 07:52:20",
-      request: "Toxic effect of hydrogen cyanide, undetermined, init encntr",
-      room_type: "Single",
-      status: "Check in",
-      price: "€523,87",
-      amenities: "LED tv, bath, late-checkout, sea view, city tour",
-      room_desc:
-         "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti. Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris. Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
+      _id: "",
+      photo: "",
+      guest_name: "",
+      order_date: "",
+      check_in: "",
+      check_out: "",
+      request: "",
+      room_type: "",
+      status: "",
+      price: "",
+      amenities: "",
+      room_desc: "",
+      room_id: "",
+      user_id: "",
    },
    status: "idle",
 };
 
 export const bookingsSlice = createSlice({
-	name: 'bookings',
-	initialState,
-	reducers: {
+   name: "bookings",
+   initialState,
+   reducers: {},
 
-	},
-
-	extraReducers: (builder) => {
-		builder
+   extraReducers: (builder) => {
+      builder
+         //GET all bookings
          .addCase(getBookings.pending, (state: BookingsState) => {
             state.status = "loading";
          })
-         .addCase(getBookings.fulfilled, (state: BookingsState, action: IActionThunk) => {
+         .addCase(
+            getBookings.fulfilled,
+            (state: BookingsState, action: IActionThunk) => {
                state.items = action.payload;
                state.status = "ok";
             }
@@ -88,33 +88,41 @@ export const bookingsSlice = createSlice({
             state.status = "ko";
          })
 
+         //GET single booking
+         .addCase(getBooking.pending, (state: BookingsState) => {
+            state.status = "loading";
+         })
          .addCase(
-            getBooking.fulfilled, (state: BookingsState, action: IActionThunk) => {
-               state.single = action.payload[0];
+            getBooking.fulfilled,
+            (state: BookingsState, action: IActionThunk) => {
+               state.single = {...action.payload.response, room_images: action.payload.roomImages};
                state.status = "ok";
             }
-         );
+         )
+			.addCase(getBooking.rejected, (state: BookingsState) => {
+            state.status = "ko";
+         })
 
-			// .addCase(addBooking.fulfilled, (state, action) => {
-			// 	state.items = [...state.items, action.payload];
-			// 	state.status = 'ok';
-			// })
+      // .addCase(addBooking.fulfilled, (state, action) => {
+      // 	state.items = [...state.items, action.payload];
+      // 	state.status = 'ok';
+      // })
 
-			// .addCase(deleteBooking.fulfilled, (state, action) => {
-			// 	state.items = state.items.filter(
-			// 		(booking) => booking.id !== action.payload
-			// 	);
-			// 	state.status = 'ok';
-			// })
+      // .addCase(deleteBooking.fulfilled, (state, action) => {
+      // 	state.items = state.items.filter(
+      // 		(booking) => booking.id !== action.payload
+      // 	);
+      // 	state.status = 'ok';
+      // })
 
-			// .addCase(editBooking.fulfilled, (state, action) => {
-			// 	state.status = 'ok';
-			// 	state.items = state.items.map((booking) => {
-			// 		return booking.id === action.payload.id ? action.payload : booking;
-			// 	});
-			// })
-	}
-})
+      // .addCase(editBooking.fulfilled, (state, action) => {
+      // 	state.status = 'ok';
+      // 	state.items = state.items.map((booking) => {
+      // 		return booking.id === action.payload.id ? action.payload : booking;
+      // 	});
+      // })
+   },
+});
 
 // export const { filterByStatus, resetState } = bookingsSlice.actions;
 
