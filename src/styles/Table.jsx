@@ -52,14 +52,15 @@ export const Names = styled.div`
     display: flex;
     flex-direction: column;
     margin-left: 20px;
-    gap: 10px;
     font-family: var(--font-main);
     padding-top: 10px;
     width: max-content;
 `;
 
 export const Id = styled.div`
-    color: var(--color-greenGrey);
+   color: var(--color-greenGrey);
+   max-width: 10rem;
+   word-wrap: break-word;
 `;
 
 export const Title = styled.div`

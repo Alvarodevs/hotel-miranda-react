@@ -50,7 +50,7 @@ export const getBooking = createAsyncThunk("booking/fetchBooking",
 const initialState: BookingsState = {
    items: [],
    single: {
-      id: "7035706674",
+      _id: "7035706674",
       photo: "http://dummyimage.com/347x337.png/dddddd/000000",
       guest_name: "Reinaldos Derington",
       order_date: "2021-11-10 05:10:44",

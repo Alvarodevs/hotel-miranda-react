@@ -1,5 +1,5 @@
 export interface IBooking  {
-   id: string,
+   _id: string,
    photo: string,
    guest_name: string,
    order_date: string,
