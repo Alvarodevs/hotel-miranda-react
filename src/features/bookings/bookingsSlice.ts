@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import fetchData from "../fetchData";
+import fetchApi from "../fetchApi";
 import type { RootState } from '../../app/store'
 import { IBooking } from "../../interfaces/IBooking";
 import { IActionThunk } from "../../interfaces/IActionThunks";
@@ -10,9 +11,12 @@ interface BookingsState {
 	status: string
 }
 
+const url = process.env.REACT_APP_URI
+
 export const getBookings = createAsyncThunk('fetch/bookings',
 	async () => {
-		const response = await fetchData('bookings')
+		const response = await fetchApi(url+"bookings", "GET");
+		console.log(response)
 		return response
 	}
 );

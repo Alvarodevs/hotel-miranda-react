@@ -44,9 +44,9 @@ const Booking = () => {
 
    const handleStatus = (status :string) => {
       switch (status) {
-         case "Check in":
+         case "check_in":
             return "Check in";
-         case "Check out":
+         case "check_out":
             return "Check out";
          default:
             return "In Progress";
