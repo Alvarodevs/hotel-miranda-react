@@ -16,9 +16,8 @@ import {Link} from 'react-router-dom';
 
 const RoomCard = ({room}) => {
 
-	const price = room.price/1000
-	const facilities = room.facilities.split(',')
-
+	const facilitiesArray = room.facilities ? room.facilities.split(',') : []
+	
    return (
       <ListCard key={room._id}>
          <Td>
@@ -36,21 +35,26 @@ const RoomCard = ({room}) => {
          <TdTextWeight>
             <Link to={`/room/${room._id}`}>{room.bed_type}</Link>
          </TdTextWeight>
-         <TdTextWeight>
-            <Link to={`/room/${room._id}`}>
-               {room.room_number.toString().charAt(0)}
-            </Link>
+         <TdTextWeight className={"room-number"}>
+            <Link to={`/room/${room._id}`}>{room.room_number}</Link>
          </TdTextWeight>
          <TdTextWeight>
             <Link to={`/room/${room._id}`}>
-               {facilities.map((facility, i) => {
-                  return <Span key={i}>{facility.replace('_', ' ')}{i === facilities.length-1 ? '' : ', '}</Span>
+               {facilitiesArray.map((facility, i) => {
+                  return (
+                     <Span key={i}>
+                        {facility.replace("_", " ")}
+                        {i === facilitiesArray.length - 1
+                           ? ""
+                           : ", "}
+                     </Span>
+                  );
                })}
             </Link>
          </TdTextWeight>
          <TdTextWeight>
             <Link to={`/room/${room._id}`}>
-               {`€ ${price}`}
+               {`€ ${(room.price / 1000).toString().slice(0, 5)}`}
                <span>/night</span>
             </Link>
          </TdTextWeight>

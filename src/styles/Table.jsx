@@ -23,14 +23,17 @@ export const TBody = styled.tbody`
 `;
 
 export const ListCard = styled.tr`
-    margin: 20px 40px 0px 0px;
-    height: 85px;
-    :hover {
-        box-shadow: 0px 4px 30px #0000001a;
-    }
-	 a{
-		color:inherit;
-	 }
+   margin: 20px 40px 0px 0px;
+   height: 85px;
+   :hover {
+      box-shadow: 0px 4px 30px #0000001a;
+   }
+   a {
+      color: inherit;
+   }
+   .room-number {
+      text-align: center;
+   }
 `;
 
 //FIRST COLUMN DATA
@@ -53,7 +56,7 @@ export const Names = styled.div`
     flex-direction: column;
     margin-left: 20px;
     font-family: var(--font-main);
-    padding-top: 10px;
+    padding-top: 5px;
     width: max-content;
 `;
 
@@ -61,6 +64,7 @@ export const Id = styled.div`
    color: var(--color-greenGrey);
    max-width: 10rem;
    word-wrap: break-word;
+	margin-right: 10px;
 `;
 
 export const Title = styled.div`

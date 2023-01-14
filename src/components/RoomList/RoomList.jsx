@@ -125,7 +125,7 @@ const RoomList = () => {
                </Selector>
             </Selectors>
             <NewBtnsContainer>
-               <Link to={'/add_room'}>
+               <Link to={"/add_room"}>
                   <NewRoomBtn>+ New Room</NewRoomBtn>
                </Link>
                <RoomNewestBtn>
@@ -151,7 +151,9 @@ const RoomList = () => {
             {/* CASE LOADING -- pending change to Spinner or Squeleton*/}
             {appState === "loading" && (
                <TBody>
-                  <Spiner color={"success"} />
+                  <tr>
+                     <Spiner color={"success"} />
+                  </tr>
                </TBody>
             )}
 
