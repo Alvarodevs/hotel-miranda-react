@@ -1,17 +1,25 @@
 import Dashboard from "./Dashboard";
-import NotFound from "./NotFound";
-import GuestView from "./GuestView";
-import GuestsView from "./GuestsView";
-import ContactView from "./ContactView";
-import ConciergeView from "./ConciergeView";
-import NewUser from "./NewUser";
-import NewRoom from "./NewRoom";
+//Booking imports
+import BookingList from "./Bookings/BookingsList/BookingList";
+import Booking from "./Bookings/Booking/Booking";
+//Rooms import
+import RoomsList from "./Rooms/RoomsList/RoomsList";
+import Room from "./Rooms/Room/Room";
 
-export { Dashboard };
-export { NotFound };
-export { GuestView };
-export { GuestsView };
-export { ConciergeView };
-export { ContactView };
-export { NewUser };
-export { NewRoom };
+import Contacts from "./Contacts/Contacts";
+import NewUser from "./Users/NewUser";
+import NewRoom from "./Rooms/NewRoom";
+
+import NotFound from "./NotFound";
+
+export {
+   Dashboard,
+   NotFound,
+   Contacts,
+   NewUser,
+   NewRoom,
+   BookingList,
+   Booking,
+   RoomsList,
+   Room,
+};

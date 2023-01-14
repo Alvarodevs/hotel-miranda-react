@@ -1,4 +1,5 @@
 import React from "react";
+import { BiDotsVerticalRounded } from "@react-icons/all-files/bi/BiDotsVerticalRounded";
 import {
    ListCard,
    NameImg,
@@ -8,24 +9,23 @@ import {
    Td,
    TdTextWeight,
    Span,
-} from "../../styles/Table";
-import { Avatar } from "../../styles/Avatar";
+} from "../../../styles/Table";
+import { Avatar } from "../../../styles/Avatar";
 import moment from "moment";
-import { BookingStatus } from "./BookingListStyled";
-import PopUpResquests from "../PopUpRequests/PopUpResquests";
-import { BiDotsVerticalRounded } from "@react-icons/all-files/bi/BiDotsVerticalRounded";
+import { BookingStatus } from "../BookingsList/BookingListStyled";
+import PopUpResquests from "../../../components/PopUpRequests/PopUpResquests";
 import { Link } from "react-router-dom";
-import { IBooking } from "../../interfaces";
+import { IBooking } from "../../../interfaces";
 
 type Booking = {
    booking: IBooking;
    handleStatus: Function;
 };
 
-const BookingCard = ({ booking, handleStatus } :Booking) :JSX.Element => {
+const BookingCard = ({ booking, handleStatus }: Booking): JSX.Element => {
    return (
       <ListCard key={booking._id}>
-         <Link to={`/booking/${booking._id}`} >
+         <Link to={`/booking/${booking._id}`}>
             <Td>
                <NameImg>
                   <Avatar src={booking.photo} alt="Image" />
@@ -56,10 +56,10 @@ const BookingCard = ({ booking, handleStatus } :Booking) :JSX.Element => {
             </Link>
          </TdTextWeight>
          <Td>
-               <PopUpResquests
-                  status={booking.status}
-                  data={booking.request}
-               ></PopUpResquests>
+            <PopUpResquests
+               status={booking.status}
+               data={booking.request}
+            ></PopUpResquests>
          </Td>
          <TdTextWeight>
             <Link to={`/booking/${booking._id}`}>{booking.room_type}</Link>

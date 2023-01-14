@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { Button } from "../../styles/Button";
-import {Td, Status} from "../../styles/Table";
+import { Button } from "../../../styles/Button";
+import { Td, Status } from "../../../styles/Table";
 
 interface StatusProps {
-	status: string
+   status: string;
 }
 
 export const MonthButton = styled(Button)`
@@ -18,41 +18,40 @@ export const MonthButton = styled(Button)`
       margin-left: 1rem;
    }
    cursor: pointer;
-	
 `;
 
 export const RequestButton = styled(Button)<StatusProps>`
    font-weight: 700;
    background-color: ${({ status }) =>
       status === "Booked" ? "var(--color-white)" : null};
-   color: ${({status}) =>
+   color: ${({ status }) =>
       status === "Booked" ? "var(--color-greenGrey)" : null};
-   border: ${({status}) =>
+   border: ${({ status }) =>
       status === "Booked" ? "1px solid var(--color-greenGrey)" : null};
 `;
 
-
 export const BookingTd = styled(Td)`
-	margin: 0 20px;
-`; 
+   margin: 0 20px;
+`;
 //MULTIPLE OPTIONS STATUS
 export const BookingStatus = styled(Status)<StatusProps>`
-    ${({ status }) => {
-		if (status === "check_out"){
-			return`
+   ${({ status }) => {
+      if (status === "check_out") {
+         return `
 				background-color: var(--color-pinkPale); 
 				color: var(--color-red);
-			`
-		} else if (status === "check_in"){
-			return`
+			`;
+      } else if (status === "check_in") {
+         return `
 				background-color: var(--color-greeenBooked); 
 				color: var(--color-greenLight);
-			`
-		} else {
-			return `
+			`;
+      } else {
+         return `
 			background-color: var(--color-yellowLight); 
 			color: var(--color-yellowDark);
-		`;}
-	}};
-    font-weight: 600;
+		`;
+      }
+   }};
+   font-weight: 600;
 `;

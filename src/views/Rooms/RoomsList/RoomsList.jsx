@@ -4,28 +4,28 @@ import {
    Selectors,
    Selector,
    NewBtnsContainer,
-} from "../../styles/ListButtons";
+} from "../../../styles/ListButtons";
 import { NewRoomBtn, RoomNewestBtn } from "./RoomListStyled";
 import {
    ListContainer,
    THeaderContainer,
    HeaderTitle,
    TBody,
-} from "../../styles/Table";
+} from "../../../styles/Table";
 import { FiChevronDown } from "@react-icons/all-files/fi/FiChevronDown";
-import Pagination from "../Pagination/";
-import MainContainer from "../MainContainer";
+import Pagination from "../../../components/Pagination";
+import MainContainer from "../../../components/MainContainer";
 import { useDispatch, useSelector } from "react-redux";
 import {
    getRooms,
    selectRooms,
    selectStatus,
-} from "../../features/rooms/roomsSlice";
+} from "../../../features/rooms/roomsSlice";
 import RoomCard from "./RoomCard";
-import Spiner from "../Spiner";
+import Spiner from "../../../components/Spinner";
 import { Link } from "react-router-dom";
 
-const RoomList = () => {
+const RoomsList = () => {
    //states for pagitation
    const [currentPage, setCurrentPage] = useState(1);
    const [roomsPerPage, setRoomsPerPage] = useState(10);
@@ -179,4 +179,4 @@ const RoomList = () => {
    );
 };
 
-export default RoomList;
+export default RoomsList;

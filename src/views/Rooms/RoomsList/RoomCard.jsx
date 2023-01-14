@@ -8,16 +8,14 @@ import {
    Td,
    TdTextWeight,
    Span,
-} from "../../styles/Table";
-import roomImg from "../../assets/images/room.jpg";
+} from "../../../styles/Table";
 import { RoomStatus } from "./RoomListStyled";
 import { BiDotsVerticalRounded } from "@react-icons/all-files/bi/BiDotsVerticalRounded";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-const RoomCard = ({room}) => {
+const RoomCard = ({ room }) => {
+   const facilitiesArray = room.facilities ? room.facilities.split(",") : [];
 
-	const facilitiesArray = room.facilities ? room.facilities.split(',') : []
-	
    return (
       <ListCard key={room._id}>
          <Td>
@@ -44,9 +42,7 @@ const RoomCard = ({room}) => {
                   return (
                      <Span key={i}>
                         {facility.replace("_", " ")}
-                        {i === facilitiesArray.length - 1
-                           ? ""
-                           : ", "}
+                        {i === facilitiesArray.length - 1 ? "" : ", "}
                      </Span>
                   );
                })}

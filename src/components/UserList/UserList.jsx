@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import {
    ListButtonsContainer,
    Selectors,
@@ -25,8 +25,12 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import Pagination from "../Pagination";
 import MainContainer from "../MainContainer";
 import { useDispatch, useSelector } from "react-redux";
-import { selectStatus, selectUsers, getUsers } from "../../features/users/usersSlice";
-import Spiner from "../Spiner";
+import {
+   selectStatus,
+   selectUsers,
+   getUsers,
+} from "../../features/users/usersSlice";
+import Spiner from "../Spinner";
 import UserCard from "./UserCard";
 import { Link } from "react-router-dom";
 
@@ -34,11 +38,11 @@ const UserList = () => {
    const [currentPage, setCurrentPage] = useState(1);
    const [usersPerPage, setUsersPerPage] = useState(10);
 
-	const dispatch = useDispatch();
+   const dispatch = useDispatch();
    const appState = useSelector(selectStatus);
    const usersRedux = useSelector(selectUsers);
 
-	const [isActive, setIsActive] = useState(true);
+   const [isActive, setIsActive] = useState(true);
    const [lengthFromRedux, setLengthFromRedux] = useState(true);
    const [usersFiltered, setUsersFiltered] = useState([]);
 
@@ -46,7 +50,7 @@ const UserList = () => {
       dispatch(getUsers());
    }, [dispatch]);
 
-	useEffect(() => {
+   useEffect(() => {
       const usersToFilter = usersRedux;
       const usersFiltered = usersToFilter.filter(
          (user) => user.state === isActive
@@ -55,7 +59,7 @@ const UserList = () => {
       setCurrentPage(1);
    }, [isActive, usersRedux]);
 
-	const indexLastRoom = currentPage * usersPerPage;
+   const indexLastRoom = currentPage * usersPerPage;
    const indexFirstRoom = indexLastRoom - usersPerPage;
    const currentUsersRedux = usersRedux.slice(indexFirstRoom, indexLastRoom);
    const currentUsersFiltered = usersFiltered.slice(
@@ -63,8 +67,7 @@ const UserList = () => {
       indexLastRoom
    );
 
-
-	function usersSwitch() {
+   function usersSwitch() {
       if (lengthFromRedux) {
          return currentUsersRedux;
       } else return currentUsersFiltered;
@@ -74,8 +77,7 @@ const UserList = () => {
    const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
    const buttonsPaginate = (direction) => {
-
-		const maxLength = () => {
+      const maxLength = () => {
          return lengthFromRedux ? usersRedux : usersFiltered;
       };
 
@@ -91,7 +93,7 @@ const UserList = () => {
       }
    };
 
-	const setAllUsers = () => {
+   const setAllUsers = () => {
       setLengthFromRedux(true);
       dispatch(getUsers());
    };
@@ -130,10 +132,8 @@ const UserList = () => {
                </UsersSearchbarContainer>
             </Selectors>
             <NewBtnsContainer>
-               <Link to={'/add_user'}>
-                  <NewEmployee>
-                     + New Employee
-                  </NewEmployee>
+               <Link to={"/add_user"}>
+                  <NewEmployee>+ New Employee</NewEmployee>
                </Link>
                <NewestBtn>
                   Newest <FiChevronDown />

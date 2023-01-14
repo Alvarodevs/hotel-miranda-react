@@ -1,11 +1,7 @@
 import './styles/global/App.css';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { ContactView, Dashboard, NotFound, GuestView, GuestsView, ConciergeView,  NewRoom, NewUser } from './views';
-import RoomList from './components/RoomList';
-import BookingList from './components/BookingList';
+import { BookingList, Booking, RoomsList, Room, Contacts, Dashboard, NotFound, NewRoom, NewUser } from './views';
 import Login from './components/Login';
-import Room from './components/Room';
-import Booking from './components/Booking';
 import UserList from './components/UserList';
 import User from './components/User';
 import { useReducer } from 'react';
@@ -38,7 +34,7 @@ function App() {
 							<Route path='/bookings/:id' element={<Navigate to="/bookings" replace />} />
 							<Route path='/booking/edit/:id' element={<Booking />} />
 
-							<Route path='/rooms' element={<RoomList />} />
+							<Route path='/rooms' element={<RoomsList />} />
 							<Route path='/room/:id' element={<Room />} />
 							<Route path='/room' element={<Navigate to="/rooms" replace />} />
 							<Route path='/rooms/:id' element={<Navigate to="/rooms" replace />} />
@@ -52,15 +48,8 @@ function App() {
 							<Route path='/add_user' element={<NewUser />} />
 							<Route path='/user/edit/:id' element={<UserEditor />} />
 
-							<Route path='/guests' element={<GuestsView />} />
-							<Route path='/guest/:id' element={<GuestView />} />
-							<Route path='/guest' element={<Navigate to="/guests" replace />} />
-							<Route path='/guests/:id' element={<Navigate to="/guests" replace />} />
-							<Route path='/guest/edit/:id' element={<GuestView />} />
+							<Route path='/contacts' element={<Contacts />} />
 
-							<Route path='/concierge' element={<ConciergeView />} />
-
-							<Route path='/contact' element={<ContactView />} />
 						</Route>
 						<Route path='/error_404' element={<NotFound />} />
 						<Route path='*' element={<Navigate to="/error_404" replace />} />

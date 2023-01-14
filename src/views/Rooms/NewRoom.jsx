@@ -1,22 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import MainContainer from "../components/MainContainer";
-import { selectRooms, getRooms } from "../features/rooms/roomsSlice";
-import {Title,
-Form,
-Container,
-Label,
-Input,
-Select,
-Checkbox,
-ButtonContainer,
-SaveButton,
-ClearButton} from '../styles/views/NewRoomStyled';
+import MainContainer from "../../components/MainContainer";
+import { selectRooms, getRooms } from "../../features/rooms/roomsSlice";
+import {
+   Title,
+   Form,
+   Container,
+   Label,
+   Input,
+   Select,
+   Checkbox,
+   ButtonContainer,
+   SaveButton,
+   ClearButton,
+} from "../../styles/views/NewRoomStyled";
 
 const NewRoom = () => {
-   const [imageLoaded, setImageLoaded] = useState(null)
-	const [value, setValue] = useState("default");
+   const [imageLoaded, setImageLoaded] = useState(null);
+   const [value, setValue] = useState("default");
    const [roomObject, setRoomObject] = useState({
       id: 0,
       images: [],
@@ -49,9 +51,12 @@ const NewRoom = () => {
       );
    }, []);
 
-	const imageHandler = (e) => {
-		return setRoomObject({...roomObject, images: [...roomObject.images, imageLoaded]})
-	}
+   const imageHandler = (e) => {
+      return setRoomObject({
+         ...roomObject,
+         images: [...roomObject.images, imageLoaded],
+      });
+   };
    console.log(roomObject.images);
    return (
       <MainContainer>
@@ -104,7 +109,11 @@ const NewRoom = () => {
                   name="description"
                   type="text"
                   maxLength={100}
-                  style={{ width: "600px", textAlign: "left", paddingLeft: "10px" }}
+                  style={{
+                     width: "600px",
+                     textAlign: "left",
+                     paddingLeft: "10px",
+                  }}
                />
             </Container>
             <Container>

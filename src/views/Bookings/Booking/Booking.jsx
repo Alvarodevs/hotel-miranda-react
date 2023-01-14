@@ -1,8 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectBooking, getBooking } from "../../features/bookings/bookingsSlice";
+import {
+   selectBooking,
+   getBooking,
+} from "../../../features/bookings/bookingsSlice";
 import { useParams } from "react-router";
-import MainContainer from "../MainContainer";
+import MainContainer from "../../../components/MainContainer";
 import {
    DetailsContainer,
    BookingDetailsContainer,
@@ -19,24 +22,24 @@ import {
    Night,
    Description,
    Amenities,
-   AmenitiesCardsContainer, AmenitieCard,
+   AmenitiesCardsContainer,
+   AmenitieCard,
 } from "./BookingStyled";
 import { BiDotsVerticalRounded } from "@react-icons/all-files/bi/BiDotsVerticalRounded";
-import Slider from "../Slider";
-
+import Slider from "../../../components/Slider";
 
 const Booking = () => {
    const { id } = useParams();
-	const dispatch = useDispatch();
-	const booking = useSelector(selectBooking);
-	
-	useEffect(() => {
+   const dispatch = useDispatch();
+   const booking = useSelector(selectBooking);
+
+   useEffect(() => {
       dispatch(getBooking(id));
    }, [dispatch, id]);
 
-	const price = Number(booking.price)/1000
-	
-	return (
+   const price = Number(booking.price) / 1000;
+
+   return (
       <MainContainer>
          <DetailsContainer>
             <BookingDetailsContainer>

@@ -5,29 +5,29 @@ import {
    Selectors,
    Selector,
    NewBtnsContainer,
-} from "../../styles/ListButtons";
-import { NewestBtn } from "../../styles/Button";
+} from "../../../styles/ListButtons";
+import { NewestBtn } from "../../../styles/Button";
 import { FiChevronDown } from "@react-icons/all-files/fi/FiChevronDown";
 import {
    ListContainer,
    THeaderContainer,
    HeaderTitle,
    TBody,
-} from "../../styles/Table";
-import Pagination from "../Pagination";
-import MainContainer from "../MainContainer";
+} from "../../../styles/Table";
+import Pagination from "../../../components/Pagination";
+import MainContainer from "../../../components/MainContainer";
 import {
    selectStatus,
    selectBookings,
    getBookings,
-} from "../../features/bookings/bookingsSlice";
+} from "../../../features/bookings/bookingsSlice";
 import BookingCard from "./BookingCard";
-import Spiner from "../Spiner";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { IBooking } from "../../interfaces";
-import handleStatus from "../../utils/handleStatus";
+import Spinner from "../../../components/Spinner";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import { IBooking } from "../../../interfaces";
+import handleStatus from "../../../utils/handleStatus";
 
-const Booking = () => {
+const BookingList = () => {
    const [currentPage, setCurrentPage] = useState<number>(1);
    const [bookingsPerPage, setBookingsPerPage] = useState<number>(10);
 
@@ -42,17 +42,6 @@ const Booking = () => {
    useEffect(() => {
       dispatch(getBookings());
    }, [dispatch]);
-
-   // const handleStatus = (status: string) => {
-   //    switch (status) {
-   //       case "check_in":
-   //          return "Check in";
-   //       case "check_out":
-   //          return "Check out";
-   //       default:
-   //          return "In Progress";
-   //    }
-   // };
 
    const setAllBookings = (): void => {
       setLengthFromRedux(true);
@@ -166,7 +155,7 @@ const Booking = () => {
             {appState === "loading" && (
                <TBody>
                   <tr>
-                     <Spiner />
+                     <Spinner />
                   </tr>
                </TBody>
             )}
@@ -197,4 +186,4 @@ const Booking = () => {
    );
 };
 
-export default Booking;
+export default BookingList;
