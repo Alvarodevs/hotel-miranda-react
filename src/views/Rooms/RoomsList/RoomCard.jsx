@@ -70,7 +70,9 @@ const RoomCard = ({ room }) => {
             </Link>
          </Td>
          <Td>
-            <BiDotsVerticalRounded className="dots" />
+            <Link to={`/room/edit/${room._id}`}>
+               <BiDotsVerticalRounded className="dots" />
+            </Link>
          </Td>
       </ListCard>
    );

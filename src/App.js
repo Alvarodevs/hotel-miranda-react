@@ -1,6 +1,6 @@
 import './styles/global/App.css';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { BookingList, Booking, RoomsList, Room, Contacts, Dashboard, NotFound, NewRoom, NewUser } from './views';
+import { BookingList, Booking, RoomsList, Room, Contacts, Dashboard, NotFound, NewRoom, EditRoom, NewUser } from './views';
 import Login from './components/Login';
 import UserList from './components/UserList';
 import User from './components/User';
@@ -39,7 +39,7 @@ function App() {
 							<Route path='/room' element={<Navigate to="/rooms" replace />} />
 							<Route path='/rooms/:id' element={<Navigate to="/rooms" replace />} />
 							<Route path='/add_room' element={<NewRoom />} />
-							<Route path='/room/edit/:id' element={<NewRoom />} />
+							<Route path='/room/edit/:id' element={<EditRoom />} />
 
 							<Route path='/users' element={<UserList />} />
 							<Route path='/user/:id' element={<User />} />

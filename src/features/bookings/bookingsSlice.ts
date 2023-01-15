@@ -12,16 +12,16 @@ interface BookingsState {
 const url = process.env.REACT_APP_URI;
 
 export const getBookings = createAsyncThunk("fetch/bookings", async () => {
-   const response = await fetchApi(`${url}bookings`, "GET");
+   const response = await fetchApi(`bookings`, "GET");
    return response;
 });
 
 export const getBooking = createAsyncThunk(
    "booking/fetchBooking",
    async (id) => {
-      const bookingData = await fetchApi(`${url}bookings/${id}`, "GET");
+      const bookingData = await fetchApi(`bookings/${id}`, "GET");
       const roomId = bookingData.room_id;
-      const roomData = await fetchApi(`${url}rooms/${roomId}`, "GET");
+      const roomData = await fetchApi(`rooms/${roomId}`, "GET");
       return { response: bookingData, roomImages: roomData.images };
    }
 );
@@ -94,13 +94,16 @@ export const bookingsSlice = createSlice({
          .addCase(
             getBooking.fulfilled,
             (state: BookingsState, action: IActionThunk) => {
-               state.single = {...action.payload.response, room_images: action.payload.roomImages};
+               state.single = {
+                  ...action.payload.response,
+                  room_images: action.payload.roomImages,
+               };
                state.status = "ok";
             }
          )
-			.addCase(getBooking.rejected, (state: BookingsState) => {
+         .addCase(getBooking.rejected, (state: BookingsState) => {
             state.status = "ko";
-         })
+         });
 
       // .addCase(addBooking.fulfilled, (state, action) => {
       // 	state.items = [...state.items, action.payload];
