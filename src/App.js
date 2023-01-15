@@ -1,15 +1,13 @@
 import './styles/global/App.css';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { BookingList, Booking, RoomsList, Room, Contacts, Dashboard, NotFound, NewRoom, EditRoom, NewUser } from './views';
+import { BookingList, Booking, NewBooking, EditBooking, RoomsList, Room, Contacts, Dashboard, NotFound, NewRoom, EditRoom, UserList, User, EditUser, NewUser } from './views';
 import Login from './components/Login';
-import UserList from './components/UserList';
-import User from './components/User';
+
 import { useReducer } from 'react';
 import INIT_STATE from './store/initialState';
 import loginReducer from './store/loginReducer';
 import LoginContext from './store/LoginContext';
 import PrivateRoutes from './utils/ProtectedRoutes';
-import UserEditor from './components/User/UserEditor';
 
 function App() {
 	const store = useReducer(loginReducer, INIT_STATE)
@@ -32,7 +30,8 @@ function App() {
 							<Route path='/booking/:id' element={<Booking />} />
 							<Route path='/booking' element={<Navigate to="/bookings" replace />} />
 							<Route path='/bookings/:id' element={<Navigate to="/bookings" replace />} />
-							<Route path='/booking/edit/:id' element={<Booking />} />
+							<Route path='/add_booking' element={<NewBooking />} />
+							<Route path='/booking/edit/:id' element={<EditBooking />} />
 
 							<Route path='/rooms' element={<RoomsList />} />
 							<Route path='/room/:id' element={<Room />} />
@@ -46,7 +45,7 @@ function App() {
 							<Route path='/user' element={<Navigate to="/users" replace />} />
 							<Route path='/users/:id' element={<Navigate to="/users" replace />} />
 							<Route path='/add_user' element={<NewUser />} />
-							<Route path='/user/edit/:id' element={<UserEditor />} />
+							<Route path='/user/edit/:id' element={<EditUser />} />
 
 							<Route path='/contacts' element={<Contacts />} />
 

@@ -4,19 +4,18 @@ import {
    ChartCalendarContainer,
    ChartContainer,
    CalendarContainer,
-} from "../styles/views/DashboardStyled";
-import Theme from "../styles/Theme";
-import KPI from "../components/KPI";
-import { KPIContainer } from "../components/KPI/KPIStyled";
+} from "./DashboardStyled";
+import Theme from "../../styles/Theme";
+import KPI from "../../components/KPI";
+import { KPIContainer } from "../../components/KPI/KPIStyled";
 import { MdOutlineKingBed } from "react-icons/md";
 import { BiCalendarCheck } from "react-icons/bi";
 import { BsBoxArrowInRight, BsBoxArrowInLeft } from "react-icons/bs";
-import MainContainer from "../components/MainContainer";
-import Chart from "../components/Chart";
-import Calendar from "../components/Calendar";
+import MainContainer from "../../components/MainContainer";
+import Chart from "../../components/Chart";
+import Calendar from "../../components/Calendar";
 
 const Dashboard = () => {
-
    return (
       <MainContainer>
          <KPIContainer>
@@ -47,7 +46,7 @@ const Dashboard = () => {
                <Calendar />
             </CalendarContainer>
             <ChartContainer id="d3Parent">
-               <Chart/>
+               <Chart />
             </ChartContainer>
          </ChartCalendarContainer>
       </MainContainer>

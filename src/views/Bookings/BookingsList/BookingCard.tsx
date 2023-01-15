@@ -25,8 +25,8 @@ type Booking = {
 const BookingCard = ({ booking, handleStatus }: Booking): JSX.Element => {
    return (
       <ListCard key={booking._id}>
-         <Link to={`/booking/${booking._id}`}>
-            <Td>
+         <Td>
+            <Link to={`/booking/${booking._id}`}>
                <NameImg>
                   <Avatar src={booking.photo} alt="Image" />
                   <Names>
@@ -34,26 +34,21 @@ const BookingCard = ({ booking, handleStatus }: Booking): JSX.Element => {
                      <Id>#{booking._id}</Id>
                   </Names>
                </NameImg>
-            </Td>
-         </Link>
-         <TdTextWeight>
-            <Link to={`/booking/${booking._id}`}>
-               {moment(booking.order_date).format("MMM Do YYYY, h:mm:ss a")}
             </Link>
+         </Td>
+
+         <TdTextWeight>
+            {moment(booking.order_date).format("MMM Do YYYY, h:mm:ss a")}
          </TdTextWeight>
          <TdTextWeight>
-            <Link to={`/booking/${booking._id}`}>
-               {moment(booking.check_in).format("MMM Do, YYYY")}
-               <br />
-               <Span>{moment(booking.check_in).format("h:mm a")}</Span>
-            </Link>
+            {moment(booking.check_in).format("MMM Do, YYYY")}
+            <br />
+            <Span>{moment(booking.check_in).format("h:mm a")}</Span>
          </TdTextWeight>
          <TdTextWeight>
-            <Link to={`/booking/${booking._id}`}>
-               {moment(booking.check_out).format("MMM Do, YYYY")}
-               <br />
-               <Span>{moment(booking.check_out).format("h:mm a")}</Span>
-            </Link>
+            {moment(booking.check_out).format("MMM Do, YYYY")}
+            <br />
+            <Span>{moment(booking.check_out).format("h:mm a")}</Span>
          </TdTextWeight>
          <Td>
             <PopUpResquests
@@ -61,18 +56,16 @@ const BookingCard = ({ booking, handleStatus }: Booking): JSX.Element => {
                data={booking.request}
             ></PopUpResquests>
          </Td>
-         <TdTextWeight>
-            <Link to={`/booking/${booking._id}`}>{booking.room_type}</Link>
-         </TdTextWeight>
+         <TdTextWeight>{booking.room_type}</TdTextWeight>
          <Td>
-            <Link to={`/booking/${booking._id}`}>
-               <BookingStatus status={booking.status}>
-                  {handleStatus(booking.status)}
-               </BookingStatus>
-            </Link>
+            <BookingStatus status={booking.status}>
+               {handleStatus(booking.status)}
+            </BookingStatus>
          </Td>
          <Td>
-            <BiDotsVerticalRounded />
+            <Link to={`/booking/edit/${booking._id}`}>
+               <BiDotsVerticalRounded />
+            </Link>
          </Td>
       </ListCard>
    );

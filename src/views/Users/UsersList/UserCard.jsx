@@ -7,31 +7,30 @@ import {
    Title,
    Td,
    TdTextWeight,
-} from "../../styles/Table";
-import {
-   UserAvatar,
-   UserStatus,
-   CheckText,
-   JobDesc,
-} from "./UserListStyled";
+} from "../../../styles/Table";
+import { UserAvatar, UserStatus, CheckText, JobDesc } from "./UserListStyled";
 import moment from "moment";
 import { FiPhone } from "react-icons/fi";
 import { BiDotsVerticalRounded } from "@react-icons/all-files/bi/BiDotsVerticalRounded";
+import { Link } from "react-router-dom";
 
-const UserCard = ({user}) => {
+const UserCard = ({ user }) => {
+   console.log(user);
    return (
       <ListCard>
          <Td>
-            <NameImg>
-               <UserAvatar src={user.image} alt="Image" />
-               <Names>
-                  <Title>{user.name}</Title>
-                  <Id>#{user.id}</Id>
-                  <Id style={{ fontSize: "13px" }}>
-                     Joined on {moment(user.date).format("MMM Do, YYYY")}
-                  </Id>
-               </Names>
-            </NameImg>
+            <Link to={`/user/${user.id}`}>
+               <NameImg>
+                  <UserAvatar src={user.image} alt="Image" />
+                  <Names>
+                     <Title>{user.name}</Title>
+                     <Id>#{user.id}</Id>
+                     <Id style={{ fontSize: "13px" }}>
+                        Joined on {moment(user.date).format("MMM Do, YYYY")}
+                     </Id>
+                  </Names>
+               </NameImg>
+            </Link>
          </Td>
          <JobDesc>{user.job_desc}</JobDesc>
          <Td>
@@ -47,7 +46,9 @@ const UserCard = ({user}) => {
             </UserStatus>
          </Td>
          <Td>
-            <BiDotsVerticalRounded />
+            <Link to={`/user/edit/${user.id}`}>
+               <BiDotsVerticalRounded />
+            </Link>
          </Td>
       </ListCard>
    );

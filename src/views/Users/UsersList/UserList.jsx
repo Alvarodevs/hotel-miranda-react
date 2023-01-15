@@ -3,9 +3,9 @@ import {
    ListButtonsContainer,
    Selectors,
    NewBtnsContainer,
-} from "../../styles/ListButtons";
+} from "../../../styles/ListButtons";
 
-import { NewestBtn } from "../../styles/Button";
+import { NewestBtn } from "../../../styles/Button";
 import {
    NewEmployee,
    UserSelector,
@@ -18,19 +18,19 @@ import {
    THeaderContainer,
    HeaderTitle,
    TBody,
-} from "../../styles/Table";
+} from "../../../styles/Table";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import Pagination from "../Pagination";
-import MainContainer from "../MainContainer";
+import Pagination from "../../../components/Pagination";
+import MainContainer from "../../../components/MainContainer";
 import { useDispatch, useSelector } from "react-redux";
 import {
    selectStatus,
    selectUsers,
    getUsers,
-} from "../../features/users/usersSlice";
-import Spiner from "../Spinner";
+} from "../../../features/users/usersSlice";
+import Spinner from "../../../components/Spinner";
 import UserCard from "./UserCard";
 import { Link } from "react-router-dom";
 
@@ -152,7 +152,7 @@ const UserList = () => {
             </THeaderContainer>
             {appState === "loading" && (
                <TBody>
-                  <Spiner color={"success"} />
+                  <Spinner color={"success"} />
                </TBody>
             )}
             {appState === "ok" && (

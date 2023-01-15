@@ -1,25 +1,24 @@
 import styled from "styled-components";
 
 export const ListContainer = styled.table`
-    width: 100%;
-    background-color: var(--color-white);
-    border-radius: 20px;
-    padding: 20px 30px;
+   width: 100%;
+   background-color: var(--color-white);
+   border-radius: 20px;
+   padding: 20px 30px;
 `;
 
-export const THeaderContainer = styled.thead`
-`;
+export const THeaderContainer = styled.thead``;
 
 export const HeaderTitle = styled.th`
-    font-family: var(--font-main);
-    font-size: 18px;
-    color: var(--color-grey39);
-    border-bottom: 2px solid var(--color-greyF5);
-    text-align: start;
+   font-family: var(--font-main);
+   font-size: 18px;
+   color: var(--color-grey39);
+   border-bottom: 2px solid var(--color-greyF5);
+   text-align: start;
 `;
 
 export const TBody = styled.tbody`
-    padding: 0 20px;
+   padding: 0 20px;
 `;
 
 export const ListCard = styled.tr`
@@ -30,6 +29,9 @@ export const ListCard = styled.tr`
    }
    a {
       color: inherit;
+      &:hover {
+         font-weight: 700;
+      }
    }
    .room-number {
       text-align: center;
@@ -38,68 +40,68 @@ export const ListCard = styled.tr`
 
 //FIRST COLUMN DATA
 export const NameImg = styled.div`
-    display: flex;
-    width: fit-content;
-    justify-content: space-between;
+   display: flex;
+   width: fit-content;
+   justify-content: space-between;
 `;
 
 export const Image = styled.img`
-    width: 150px;
-    height: 77px;
-    border-radius: 8px;
-    background-color: grey;
-    object-fit: cover;
+   width: 150px;
+   height: 77px;
+   border-radius: 8px;
+   background-color: grey;
+   object-fit: cover;
 `;
 
 export const Names = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin-left: 20px;
-    font-family: var(--font-main);
-    padding-top: 5px;
-    width: max-content;
+   display: flex;
+   flex-direction: column;
+   margin-left: 20px;
+   font-family: var(--font-main);
+   padding-top: 5px;
+   width: max-content;
 `;
 
 export const Id = styled.div`
    color: var(--color-greenGrey);
    max-width: 10rem;
    word-wrap: break-word;
-	margin-right: 10px;
+   margin-right: 10px;
 `;
 
 export const Title = styled.div`
-    color: var(--color-grey39);
-    font-size: 16px;
-    font-weight: 700;
+   color: var(--color-grey39);
+   font-size: 16px;
+   font-weight: 700;
 `;
 //---------------------------
 
 export const Td = styled.td`
-    font-family: var(--font-main);
-    font-size: 16px;
-    span {
-        color: var(--color-greenGrey);
-        font-size: 14px;
-    }
-	.dots{
-		font-size: 20px;
-	}
+   font-family: var(--font-main);
+   font-size: 16px;
+   span {
+      color: var(--color-greenGrey);
+      font-size: 14px;
+   }
+   .dots {
+      font-size: 20px;
+   }
 `;
 
 export const TdTextWeight = styled(Td)`
-    font-weight: 700;
+   font-weight: 700;
 `;
 
 export const Span = styled.span`
-    font-family: var(--font-main);
-    font-size: 16px;
+   font-family: var(--font-main);
+   font-size: 16px;
 `;
 
 export const Status = styled.div`
-    width: 125px;
-    height: 45px;
-    border-radius: 12px;
-    text-align: center;
-    padding: 0.6rem;
-    color: var(--color-white);
+   width: 125px;
+   height: 45px;
+   border-radius: 12px;
+   text-align: center;
+   padding: 0.6rem;
+   color: var(--color-white);
 `;

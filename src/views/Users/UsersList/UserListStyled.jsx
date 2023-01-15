@@ -1,11 +1,10 @@
 import styled from "styled-components";
-import { Button } from "../../styles/Button";
-import {Avatar} from "../../styles/Avatar";
-import { Td } from "../../styles/Table";
-import { Selector } from "../../styles/ListButtons";
+import { Button } from "../../../styles/Button";
+import { Avatar } from "../../../styles/Avatar";
+import { Td } from "../../../styles/Table";
+import { Selector } from "../../../styles/ListButtons";
 
-export const UserSelector = styled(Selector)`
-`;
+export const UserSelector = styled(Selector)``;
 
 export const UsersSearchbarContainer = styled.div`
    width: 18rem;
@@ -23,7 +22,6 @@ export const UsersSearchbarContainer = styled.div`
    }
 `;
 
-
 export const Searchbar = styled.input`
    background-color: var(--color-whiteFC);
    width: 100%;
@@ -37,8 +35,8 @@ export const Searchbar = styled.input`
 `;
 
 export const UserAvatar = styled(Avatar)`
-    width: 100px;
-    height: 100px;
+   width: 100px;
+   height: 100px;
 `;
 
 export const NewEmployee = styled(Button)`
@@ -46,21 +44,21 @@ export const NewEmployee = styled(Button)`
    background-color: var(--color-greenDark);
    padding: 14px 45px;
    cursor: pointer;
-`; 
+`;
 
 export const JobDesc = styled(Td)`
-	max-width:400px;
-	padding-right:20px;
+   max-width: 400px;
+   padding-right: 20px;
 `;
 export const CheckText = styled.p`
-    font-size: 13px;
-    font-weight: 600;
-    color: #5D8C7F;
+   font-size: 13px;
+   font-weight: 600;
+   color: #5d8c7f;
 `;
 
 export const UserStatus = styled.p`
-    text-transform: uppercase;
-    color: ${({ state }) =>
-        state ? "var(--color-greenLight)" : "var(--color-red)"};
-		font-weight: 600;
-`; 
+   text-transform: uppercase;
+   color: ${({ state }) =>
+      state ? "var(--color-greenLight)" : "var(--color-red)"};
+   font-weight: 600;
+`;
