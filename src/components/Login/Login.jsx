@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { login } from "../../store/actions";
 import LoginContext from "../../store/LoginContext";
 import { LoginContainer, Header, Form, Input, Submit, Label } from "./LoginStyled";
-import fetchApi from "../../features/fetchApi";
+//import fetchApi from "../../features/fetchApi";
 
 const Login = () => {
 	const [email, setEmail] = useState("");
@@ -17,17 +17,18 @@ const Login = () => {
 
 		const response = await fetch(url+"login", {
          method: "POST",
-         mode: "cors",
+         //mode: "no-cors",
          cache: "no-cache",
          credentials: "same-origin",
          headers: {
             "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*"
          },
          redirect: "follow",
          referrerPolicy: "no-referrer",  
          body: JSON.stringify({email: email, password: password}), 
       }); 
-
+      
 		const {token} = await response.json()
 
 		if (token) {

@@ -9,7 +9,6 @@ interface BookingsState {
    status: string;
 }
 
-const url = process.env.REACT_APP_URI;
 
 export const getBookings = createAsyncThunk("fetch/bookings", async () => {
    const response = await fetchApi(`bookings`, "GET");

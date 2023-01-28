@@ -14,6 +14,7 @@ import { BsBoxArrowInRight, BsBoxArrowInLeft } from "react-icons/bs";
 import MainContainer from "../../components/MainContainer";
 import Chart from "../../components/Chart";
 import Calendar from "../../components/Calendar";
+import ReviewsBoard from "../../components/ReviewsBoard";
 
 const Dashboard = () => {
    return (
@@ -49,6 +50,7 @@ const Dashboard = () => {
                <Chart />
             </ChartContainer>
          </ChartCalendarContainer>
+         <ReviewsBoard/>
       </MainContainer>
    );
 };

@@ -51,7 +51,7 @@ const RoomCard = ({ room }) => {
          <TdTextWeight>
             <Link to={`/room/${room._id}`}>
                {`€ ${(room.price / 1000).toString().slice(0, 5)}`}
-               <span>/night</span>
+               <span> /night</span>
             </Link>
          </TdTextWeight>
          {/* CALCULATE PRICE WITH OFFER PERCENTAGE */}

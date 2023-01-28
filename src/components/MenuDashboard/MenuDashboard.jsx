@@ -54,7 +54,7 @@ const MenuDashboard = ({show}) => {
                 </MenuItem>
                 <MenuItem>
                     <Active className="active" />
-                    <Link to="/contact">
+                    <Link to="/contacts">
                         <BsEnvelope /> Contact
                     </Link>
                 </MenuItem>
