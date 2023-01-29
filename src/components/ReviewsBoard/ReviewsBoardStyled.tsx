@@ -1,14 +1,17 @@
 import styled from "styled-components";
 
-
+interface IRevCont {
+   path: boolean;
+}
 
 export const ReviewsBoardContainer = styled.div`
    width: 100%;
    padding: 1.5rem;
 `;
 
-export const ReviewsDashboardContainer = styled.div`
-   background-color: var(--color-white);
+export const ReviewsDashboardContainer = styled.div<IRevCont>`
+   background-color: ${({ path }) =>
+      path ? "transparent" : "var(--color-white)"};
    margin-bottom: 1rem;
    padding: 2rem;
    font-family: var(--font-main);
@@ -26,7 +29,7 @@ export const CardsContainer = styled.div`
    display: flex;
    overflow-x: scroll;
    gap: 1rem;
-   
+
    scrollbar-width: none;
 `;
 
@@ -34,13 +37,14 @@ export const ButtonsContainer = styled.div`
    display: flex;
    width: 100%;
    position: absolute;
-   padding-right: 3rem;
+   padding-right: 1.5rem;
+   margin-left: -1rem;
    z-index: 1;
    justify-content: space-between;
    top: 45%;
-   svg{
+   svg {
       color: var(--color-greenLight);
       font-size: 2.5rem;
       cursor: pointer;
-   } 
+   }
 `;

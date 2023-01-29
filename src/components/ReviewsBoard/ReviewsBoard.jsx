@@ -19,7 +19,6 @@ const ReviewsBoard = () => {
    const isPathContact = () => {
       return location.pathname.includes("contact");
    };
-   console.log(isPathContact());
 
    const scroll = (scrollOffset) => {
       ref.current.scrollLeft += scrollOffset;
@@ -27,7 +26,7 @@ const ReviewsBoard = () => {
 
    return (
       <ReviewsBoardContainer>
-         <ReviewsDashboardContainer path={isPathContact}>
+         <ReviewsDashboardContainer path={isPathContact()}>
             {isPathContact() ? null : <Title>Latest Review by Customers</Title>}
             <ButtonsContainer path={isPathContact}>
                <IoArrowBackCircle onClick={() => scroll(-100)}>{"<-"}</IoArrowBackCircle>
