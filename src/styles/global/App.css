@@ -47,4 +47,9 @@
 
    /* FONTS VARIABLES */
    --font-main: "Poppins", sans-serif;
+   
 }
+
+div::-webkit-scrollbar {
+   display: none; /* for Chrome, Safari, and Opera */
+ }

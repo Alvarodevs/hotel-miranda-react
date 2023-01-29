@@ -9,6 +9,11 @@ export const ReviewCardContainer = styled.div`
    border: 1px solid var(--color-greyEB);
    padding: 2rem;
    position: relative;
+   transition: all 0.3s ease-in-out;
+   
+   &:hover{
+      box-shadow: 0px 16px 30px #00000014;
+   }
 `;
 
 export const Text = styled.p`
