@@ -1,5 +1,5 @@
 // Example POST method implementation:
-const url = process.env.REACT_APP_URI;
+const url = process.env.REACT_APP_ATLAS;
 
 async function fetchApi(direction, method, data) {
    const tokenStored = localStorage.getItem("token");
