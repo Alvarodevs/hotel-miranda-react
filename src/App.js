@@ -24,7 +24,6 @@ function App() {
 						<Route element={<PrivateRoutes />} >
 
 							<Route path='/' element={<Dashboard />} />
-							{/* <Route path='/dashboard' element={<Dashboard />} /> */}
 
 							<Route path='/bookings' element={<BookingList />} />
 							<Route path='/booking/:id' element={<Booking />} />

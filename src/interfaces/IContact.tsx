@@ -1,10 +1,10 @@
 export default interface IContact {
-   id: number;
+   _id: string;
    date: string;
    customer: string;
    email: string;
    phone: string;
    subject: string;
    comment: string;
-   status: string;
+   archived: boolean;
 }

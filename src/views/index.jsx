@@ -17,7 +17,7 @@ import UserList from "./Users/UsersList";
 import NewUser from "./Users/NewUser";
 import EditUser from "./Users/EditUser";
 
-import Contacts from "./Contacts/Contacts";
+import Contacts from "./Contacts/ContactsList";
 import NotFound from "./NotFound";
 
 export {

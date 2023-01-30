@@ -43,10 +43,8 @@ const HeaderDashboard = ({ setShow, show } :IHeaderProps) :JSX.Element => {
          return "Bookings list";
       } else if (id && pathname.includes("booking")) {
          return `Booking ${id}`;
-      } else if (pathname === "/guests") {
-         return "Guests list";
-      } else if (id && pathname.includes("guest")) {
-         return `Guest ${id}`;
+      } else if (pathname === "/contacts") {
+         return "Contacts";
       } else if (pathname === "/users") {
          return "Users list";
       } else if (id && pathname.includes("user")) {
