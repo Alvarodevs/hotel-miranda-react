@@ -13,7 +13,7 @@ const Login = () => {
 	
    const handleLogin = async (e) => {
       e.preventDefault();
-      const url = process.env.REACT_APP_URI
+      const url = process.env.REACT_APP_ATLAS
 
 		const response = await fetch(url+"login", {
          method: "POST",
