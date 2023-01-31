@@ -66,7 +66,7 @@ const MenuDashboard = ({show}) => {
                 </MenuItem>
                 <UserCard>
                     <MenuAvatar src={avatar} />
-                    <Name>Alvaro G.</Name>
+                    <Name>{state.user.name}</Name>
                     <Email href="mailto:alvaro.develops@gmail.com">
                         {state.user.email}
                     </Email>

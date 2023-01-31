@@ -4,6 +4,7 @@ import {
    selectStatus,
    selectContacts,
    getContacts,
+   sortNewest,
 } from "../../features/contact/contactSlice";
 import MainContainer from "../../components/MainContainer";
 import ReviewsBoard from "../../components/ReviewsBoard";
@@ -117,7 +118,7 @@ const ContactView = () => {
                </Selector>
             </Selectors>
             <NewBtnsContainer>
-               <NewestBtn>
+               <NewestBtn onClick={() => dispatch(sortNewest())}>
                   Newest <FiChevronDown />
                </NewestBtn>
             </NewBtnsContainer>

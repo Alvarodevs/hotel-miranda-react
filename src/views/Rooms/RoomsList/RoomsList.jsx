@@ -20,6 +20,7 @@ import {
    getRooms,
    selectRooms,
    selectStatus,
+   sortPrice
 } from "../../../features/rooms/roomsSlice";
 import RoomCard from "./RoomCard";
 import Spiner from "../../../components/Spinner";
@@ -128,8 +129,8 @@ const RoomsList = () => {
                <Link to={"/add_room"}>
                   <NewRoomBtn>+ New Room</NewRoomBtn>
                </Link>
-               <RoomNewestBtn>
-                  Newest <FiChevronDown />
+               <RoomNewestBtn onClick={() => dispatch(sortPrice())}>
+                  Price <FiChevronDown />
                </RoomNewestBtn>
             </NewBtnsContainer>
          </ListButtonsContainer>

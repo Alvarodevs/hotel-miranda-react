@@ -20,6 +20,7 @@ import {
    selectStatus,
    selectBookings,
    getBookings,
+   sortNewest
 } from "../../../features/bookings/bookingsSlice";
 import BookingCard from "./BookingCard";
 import Spinner from "../../../components/Spinner";
@@ -130,10 +131,10 @@ const BookingList = () => {
                </Selector>
             </Selectors>
             <NewBtnsContainer>
-               <MonthButton>
+               {/* <MonthButton>
                   1 November 2020 - 30 November 2020 <FiChevronDown />
-               </MonthButton>
-               <NewestBtn>
+               </MonthButton> */}
+               <NewestBtn onClick={() => dispatch(sortNewest())}>
                   Newest <FiChevronDown />
                </NewestBtn>
             </NewBtnsContainer>

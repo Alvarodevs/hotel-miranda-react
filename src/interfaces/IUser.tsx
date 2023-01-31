@@ -5,7 +5,7 @@ export default interface IUser {
    email: string;
    password: string;
    phone: string;
-   date: Date;
+   date: string;
    job_desc: string;
    state: boolean;
 }

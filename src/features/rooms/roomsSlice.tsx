@@ -58,7 +58,13 @@ const initialState: RoomState = {
 export const roomsSlice = createSlice({
    name: "rooms",
    initialState,
-   reducers: {},
+   reducers: {
+      sortPrice: (state: RoomState) => {
+         state.items.sort((a, b) => {
+            return a.price > b.price? -1 : 1;
+         })
+      },
+   },
 
    extraReducers: (builder) => {
       builder
@@ -114,7 +120,7 @@ export const roomsSlice = createSlice({
    },
 });
 
-//export const { filterByStatus, resetState } = roomsSlice.actions;
+export const { sortPrice } = roomsSlice.actions;
 
 export const selectRooms = (state) => state.rooms.items;
 export const selectRoom = (state) => state.rooms.single;

@@ -59,7 +59,13 @@ const initialState: ContactsState = {
 export const contactsSlice = createSlice({
    name: "contacts",
    initialState,
-   reducers: {},
+   reducers: {
+      sortNewest: (state: ContactsState) => {
+         state.items.sort((a, b) => {
+            return a.date > b.date? -1 : 1;
+         })
+      },
+   },
 
    extraReducers: (builder) => {
       builder
@@ -114,7 +120,7 @@ export const contactsSlice = createSlice({
    },
 });
 
-// export const { filterByStatus, resetState } = contactsSlice.actions;
+export const { sortNewest } = contactsSlice.actions;
 
 export const selectContacts = (state: RootState) => state.contacts.items;
 export const selectContact = (state: RootState) => state.contacts.single;

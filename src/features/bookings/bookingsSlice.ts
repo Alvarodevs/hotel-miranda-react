@@ -67,7 +67,14 @@ const initialState: BookingsState = {
 export const bookingsSlice = createSlice({
    name: "bookings",
    initialState,
-   reducers: {},
+   reducers: {
+      sortNewest: (state: BookingsState) => {
+         state.items.sort((a, b) => {
+            return a.order_date > b.order_date? -1 : 1;
+         })
+      },
+
+   },
 
    extraReducers: (builder) => {
       builder
@@ -125,7 +132,7 @@ export const bookingsSlice = createSlice({
    },
 });
 
-// export const { filterByStatus, resetState } = bookingsSlice.actions;
+export const { sortNewest } = bookingsSlice.actions;
 
 export const selectBookings = (state: RootState) => state.bookings.items;
 export const selectBooking = (state: RootState) => state.bookings.single;
