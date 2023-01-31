@@ -6,14 +6,14 @@ import { LoginContainer, Header, Form, Input, Submit, Label } from "./LoginStyle
 //import fetchApi from "../../features/fetchApi";
 
 const Login = () => {
-	const [email, setEmail] = useState("");
+	const [emailInput, setEmailInput] = useState("");
 	const [password, setPassword] = useState("");
    const navigate = useNavigate();
    const [state, dispatch] = useContext(LoginContext);
 	
    const handleLogin = async (e) => {
       e.preventDefault();
-      const url = process.env.REACT_APP_ATLAS
+      const url = process.env.REACT_APP_URI
 
 		const response = await fetch(url+"login", {
          method: "POST",
@@ -26,24 +26,25 @@ const Login = () => {
          },
          redirect: "follow",
          referrerPolicy: "no-referrer",  
-         body: JSON.stringify({email: email, password: password}), 
+         body: JSON.stringify({email: emailInput, password: password}), 
       }); 
-      
-		const {token} = await response.json()
 
-		if (token) {
+      const {token, user} = await response.json()
+      
+      if (token) {
 			localStorage.setItem("token", token)
          dispatch(
             login({
                isAuth: true,
                user: {
-                  email: state.user.email
+                  email: user.email,
+                  name: user.name,
                },
             })
          );
+         
          toLocalStorage({
-            ...state,
-            isAuth: true,
+            ...state
          });
          navigate("/");
       } else {
@@ -53,9 +54,11 @@ const Login = () => {
 
    const toLocalStorage = (user) => {
       if (!localStorage.getItem("authenticated")) {
-         return localStorage.setItem("authenticated", JSON.stringify(user));
+         const userLogged = {...user, isAuth: true}
+         return localStorage.setItem("authenticated", JSON.stringify(userLogged));
       } else {
          const currentItem = JSON.parse(localStorage.getItem("authenticated") || '');
+         console.log(localStorage);
          currentItem.isAuth = true;
          localStorage.setItem("authenticated", JSON.stringify(currentItem));
       }
@@ -69,16 +72,16 @@ const Login = () => {
                <Label htmlFor="email">Email:</Label>
                <Input
                   type="email"
-                  placeholder="Your email account"
+                  placeholder="alvaro@example.com"
                   name="email"
                   className="email-login"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={emailInput}
+                  onChange={(e) => setEmailInput(e.target.value)}
                />
                <Label htmlFor="password">Password:</Label>
                <Input
                   type="password"
-                  placeholder="Password"
+                  placeholder="1234"
                   name="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}

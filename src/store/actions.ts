@@ -4,7 +4,7 @@ export interface ILogin {
 	isAuth: boolean,
 	user: {
 		email: string, 
-		token?: string,
+		name: string,
 	}
 }
 
