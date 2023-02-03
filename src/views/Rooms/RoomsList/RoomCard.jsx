@@ -30,29 +30,23 @@ const RoomCard = ({ room }) => {
             </Link>
          </Td>
 
-         <TdTextWeight>
-            <Link to={`/room/${room._id}`}>{room.bed_type}</Link>
-         </TdTextWeight>
+         <TdTextWeight>{room.bed_type}</TdTextWeight>
          <TdTextWeight className={"room-number"}>
-            <Link to={`/room/${room._id}`}>{room.room_number}</Link>
+            {room.room_number}
          </TdTextWeight>
          <TdTextWeight>
-            <Link to={`/room/${room._id}`}>
-               {facilitiesArray.map((facility, i) => {
-                  return (
-                     <Span key={i}>
-                        {facility.replace("_", " ")}
-                        {i === facilitiesArray.length - 1 ? "" : ", "}
-                     </Span>
-                  );
-               })}
-            </Link>
+            {facilitiesArray.map((facility, i) => {
+               return (
+                  <Span key={i}>
+                     {facility.replace("_", " ")}
+                     {i === facilitiesArray.length - 1 ? "" : ", "}
+                  </Span>
+               );
+            })}
          </TdTextWeight>
          <TdTextWeight>
-            <Link to={`/room/${room._id}`}>
-               {`€ ${(room.price / 1000).toString().slice(0, 5)}`}
-               <span> /night</span>
-            </Link>
+            {`€ ${(room.price / 1000).toString().slice(0, 5)}`}
+            <span> /night</span>
          </TdTextWeight>
          {/* CALCULATE PRICE WITH OFFER PERCENTAGE */}
          {/* <RoomTdText>
@@ -63,11 +57,9 @@ const RoomCard = ({ room }) => {
       					}
       				  </RoomTdText> */}
          <Td>
-            <Link to={`/room/${room._id}`}>
-               <RoomStatus status={room.status}>
-                  {room.status ? "Available" : "Booked"}
-               </RoomStatus>
-            </Link>
+            <RoomStatus status={room.status}>
+               {room.status ? "Available" : "Booked"}
+            </RoomStatus>
          </Td>
          <Td>
             <Link to={`/room/edit/${room._id}`}>

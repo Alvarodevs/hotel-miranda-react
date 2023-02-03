@@ -28,7 +28,7 @@ const Login = () => {
          referrerPolicy: "no-referrer",  
          body: JSON.stringify({email: emailInput, password: password}), 
       }); 
-
+      
       const {token, user} = await response.json()
       
       if (token) {
@@ -53,6 +53,7 @@ const Login = () => {
    };
 
    const toLocalStorage = (user) => {
+      console.log(user)
       if (!localStorage.getItem("authenticated")) {
          const userLogged = {...user, isAuth: true}
          return localStorage.setItem("authenticated", JSON.stringify(userLogged));

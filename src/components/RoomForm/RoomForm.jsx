@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { addRoom } from "../../features/rooms/roomsSlice";
 import MainContainer from "../../components/MainContainer";
 import {
    Title,
@@ -15,73 +17,92 @@ import {
 
 const RoomForm = ({ room }) => {
    const [imageLoaded, setImageLoaded] = useState(null);
-   const [isOffer, setIsOffer] = useState(room.offer);
+   const [isOffer, setIsOffer] = useState(room ? room.offer : false);
    const [roomObject, setRoomObject] = useState({
-      id: 0,
-      images: room.images ? room.images : [],
-      bed_type: room.bed_type ? room.bed_type : "",
-      room_number: room.room_number ? room.room_number : 100,
-      description: room.description
+      _id: room ? room._id : null,
+      images: room ? room.images : imageLoaded,
+      bed_type: room ? room.bed_type : "",
+      room_number: room ? room.room_number : 100,
+      description: room
          ? room.description
          : "Enter your room description here.",
-      price: room.price ? room.price / 1000 : 0,
-      offer: room.offer ? isOffer : false,
-      offer_price: room.offer_price ? room.offer_price : 0,
-      cancellation: room.cancellation
+      price: room ? room.price / 1000 : 0,
+      offer: room ? isOffer : false,
+      offer_price: room ? room.offer_price : 0,
+      cancellation: room
          ? room.cancellation
          : "Cancellation policy here please.",
-      facilities: room.facilities
+      facilities: room
          ? room.facilities.replaceAll(",", ", ").replaceAll("_", " ")
          : "TV, Bathtub, Sea_view, Late_checkout, City_tour",
-      status: room.status ? room.status : true,
+      status: room ? room.status : true,
    });
-
-   //useEffect(() => {}, [room]);
-   // console.log(
-   //    images,
-   //    bed_type,
-   //    room_number,
-   //    description,
-   //    price,
-   //    offer,
-   //    offer_price,
-   //    cancellation,
-   //    facilities,
-   //    status
-   // );
+   const dispatch = useDispatch();
 
    const handleToggle = () => setIsOffer(!isOffer);
 
-   const imageHandler = (e) => {
-      return setRoomObject({
-         ...roomObject,
-         images: [...roomObject.images, imageLoaded],
-      });
+   // const imageHandler = (e) => {
+   //    e.preventDefault();
+   //    const fd = new FormData();
+   //    fd.append("image", e.target.files[0], e.target.files[0].name);
+   //    return setImageLoaded(fd);
+   // };
+
+   // const handleUpload = (e) => {
+   //    return setRoomObject({
+   //       ...roomObject,
+   //       images: imageLoaded,
+   //    });
+   // };
+
+   const handleSubmit = (e) => {
+      e.preventDefault();
+      dispatch(addRoom({ room: roomObject }));
+      return (setRoomObject({
+         _id: null,
+         images: null,
+         bed_type: null,
+         room_number: 100,
+         description: "Enter your room description here.",
+         price: 0,
+         offer: false,
+         offer_price: 0,
+         cancellation: "Cancellation policy here please.",
+      }))
    };
-   console.log(roomObject);
-   console.log(isOffer);
+   console.log(imageLoaded);
+
    return (
       <MainContainer>
          <Title>Room Form</Title>
-         <Form action="">
+         <Form action="" onSubmit={handleSubmit}>
             <Container>
                <Label htmlFor="load-images">
                   Select images (max. 5 images) :
                </Label>
                <Input
                   name="load-images"
+                  type="text"
+                  placeholder="Copy url image here"
+                  style={{ width: "50%" }}
+                  onChange={(e) =>
+                     setRoomObject({ ...roomObject, images: e.target.value })
+                  }
+               ></Input>
+               {/* <Input
+                  name="load-images"
                   type="file"
                   style={{ width: "32%" }}
-                  onChange={(e) => setImageLoaded(e.target.files[0])}
-               />
-               <ClearButton onClick={imageHandler}>Upload</ClearButton>
+                  onChange={imageHandler}
+               /> */}
+               {/* <ClearButton onClick={handleUpload}>Upload</ClearButton> */}
                {/* ICON TO DELETE ITEM */}
             </Container>
             <Container>
                <Label>Select bed type : </Label>
                <Select
                   defaultValue={roomObject.bed_type ? roomObject.bed_type : ""}
-                  onSelect={(e) =>
+                  onChange={(e) =>
                      setRoomObject({ ...roomObject, bed_type: e.target.value })
                   }
                >
@@ -102,6 +123,12 @@ const RoomForm = ({ room }) => {
                   type="number"
                   value={roomObject.room_number ? roomObject.room_number : 100}
                   min={100}
+                  onChange={(e) =>
+                     setRoomObject({
+                        ...roomObject,
+                        room_number: e.target.value,
+                     })
+                  }
                />
             </Container>
             <Container>
@@ -117,8 +144,12 @@ const RoomForm = ({ room }) => {
                      textAlign: "left",
                      paddingLeft: "10px",
                   }}
-                  defaultValue={
-                     roomObject.description ? roomObject.description : ""
+                  value={roomObject.description ? roomObject.description : ""}
+                  onChange={(e) =>
+                     setRoomObject({
+                        ...roomObject,
+                        description: e.target.value,
+                     })
                   }
                />
             </Container>
@@ -131,6 +162,9 @@ const RoomForm = ({ room }) => {
                      type="number"
                      min={0}
                      value={roomObject.price ? roomObject.price : 0}
+                     onChange={(e) =>
+                        setRoomObject({ ...roomObject, price: e.target.value })
+                     }
                   />
                </div>
             </Container>
@@ -141,6 +175,9 @@ const RoomForm = ({ room }) => {
                   type="checkbox"
                   checked={isOffer}
                   onClick={handleToggle}
+                  onChange={(e) =>
+                     setRoomObject({ ...roomObject, offer: isOffer })
+                  }
                />
             </Container>
             <Container>
@@ -150,6 +187,12 @@ const RoomForm = ({ room }) => {
                   type="number"
                   max={100}
                   value={isOffer ? roomObject.offer_price : 0}
+                  onChange={(e) =>
+                     setRoomObject({
+                        ...roomObject,
+                        offer_price: e.target.value,
+                     })
+                  }
                />
             </Container>
             <Container>
@@ -161,6 +204,12 @@ const RoomForm = ({ room }) => {
                   type="text"
                   style={{ width: "600px", textAlign: "left" }}
                   value={roomObject.facilities ? roomObject.facilities : ""}
+                  onChange={(e) =>
+                     setRoomObject({
+                        ...roomObject,
+                        facilities: e.target.value,
+                     })
+                  }
                />
             </Container>
             <Container>
@@ -170,11 +219,18 @@ const RoomForm = ({ room }) => {
                   type="text"
                   style={{ width: "600px", textAlign: "left" }}
                   value={roomObject.cancellation ? roomObject.cancellation : ""}
+                  onChange={(e) =>
+                     setRoomObject({
+                        ...roomObject,
+                        cancellation: e.target.value,
+                     })
+                  }
                />
             </Container>
             <ButtonContainer>
-               <SaveButton type="submit">Save</SaveButton>
+               <SaveButton onSubmit={handleSubmit}>Save</SaveButton>
                <ClearButton type="submit">Clear</ClearButton>
+               {/* {room ? <DeleteButton onClick={() => deleteItem()}>Delete</DeleteButton> : null} */}
             </ButtonContainer>
          </Form>
       </MainContainer>

@@ -9,7 +9,7 @@ interface RoomState {
    status: string;
 }
 
-export const getRooms = createAsyncThunk("fetch/bookings", async () => {
+export const getRooms = createAsyncThunk("fetch/rooms", async () => {
    const response = await fetchApi(`rooms`, "GET");
    return response;
 });
@@ -19,11 +19,10 @@ export const getRoom = createAsyncThunk("room/fetchRoom", async (id) => {
    return await response;
 });
 
-// export const addRoom = createAsyncThunk("room/addRoom",
-// 	async (newRoom) => {
-// 		return await newRoom;
-// 	}
-// );
+export const addRoom = createAsyncThunk("room/addRoom", async (newRoom) => {
+   const response = await fetchApi('rooms', "POST", newRoom);
+   return await response;
+});
 
 // export const deleteRoom = createAsyncThunk("room/deleteRoom",
 // 	async (id) => {
@@ -61,8 +60,8 @@ export const roomsSlice = createSlice({
    reducers: {
       sortPrice: (state: RoomState) => {
          state.items.sort((a, b) => {
-            return a.price > b.price? -1 : 1;
-         })
+            return a.price > b.price ? -1 : 1;
+         });
       },
    },
 
@@ -97,12 +96,21 @@ export const roomsSlice = createSlice({
          )
          .addCase(getRoom.rejected, (state: RoomState) => {
             state.status = "ko";
-         });
+         })
 
-      // .addCase(addRoom.fulfilled, (state: RoomState, action: IActionThunk) => {
-      // 	state.items = [...state.items, action.payload];
-      // 	state.status = 'ok';
-      // })
+         //POST ROOM
+         .addCase(addRoom.pending, (state: RoomState) => {
+            state.status = "loading";
+         })
+
+         .addCase(addRoom.fulfilled, (state: RoomState, action: IActionThunk) => {
+            state.items = [...state.items, action.payload]
+            state.status = "ok";
+         })
+
+         .addCase(addRoom.rejected, (state: RoomState) => {
+            state.status = "ko";
+         })
 
       // .addCase(deleteRoom.fulfilled, (state: RoomState, action: IActionThunk) => {
       // 	state.items = state.items.filter(

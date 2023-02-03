@@ -12,7 +12,6 @@ const EditRoom = () => {
    useEffect(() => {
       dispatch(getRoom(id));
    }, [dispatch, id]);
-
    return (
       <div>
          <RoomForm room={room}></RoomForm>
