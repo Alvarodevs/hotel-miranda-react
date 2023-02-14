@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { addRoom } from "../../features/rooms/roomsSlice";
+import { addRoom, editRoom } from "../../features/rooms/roomsSlice";
 import MainContainer from "../../components/MainContainer";
 import {
    Title,
@@ -14,33 +14,39 @@ import {
    SaveButton,
    ClearButton,
 } from "./RoomFormStyled";
+import { useParams } from "react-router";
 
 const RoomForm = ({ room }) => {
-   const [imageLoaded, setImageLoaded] = useState(null);
+   //const [imageLoaded, setImageLoaded] = useState(null);
    const [isOffer, setIsOffer] = useState(room ? room.offer : false);
-   const [roomObject, setRoomObject] = useState({
-      _id: room ? room._id : null,
-      images: room ? room.images : imageLoaded,
-      bed_type: room ? room.bed_type : "",
-      room_number: room ? room.room_number : 100,
-      description: room
-         ? room.description
-         : "Enter your room description here.",
-      price: room ? room.price / 1000 : 0,
-      offer: room ? isOffer : false,
-      offer_price: room ? room.offer_price : 0,
-      cancellation: room
-         ? room.cancellation
-         : "Cancellation policy here please.",
-      facilities: room
-         ? room.facilities.replaceAll(",", ", ").replaceAll("_", " ")
-         : "TV, Bathtub, Sea_view, Late_checkout, City_tour",
-      status: room ? room.status : true,
-   });
+   const [roomObject, setRoomObject] = useState({});
    const dispatch = useDispatch();
+   const {id} = useParams();
 
    const handleToggle = () => setIsOffer(!isOffer);
 
+   useEffect(() => {
+      setRoomObject({
+         _id: room ? room._id : null,
+         images: room ? room.images : "",
+         bed_type: room ? room.bed_type : "",
+         room_number: room ? room.room_number : 100,
+         description: room
+            ? room.description
+            : "Enter your room description here.",
+         price: room ? room.price / 1000 : 0,
+         offer: room ? isOffer : false,
+         offer_price: room ? room.offer_price : 0,
+         cancellation: room
+            ? room.cancellation
+            : "Cancellation policy here please.",
+         facilities: room
+            ? room.facilities?.replaceAll(",", ", ").replaceAll("_", " ")
+            : "TV, Bathtub, Sea_view, Late_checkout, City_tour",
+         status: room ? room.status : true,
+      });
+   }, [room, isOffer]);
+   
    // const imageHandler = (e) => {
    //    e.preventDefault();
    //    const fd = new FormData();
@@ -57,8 +63,10 @@ const RoomForm = ({ room }) => {
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      dispatch(addRoom({ room: roomObject }));
-      return (setRoomObject({
+      room
+         ? dispatch(editRoom(id, { room: roomObject }))
+         : dispatch(addRoom({ room: roomObject }));
+      return setRoomObject({
          _id: null,
          images: null,
          bed_type: null,
@@ -68,9 +76,9 @@ const RoomForm = ({ room }) => {
          offer: false,
          offer_price: 0,
          cancellation: "Cancellation policy here please.",
-      }))
+      });
    };
-   console.log(imageLoaded);
+   console.log(roomObject);
 
    return (
       <MainContainer>
@@ -84,6 +92,7 @@ const RoomForm = ({ room }) => {
                   name="load-images"
                   type="text"
                   placeholder="Copy url image here"
+                  value={roomObject.images ? roomObject.images : ""}
                   style={{ width: "50%" }}
                   onChange={(e) =>
                      setRoomObject({ ...roomObject, images: e.target.value })

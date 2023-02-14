@@ -24,17 +24,19 @@ export const addRoom = createAsyncThunk("room/addRoom", async (newRoom) => {
    return await response;
 });
 
+export const editRoom = createAsyncThunk("room/editRoom", async (id, updatedRoom) => {
+      const response = await fetchApi(`rooms/${id}`, "PUT", updatedRoom);
+      return await response;
+	}
+);
+
 // export const deleteRoom = createAsyncThunk("room/deleteRoom",
 // 	async (id) => {
 // 		return await id;
 // 	}
 // );
 
-// export const editRoom = createAsyncThunk("room/editRoom",
-// 	async (id) => {
-// 		return await id;
-// 	}
-// );
+
 
 const initialState: RoomState = {
    items: [],
@@ -109,6 +111,20 @@ export const roomsSlice = createSlice({
          })
 
          .addCase(addRoom.rejected, (state: RoomState) => {
+            state.status = "ko";
+         })
+
+         //PUT ROOM
+         .addCase(editRoom.pending, (state: RoomState) => {
+            state.status = "loading";
+         })
+
+         .addCase(editRoom.fulfilled, (state: RoomState, action: IActionThunk) => {
+            state.single = action.payload;
+            state.status = "ok";
+         })
+
+         .addCase(editRoom.rejected, (state: RoomState) => {
             state.status = "ko";
          })
 
