@@ -36,7 +36,7 @@ import { Link } from "react-router-dom";
 
 const UserList = () => {
    const [currentPage, setCurrentPage] = useState(1);
-   const [usersPerPage, setUsersPerPage] = useState(10);
+   const [usersPerPage, ] = useState(10);
 
    const dispatch = useDispatch();
    const appState = useSelector(selectStatus);

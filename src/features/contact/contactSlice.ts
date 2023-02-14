@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import fetchApi from "../fetchApi";
 import type { RootState } from "../../app/store";
 import { IContact, IActionThunk } from "../../interfaces";

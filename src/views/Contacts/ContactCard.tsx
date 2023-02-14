@@ -2,13 +2,8 @@ import React from "react";
 import { IContact } from "../../interfaces";
 import {
    ListCard,
-   NameImg,
-   Names,
-   Id,
-   Title,
    Td,
    TdTextWeight,
-   Span,
 } from "../../styles/Table";
 import { IdContainer, Comment, ArchieveBtn, Email } from "./ContactsListStyled";
 

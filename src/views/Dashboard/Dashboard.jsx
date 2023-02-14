@@ -1,11 +1,10 @@
 import React from "react";
 import {
-   BackgroundDashboard,
    ChartCalendarContainer,
    ChartContainer,
    CalendarContainer,
 } from "./DashboardStyled";
-import Theme from "../../styles/Theme";
+//import Theme from "../../styles/Theme";
 import KPI from "../../components/KPI";
 import { KPIContainer } from "../../components/KPI/KPIStyled";
 import { MdOutlineKingBed } from "react-icons/md";

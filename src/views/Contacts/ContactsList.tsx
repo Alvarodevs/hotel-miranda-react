@@ -24,7 +24,7 @@ import {ListContainer, THeaderContainer, HeaderTitle, TBody } from "../../styles
 
 const ContactView = () => {
    const [currentPage, setCurrentPage] = useState<number>(1);
-   const [contactsPerPage, setContactsPerPage] = useState<number>(10);
+   const [contactsPerPage, ] = useState<number>(10);
 
    const dispatch = useAppDispatch();
    const appState = useAppSelector(selectStatus);

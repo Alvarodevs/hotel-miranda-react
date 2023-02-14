@@ -29,7 +29,7 @@ import { Link } from "react-router-dom";
 const RoomsList = () => {
    //states for pagitation
    const [currentPage, setCurrentPage] = useState(1);
-   const [roomsPerPage, setRoomsPerPage] = useState(10);
+   const [roomsPerPage, ] = useState(10);
 
    const dispatch = useDispatch();
    const appState = useSelector(selectStatus);

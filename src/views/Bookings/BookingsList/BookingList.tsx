@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { MonthButton } from "./BookingListStyled";
+//import { MonthButton } from "./BookingListStyled";
 import {
    ListButtonsContainer,
    Selectors,
@@ -30,7 +30,7 @@ import handleStatus from "../../../utils/handleStatus";
 
 const BookingList = () => {
    const [currentPage, setCurrentPage] = useState<number>(1);
-   const [bookingsPerPage, setBookingsPerPage] = useState<number>(10);
+   const [bookingsPerPage, ] = useState<number>(10);
 
    const dispatch = useAppDispatch();
    const appState = useAppSelector(selectStatus);
