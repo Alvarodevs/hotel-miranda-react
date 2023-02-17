@@ -1,5 +1,5 @@
 // Example POST method implementation:
-const url = process.env.REACT_APP_URI;
+const url = process.env.REACT_API_BACKEND_PROD;
 
 async function fetchApi(direction, method, data) {
    console.log(data)
