@@ -15,7 +15,7 @@ import { BiDotsVerticalRounded } from "@react-icons/all-files/bi/BiDotsVerticalR
 import { Link } from "react-router-dom";
 
 const UserCard = ({ user }) => {
-   console.log(user);
+   
    return (
       <ListCard>
          <Td>
