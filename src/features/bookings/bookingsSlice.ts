@@ -25,11 +25,11 @@ export const getBooking = createAsyncThunk(
    }
 );
 
-// export const addBooking = createAsyncThunk("booking/addBooking",
-// 	async (newBooking) => {
-// 		return await newBooking;
-// 	}
-// );
+export const addBooking = createAsyncThunk("booking/addBooking",
+	async (newBooking) => {
+		return await fetchApi(`bookings`, "POST", newBooking);
+	}
+);
 
 // export const deleteBooking = createAsyncThunk("booking/deleteBooking",
 // 	async (id) => {
