@@ -5,7 +5,8 @@ export interface ILogin {
 	user: {
 		email: string, 
 		name: string,
-	}
+	},
+	[Symbol.iterator]?(): IterableIterator<boolean | string>;
 }
 
 export interface IAction {
