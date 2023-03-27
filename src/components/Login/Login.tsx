@@ -16,9 +16,7 @@ const Login = () => {
       const url = process.env.REACT_APP_API
       const response = await fetch(url+"login", {
          method: "POST",
-         //mode: "no-cors",
          cache: "no-cache",
-         credentials: "same-origin",
          headers: {
             "Content-Type": "application/json",
             "Access-Control-Allow-Origin": "*"
