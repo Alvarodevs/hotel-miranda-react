@@ -2,7 +2,7 @@
 const url = process.env.REACT_APP_API;
 
 async function fetchApi(direction, method, data) {
-   console.log(data)
+   
    const tokenStored = localStorage.getItem("token");
    const response = await fetch(url + direction, {
       method: method,

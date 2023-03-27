@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { login } from "../../store/actions";
 import LoginContext from "../../store/LoginContext";
 import { LoginContainer, Header, Form, Input, Submit, Label } from "./LoginStyled";
-//import fetchApi from "../../features/fetchApi";
 
 const Login = () => {
 	const [emailInput, setEmailInput] = useState("");
