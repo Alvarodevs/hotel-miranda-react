@@ -23,11 +23,11 @@ export const getContact = createAsyncThunk(
    }
 );
 
-// export const addContact = createAsyncThunk("contact/addContact",
-// 	async (newContact) => {
-// 		return await newContact;
-// 	}
-// );
+export const addContact = createAsyncThunk("contact/addContact",
+	async (newContact) => {
+		return await fetchApi(`contacts`, "POST", newContact);
+	}
+);
 
 // export const deleteContact = createAsyncThunk("contact/deleteContact",
 // 	async (id) => {

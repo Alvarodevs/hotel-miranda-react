@@ -19,11 +19,11 @@ export const getUser = createAsyncThunk("user/fetchUser", async (id) => {
    return await response;
 });
 
-// export const addUser = createAsyncThunk("user/addUser",
-// 	async (newUser) => {
-// 		return await newUser;
-// 	}
-// );
+export const addUser = createAsyncThunk("user/addUser",
+	async (newUser) => {
+		return await fetchApi(`users`, "POST", newUser);
+	}
+);
 
 // export const deleteUser = createAsyncThunk("user/deleteUser",
 // 	async (id) => {

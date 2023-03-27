@@ -1,5 +1,17 @@
 import { createContext } from "react";
+import { ILogin } from './actions'
 
-const LoginContext :React.Context<[]> = createContext([]);
+const defaultLoginState: ILogin = {
+  isAuth: false,
+  user: {
+    email: "",
+    name: ""
+  },
+};
+
+const LoginContext :React.Context<any> = createContext({
+  state: defaultLoginState,
+  dispatch: () => undefined
+});
 
 export default LoginContext;
