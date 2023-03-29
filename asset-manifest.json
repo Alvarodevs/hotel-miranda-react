@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/hotel-miranda-react/static/css/main.4613feeb.css",
-    "main.js": "/hotel-miranda-react/static/js/main.b1bc237c.js",
-    "static/media/room.jpg": "/hotel-miranda-react/static/media/room.ab3a34cb5b1e6843845a.jpg",
-    "static/media/error.gif": "/hotel-miranda-react/static/media/error.484faec34470a6a2a2b8.gif",
-    "static/media/Alvaro.jpg": "/hotel-miranda-react/static/media/Alvaro.d6f3857d7c3451e60445.jpg",
-    "index.html": "/hotel-miranda-react/index.html",
-    "main.4613feeb.css.map": "/hotel-miranda-react/static/css/main.4613feeb.css.map",
-    "main.b1bc237c.js.map": "/hotel-miranda-react/static/js/main.b1bc237c.js.map"
+    "main.css": "https://black-wave-086f50103.2.azurestaticapps.net/static/css/main.d11f3c26.css",
+    "main.js": "https://black-wave-086f50103.2.azurestaticapps.net/static/js/main.53e110b6.js",
+    "static/media/room.jpg": "https://black-wave-086f50103.2.azurestaticapps.net/static/media/room.ab3a34cb5b1e6843845a.jpg",
+    "static/media/error.gif": "https://black-wave-086f50103.2.azurestaticapps.net/static/media/error.484faec34470a6a2a2b8.gif",
+    "static/media/Alvaro.jpg": "https://black-wave-086f50103.2.azurestaticapps.net/static/media/Alvaro.d6f3857d7c3451e60445.jpg",
+    "index.html": "https://black-wave-086f50103.2.azurestaticapps.net/index.html",
+    "main.d11f3c26.css.map": "https://black-wave-086f50103.2.azurestaticapps.net/static/css/main.d11f3c26.css.map",
+    "main.53e110b6.js.map": "https://black-wave-086f50103.2.azurestaticapps.net/static/js/main.53e110b6.js.map"
   },
   "entrypoints": [
-    "static/css/main.4613feeb.css",
-    "static/js/main.b1bc237c.js"
+    "static/css/main.d11f3c26.css",
+    "static/js/main.53e110b6.js"
   ]
 }
