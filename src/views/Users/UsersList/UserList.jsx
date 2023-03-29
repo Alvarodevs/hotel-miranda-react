@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 import {
    ListButtonsContainer,
    Selectors,
@@ -19,7 +20,6 @@ import {
    HeaderTitle,
    TBody,
 } from "../../../styles/Table";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import Pagination from "../../../components/Pagination";
@@ -152,7 +152,7 @@ const UserList = () => {
             </THeaderContainer>
             {appState === "loading" && (
                <TBody>
-                  <Spinner color={"success"} />
+                  <Spinner color={"success"}/>
                </TBody>
             )}
             {appState === "ok" && (
